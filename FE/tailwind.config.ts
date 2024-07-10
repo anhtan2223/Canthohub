@@ -11,6 +11,10 @@ const config: Config = {
       gridTemplateColumns: {
         '13': 'repeat(13, minmax(0, 1fr))',
       },
+      backgroundColor: {
+        'custom-gray': 'rgba(245, 245, 245, 1)',
+        'bg-secondary': 'rgba(255, 255, 255, 1)'
+      },
       colors: {
         blue: {
           400: '#2589FE',
