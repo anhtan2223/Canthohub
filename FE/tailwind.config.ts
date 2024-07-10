@@ -8,12 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      gridTemplateColumns: {
-        '13': 'repeat(13, minmax(0, 1fr))',
-      },
       backgroundColor: {
-        'bg-color': 'rgba(245, 245, 245, 1)',
-        'bg-secondary': 'rgba(255, 255, 255, 1)'
+        'color': 'rgba(245, 245, 245, 1)',
+        'secondary': 'rgba(255, 255, 255, 1)'
       },
       fontSize: {
         base: '14px',
@@ -22,6 +19,7 @@ const config: Config = {
         'dark-blue': 'rgba(15, 33, 103, 1)',
         'medium-blue': 'rgba(53, 89, 224, 1)',
         'light-blue': 'rgba(76, 185, 231, 1)',
+        'border-color': 'rgba(217, 217, 217, 1)'
       },
     },
     keyframes: {
