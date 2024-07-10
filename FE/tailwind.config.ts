@@ -12,18 +12,16 @@ const config: Config = {
         '13': 'repeat(13, minmax(0, 1fr))',
       },
       backgroundColor: {
-        'custom-gray': 'rgba(245, 245, 245, 1)',
+        'bg-color': 'rgba(245, 245, 245, 1)',
         'bg-secondary': 'rgba(255, 255, 255, 1)'
       },
       fontSize: {
         base: '14px',
       },
       colors: {
-        blue: {
-          400: '#2589FE',
-          500: '#0070F3',
-          600: '#2F6FEB',
-        },
+        'dark-blue': 'rgba(15, 33, 103, 1)',
+        'medium-blue': 'rgba(53, 89, 224, 1)',
+        'light-blue': 'rgba(76, 185, 231, 1)',
       },
     },
     keyframes: {

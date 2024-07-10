@@ -2,7 +2,7 @@ export default function Page() {
     return <div className="">
             <p> breadcrums/nhatro</p>
             <div className="content-center mx-auto grid grid-cols-12 gap-5">
-                <div className="site-left p-4 bg-[#fff] col-span-7 rounded">
+                <div className="site-left p-4 bg-bg-secondary col-span-7 rounded">
                     <div className="flex justify-between">
                         <h2 className="font-bold">
                             Tổng 206 kết quả
