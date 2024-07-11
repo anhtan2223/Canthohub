@@ -10,7 +10,8 @@ const config: Config = {
     extend: {
       backgroundColor: {
         'color': 'rgba(245, 245, 245, 1)',
-        'secondary': 'rgba(255, 255, 255, 1)'
+        'secondary': 'rgba(255, 255, 255, 1)',
+        'translucent-black': 'rgba(0, 0, 0, 0.61)'
       },
       fontSize: {
         base: '14px',
@@ -19,6 +20,7 @@ const config: Config = {
         'dark-blue': 'rgba(15, 33, 103, 1)',
         'medium-blue': 'rgba(53, 89, 224, 1)',
         'light-blue': 'rgba(76, 185, 231, 1)',
+        'text': 'rgba(137, 137, 137, 1)'
       },
       borderColor: {
         'border-color': 'rgba(217, 217, 217, 1)',
