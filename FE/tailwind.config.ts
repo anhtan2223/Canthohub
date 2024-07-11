@@ -19,7 +19,9 @@ const config: Config = {
         'dark-blue': 'rgba(15, 33, 103, 1)',
         'medium-blue': 'rgba(53, 89, 224, 1)',
         'light-blue': 'rgba(76, 185, 231, 1)',
-        'border-color': 'rgba(217, 217, 217, 1)'
+      },
+      borderColor: {
+        'border-color': 'rgba(217, 217, 217, 1)',
       },
     },
     keyframes: {
