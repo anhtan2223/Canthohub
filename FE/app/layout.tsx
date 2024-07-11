@@ -1,4 +1,5 @@
 import '@/app/ui/global.css';
+import { inter } from '@/app/ui/fonts';
 import { Metadata } from 'next';
  
 export const metadata: Metadata = {
@@ -16,7 +17,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={`${inter.className} antialiased bg-color text-base`}>
+        <header className=" bg-slate-600">HEADER</header>
+        <div className="container mx-auto md:max-w-2xl xl:max-w-6xl my-6">
+            {children}
+        </div>
+        <footer className="bg-slate-300 h-[120px]">FOOTER</footer>
+      </body>
     </html>
   );
 }
