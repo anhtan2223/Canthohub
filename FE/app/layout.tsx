@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} antialiased bg-color text-base`}>
         <header className=" bg-slate-600">HEADER</header>
-        <div className="container mx-auto w-9/12 my-6">
+        <div className="container mx-auto md:max-w-2xl xl:max-w-6xl my-6">
             {children}
         </div>
         <footer className="bg-slate-300 h-[120px]">FOOTER</footer>
