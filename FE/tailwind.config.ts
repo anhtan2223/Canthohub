@@ -8,15 +8,22 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      gridTemplateColumns: {
-        '13': 'repeat(13, minmax(0, 1fr))',
+      backgroundColor: {
+        'color': 'rgba(245, 245, 245, 1)',
+        'secondary': 'rgba(255, 255, 255, 1)',
+        'translucent-black': 'rgba(0, 0, 0, 0.61)'
+      },
+      fontSize: {
+        base: '14px',
       },
       colors: {
-        blue: {
-          400: '#2589FE',
-          500: '#0070F3',
-          600: '#2F6FEB',
-        },
+        'dark-blue': 'rgba(15, 33, 103, 1)',
+        'medium-blue': 'rgba(53, 89, 224, 1)',
+        'light-blue': 'rgba(76, 185, 231, 1)',
+        'text': 'rgba(137, 137, 137, 1)'
+      },
+      borderColor: {
+        'border-color': 'rgba(217, 217, 217, 1)',
       },
     },
     keyframes: {
@@ -30,3 +37,4 @@ const config: Config = {
   plugins: [require('@tailwindcss/forms')],
 };
 export default config;
+
