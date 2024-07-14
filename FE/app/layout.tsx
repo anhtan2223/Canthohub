@@ -1,6 +1,8 @@
 import '@/app/ui/global.css';
 import { inter } from '@/app/ui/fonts';
 import { Metadata } from 'next';
+import Header from '@/app/ui/Header';
+import Footer from '@/app/ui/Footer';
  
 export const metadata: Metadata = {
     title: {
@@ -17,12 +19,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased bg-color text-base`}>
-        <header className=" bg-slate-600">HEADER</header>
-        <div className="container mx-auto md:max-w-2xl xl:max-w-6xl my-6">
+      <body className={`${inter.className} text-base bg-body`}>
+        <header className="border-b-2 bg-white border-black h-[152px]">
+            <Header></Header>
+        </header>
+        <div className="container mx-auto w-9/12 my-6">
             {children}
         </div>
-        <footer className="bg-slate-300 h-[120px]">FOOTER</footer>
+        <footer className="h-[486px] bg-white">
+          <Footer></Footer>
+        </footer>
       </body>
     </html>
   );
