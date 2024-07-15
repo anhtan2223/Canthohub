@@ -4,14 +4,15 @@
     "build": "next build",
     "dev": "next dev",
     "start": "next start",
-    "seed": "node prisma/seed.js",
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.3.7",
     "@heroicons/react": "^2.1.4",
     "@prisma/client": "5.16.0",
     "@tailwindcss/forms": "^0.5.7",
     "@vercel/postgres": "^0.8.0",
+    "antd": "^5.19.1",
     "autoprefixer": "10.4.19",
     "bcrypt": "^5.1.1",
     "clsx": "^2.1.1",
@@ -22,6 +23,7 @@
     "postcss": "8.4.38",
     "react": "19.0.0-rc-f994737d14-20240522",
     "react-dom": "19.0.0-rc-f994737d14-20240522",
+    "react-icons": "^5.2.1",
     "tailwindcss": "3.4.4",
     "typescript": "5.5.2",
     "use-debounce": "^10.0.1",
@@ -32,7 +34,7 @@
     "@types/node": "20.14.8",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
-    "eslint": "^8",
+    "eslint": "^8.57.0",
     "eslint-config-next": "14.2.4",
     "prisma": "5.16.0"
   },
