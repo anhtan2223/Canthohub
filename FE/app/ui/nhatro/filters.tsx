@@ -61,7 +61,7 @@ export function FilterArea() {
                     </div>
                     <div className=" rounded">
                         <span className="flex items-center text-xs">
-                            <FaChevronRight className="text-gray-400 mr-2" size={12}/> Dưới 1 triệu
+                            <FaChevronRight className="text-gray-400 mr-2" size={12}/> Từ 1 - 2 triệu
                         </span>
                     </div>
                 </div>
@@ -69,12 +69,12 @@ export function FilterArea() {
                 <div className="grid grid-cols-2 mt-3 gap-4">
                     <div className=" rounded">
                         <span className="flex items-center text-xs">
-                            <FaChevronRight className="text-gray-400 mr-2" size={12}/> Dưới 1 triệu
+                            <FaChevronRight className="text-gray-400 mr-2" size={12}/> Từ 2 - 3 triệu
                         </span>
                     </div>
                     <div className=" rounded">
                         <span className="flex items-center text-xs">
-                            <FaChevronRight className="text-gray-400 mr-2" size={12}/> Dưới 1 triệu
+                            <FaChevronRight className="text-gray-400 mr-2" size={12}/> Từ 3 -4 triệu
                         </span>
                     </div>
                 </div>

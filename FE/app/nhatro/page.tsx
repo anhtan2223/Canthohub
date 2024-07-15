@@ -1,10 +1,15 @@
 import { MdOutlineKeyboardArrowRight, MdKeyboardArrowLeft  } from "react-icons/md";
 import Card from "@/app/ui/nhatro/card";
 import News from "@/app/ui/nhatro/news";
-import { FilterPrice, FilterArea } from "../ui/nhatro/filters";
+import { FilterPrice, FilterArea, FilterLocation } from "../ui/nhatro/filters";
+import Breadcrumbs from "@/app/ui/breadcrums";
 export default function Page() {
+    const breadcrumbs = [
+        { label: 'Trang chủ', href: '/' },
+        { label: 'Nhà trọ', href: '/nhatro', active: true },
+    ];
     return <div className="">
-        <p className="my-4"> Trang chủ / <span className="text-medium-blue">Nhà trọ</span></p>
+        <Breadcrumbs breadcrumbs={breadcrumbs}/>
         <div className="content-center mx-auto grid grid-cols-12 gap-4">
             <div className="site-left p-4 bg-secondary col-span-8 border border-border-color rounded-lg">
                 <div className="flex justify-between">
@@ -77,7 +82,7 @@ export default function Page() {
                 </div>
             </div>
             <div className="site-right col-span-4 rounded">
-
+                <FilterLocation/>
                 <FilterPrice/>
                 <FilterArea/>
                 <News/>
