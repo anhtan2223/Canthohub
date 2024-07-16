@@ -1,4 +1,4 @@
-export default async function Card() {
+export default function Card() {
     return (
       <>
         <div className="container mt-4 grid grid-cols-10 border border-border-color p-2 rounded-lg">
