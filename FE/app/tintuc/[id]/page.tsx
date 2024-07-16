@@ -2,24 +2,29 @@ import Events from "../../ui/tintuc/events";
 import EventsSection from "../../ui/tintuc/EventsSection";
 import NewsDetail from "../../ui/tintuc/NewsDetail";
 import RelatedNews from "../../ui/tintuc/RelatedNews";
+import Breadcrumbs from "@/app/ui/breadcrums";
 
 export default function Page() {
-    // return <p>Trang chi tiết tin tức</p>;
+    const breadcrumbs = [
+        { label: 'Trang chủ', href: '/' },
+        { label: 'Tin tức', href: '/tintuc' },
+        { label: 'id', href: '/tintuc/1', active: true },
+    ];
+
     return (
-        <div className="flex flex-col items-center space-y-6">
+        <div className="">
             <div className="w-full">
-                <img src="/welcome.png" alt="" className='w-full' />
-                <p className="mt-4"> Trang chủ / <span className="text-medium-blue">Tin tức</span></p>
+                <Breadcrumbs breadcrumbs={breadcrumbs} />
             </div>
             <div className="flex space-x-6 justify-center items-start w-full">
-                <div className="flex-grow">
+                <main className="flex-grow">
                     <NewsDetail />
                     <RelatedNews />
-                </div>
-                <div className="flex flex-col space-y-6 flex-shrink-0" style={{ width: '280px' }}>
+                </main>
+                <aside className="flex flex-col space-y-6 flex-shrink-0" style={{ width: '280px' }}>
                     <Events />
                     <EventsSection />
-                </div>
+                </aside>
             </div>
         </div>
     );
