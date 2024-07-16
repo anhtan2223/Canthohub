@@ -1,4 +1,4 @@
-export default async function News() {
+export default function News() {
     return (
       <>
         <div className="box-content container mt-3 px-4 py-6 border border-border-color rounded-lg bg-secondary w-full rounded">

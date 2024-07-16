@@ -1,4 +1,7 @@
+'use client'
 import { MdOutlineKeyboardArrowRight, MdKeyboardArrowLeft  } from "react-icons/md";
+import type { PaginationProps } from 'antd';
+import { Pagination } from 'antd';
 import Card from "@/app/ui/nhatro/card";
 import News from "@/app/ui/nhatro/news";
 import { FilterPrice, FilterArea, FilterLocation } from "../ui/nhatro/filters";
@@ -8,6 +11,9 @@ export default function Page() {
         { label: 'Trang chủ', href: '/' },
         { label: 'Nhà trọ', href: '/nhatro', active: true },
     ];
+    const onShowSizeChange: PaginationProps['onShowSizeChange'] = (current, pageSize) => {
+        console.log(current, pageSize);
+    };
     return <div className="">
         <Breadcrumbs breadcrumbs={breadcrumbs}/>
         <div className="content-center mx-auto grid grid-cols-12 gap-4">
@@ -39,47 +45,13 @@ export default function Page() {
                 <Card></Card>
                 <Card></Card>
                 <Card></Card>
-                <div className="container mx-auto my-4">
-                    <div className="flex justify-end items-center mb-4">
-                        <nav className="flex justify-end items-center">
-                            <ul className="flex">
-                                <li>
-                                    <button className="px-3 py-1 w-full h-full rounded-l-md bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 focus:rounded focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
-                                        <MdKeyboardArrowLeft />
-                                    </button>
-                                </li>
-                                <li className="ml-2">
-                                    <button className="px-3 py-1 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 focus:rounded focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
-                                        1
-                                    </button>
-                                </li>
-                                <li className="ml-2">
-                                    <button className="px-3 py-1 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 focus:rounded focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
-                                        2
-                                    </button>
-                                </li>
-                                <li className="ml-2">
-                                    <button className="px-3 py-1 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 focus:rounded focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
-                                        3
-                                    </button>
-                                </li>
-                                <li className="ml-2">
-                                    <button className="px-3 py-1 w-full h-full rounded-r-md bg-white text-sm font-medium text-gray-500 focus:rounded hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
-                                        <MdOutlineKeyboardArrowRight />
-                                    </button>
-                                </li>
-                            </ul>
-                        </nav>
-                        <div className="ml-3">
-                            <select className="pr-8 py-1 border border-gray-300 rounded">
-                                <option value="5">10 / trang</option>
-                                <option value="10">20 / trang</option>
-                                <option value="20">30 / trang</option>
-                                <option value="50">40 / trang</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+                <Pagination
+                    showSizeChanger
+                    onShowSizeChange={onShowSizeChange}
+                    defaultCurrent={3}
+                    total={50}
+                    className="flex justify-end mt-3"
+                />
             </div>
             <div className="site-right col-span-4 rounded">
                 <FilterLocation/>
