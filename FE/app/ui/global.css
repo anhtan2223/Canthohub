@@ -31,3 +31,22 @@ img {
     background-color: white;
     position: relative;
 }
+
+.ant-card {
+    position: relative;
+}
+
+.ant-card-body {
+    margin-bottom: 44px;
+    padding: 10px!important;
+}
+
+.ant-card-meta-avatar {
+    padding: 0!important;
+}
+
+ul.ant-card-actions {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
