@@ -4,8 +4,7 @@ import {EllipsisOutlined, SettingOutlined, LikeOutlined, MessageOutlined, Search
 import Meta from "antd/es/card/Meta";
 import { Avatar, Card, Input, Pagination } from "antd";
 import { MdFoodBank } from "react-icons/md";
-import Event from "@/app/ui/tintuc/events"
-import EventsSection from "../ui/tintuc/EventsSection";
+import { FilterPrice, FilterLocation } from "../ui/nhatro/filters";
 import type { GetProps } from 'antd';
 
 export default function Page() {
@@ -289,9 +288,9 @@ export default function Page() {
                     </div>
                 </div>
                 <div className="site-right col-span-4 rounded">
-                    <Event/>
+                    <FilterLocation/>
                     <div className="mt-4">
-                    <EventsSection/>
+                    <FilterPrice/>
                     </div>
                 </div>
             </div>
