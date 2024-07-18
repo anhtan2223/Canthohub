@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { FiArrowRight } from 'react-icons/fi';
-import { FoodType, UserType } from '@/app/lib/DataTypes/nhatro';
+import { FoodType, UserType } from '@/app/lib/types/anuong';
 export default function FoodDetail({
     food,
     user,

@@ -1,16 +1,23 @@
 'use server'
 import Breadcrumbs from "@/app/ui/breadcrums";
-import {EllipsisOutlined, LikeOutlined, MessageOutlined } from "@ant-design/icons";
-import Meta from "antd/es/card/Meta";
-import { Avatar, Card, Input, Pagination } from "antd";
 import { MdFoodBank } from "react-icons/md";
 import Event from "@/app/ui/tintuc/events"
 import EventsSection from "../ui/tintuc/EventsSection";
-import Image from "next/image";
 import SearchWithSort from "../ui/anuong/SearchWithSort";
-import MyPagination from "../ui/anuong/Pagination";
+import MyPagination from "@/app/ui/Pagination";
+import FoodContainer from "../ui/anuong/FoodContainer";
 
-export default async function Page() {
+export default async function Page({
+    searchParams,
+  }: {
+    searchParams?: {
+      query?: string;
+      page?: string;
+    };
+  }) {
+    if (searchParams?.page) {
+        console.log("Hello!")
+    }
     const breadcrumbs = [
         { label: 'Trang chủ', href: '/' },
         { label: 'Nhà trọ', href: '/nhatro', active: true },
@@ -40,51 +47,9 @@ export default async function Page() {
                             <SearchWithSort/>
                         </div>
                         <div className="mx-auto grid grid-cols-3 gap-[10px]">
-                        {foods.map((card, index) => (
-                            <Card
-                                key={index}
-                                className="w-full h-auto"
-                                cover={
-                                    <Image
-                                    width={400}
-                                    height={400}
-                                    alt="anh mon an"
-                                    src={card.image}
-                                    />
-                                }
-                                actions={[
-                                    <LikeOutlined key="like" />,
-                                    <MessageOutlined key="message" />,
-                                    <EllipsisOutlined key="ellipsis" />,
-                                ]}
-                            >
-                                <Meta
-                                    title={
-                                    <>
-                                        <p className="text-[#000] font-semibold">{card.title}</p>
-                                    </>
-                                    }
-                                    description={
-                                    <>
-                                        <p>{card.description}</p>
-                                        <span className="font-semibold">Giá: </span>
-                                        <span className="text-[red]">{card.price}</span>
-                                        <br />
-                                        <span className="font-semibold"> Địa chỉ tại: </span>
-                                        <span className="">{card.address}</span>
-                                    </>
-                                    }
-                                    avatar={
-                                    <Avatar src={card.avatar} size={50} />
-                                    }
-                                />
-                            </Card>
-                        ))}
-
-                        </div>
-                        <MyPagination totalPages={10}
-                        />
-
+                            <FoodContainer foods={foods}/>
+                        </div>  
+                        <MyPagination totalPages={10}/>
                     </div>
                 </div>
                 <div className="site-right col-span-4 rounded">
