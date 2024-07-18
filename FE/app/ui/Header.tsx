@@ -11,7 +11,7 @@ export default function Header() {
         <div className='h-[107px] w-3/4 flex mx-auto'>
           <div className='w-1/3 flex items-center'>
             <Image 
-              src="/Logo.png" width={180} height={100} alt='Logo'>
+              src="/Logo.png" width={180} height={100} alt='Logo' >
             </Image>
           </div>
 

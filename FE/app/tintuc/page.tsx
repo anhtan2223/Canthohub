@@ -1,7 +1,7 @@
-import Events from "../ui/tintuc/events";
-import EventsSection from "../ui/tintuc/EventsSection";
-import News from "../ui/tintuc/news";
-import WelcomeSection from "../ui/tintuc/WelcomeSection";
+import Events from "@/app/ui/tintuc/events";
+import EventsSection from "@/app/ui/tintuc/EventsSection";
+import News from "@/app/ui/tintuc/news";
+import WelcomeSection from "@/app/ui/tintuc/WelcomeSection";
 
 export default function Page() {
     return (
