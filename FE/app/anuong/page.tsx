@@ -1,11 +1,10 @@
 'use server'
 import Breadcrumbs from "@/app/ui/breadcrums";
 import { MdFoodBank } from "react-icons/md";
-import Event from "@/app/ui/tintuc/events"
-import EventsSection from "../ui/tintuc/EventsSection";
 import SearchWithSort from "../ui/anuong/SearchWithSort";
 import MyPagination from "@/app/ui/Pagination";
 import FoodContainer from "../ui/anuong/FoodContainer";
+import { FilterLocation, FilterPrice } from "../ui/nhatro/filters";
 
 export default async function Page({
     searchParams,
