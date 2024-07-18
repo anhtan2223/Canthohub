@@ -88,9 +88,9 @@ export default async function Page() {
                     </div>
                 </div>
                 <div className="site-right col-span-4 rounded">
-                    <Event/>
+                    <FilterLocation/>
                     <div className="mt-4">
-                    <EventsSection/>
+                    <FilterPrice/>
                     </div>
                 </div>
             </div>
