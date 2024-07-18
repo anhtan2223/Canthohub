@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { FiArrowRight } from 'react-icons/fi';
+import { FiArrowRight, FiMoreHorizontal } from 'react-icons/fi';
 
 const NewsDetail = () => {
     const post = {
@@ -35,7 +35,7 @@ const NewsDetail = () => {
 
     return (
         <div className="bg-white px-6 pt-6 pb-10 rounded-md space-y-6 flex-grow">
-            <div key={post.id} className="bg-white p-4 rounded-md flex justify-between items-start border border-gray-200">
+            <div key={post.id} className="bg-white p-4 rounded-md flex justify-between items-start border border-gray-200 relative">
                 <div className="flex-1 mr-4">
                     <div className="flex items-center space-x-2 mb-3">
                         <div className="w-[54px] h-[54px] rounded-full flex items-center justify-center">
@@ -72,6 +72,9 @@ const NewsDetail = () => {
                             <span>{post.comments}</span>
                             <img src="/Icon/cmt.png" alt="" className='w-[21px] h-[21px]' />
                         </div>
+                    </div>
+                    <div className="absolute top-6 right-10 text-2xl">
+                        <FiMoreHorizontal className="text-gray-600 cursor-pointer" />
                     </div>
                 </div>
             </div>
