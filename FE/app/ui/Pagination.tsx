@@ -1,84 +1,50 @@
-import { MdOutlineKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
+'use client';
+
+import clsx from 'clsx';
 import Link from 'next/link';
+import { usePathname, useSearchParams, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { Pagination } from 'antd';
 
-interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
-  basePath: string;
-  query?: string;
-  onPageChange?: (page: number) => void;
-}
+export default function MyPagination({ totalPages }: { totalPages: number }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [currentPage, setCurrentPage] = useState<number>(Number(searchParams.get('page')) || 1);
+  const [pageSize, setPageSize] = useState<number>(Number(searchParams.get('pageSize')) || 10);
 
-export default function Pagination({ currentPage, totalPages, basePath, query, onPageChange }: PaginationProps) {
-  const createPageURL = (page: number) => {
-    const url = new URL(basePath, window.location.origin);
-    url.searchParams.set('page', page.toString());
-    if (query) {
-      url.searchParams.set('query', query);
-    }
-    return url.toString().replace(window.location.origin, '');
+  useEffect(() => {
+    setCurrentPage(Number(searchParams.get('page')) || 1);
+    setPageSize(Number(searchParams.get('pageSize')) || 10);
+  }, [searchParams]);
+
+  const createPageURL = (pageNumber: number, pageSize: number) => {
+    const params = new URLSearchParams(searchParams);
+    params.set('page', pageNumber.toString());
+    params.set('pageSize', pageSize.toString());
+    return `${pathname}?${params.toString()}`;
   };
 
-  const handlePageChange = (page: number) => {
-    if (onPageChange) {
-      onPageChange(page);
-    }
+  const handlePageChange = (page: number, pageSize: number) => {
+    setCurrentPage(page);
+    setPageSize(pageSize);
+    const url = createPageURL(page, pageSize);
+    window.history.pushState(null, '', createPageURL(page, pageSize));
+    router.push(url);
   };
 
   return (
-    <div className="container mx-auto my-4">
-      <div className="flex justify-end items-center mb-4">
-        <nav className="flex justify-end items-center">
-          <ul className="flex">
-            <li>
-              <Link href={createPageURL(currentPage - 1)}>
-                <a
-                  className={`px-3 py-1 w-full h-full rounded-l-md bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 focus:rounded focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 ${
-                    currentPage <= 1 && 'pointer-events-none text-gray-300'
-                  }`}
-                  onClick={() => handlePageChange(currentPage - 1)}
-                >
-                  <MdKeyboardArrowLeft />
-                </a>
-              </Link>
-            </li>
-            {Array.from({ length: totalPages }, (_, index) => (
-              <li className="ml-2" key={index}>
-                <Link href={createPageURL(index + 1)}>
-                  <a
-                    className={`px-3 py-1 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 focus:rounded focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 ${
-                      currentPage === index + 1 && 'bg-indigo-500 text-white'
-                    }`}
-                    onClick={() => handlePageChange(index + 1)}
-                  >
-                    {index + 1}
-                  </a>
-                </Link>
-              </li>
-            ))}
-            <li className="ml-2">
-              <Link href={createPageURL(currentPage + 1)}>
-                <a
-                  className={`px-3 py-1 w-full h-full rounded-r-md bg-white text-sm font-medium text-gray-500 focus:rounded hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 ${
-                    currentPage >= totalPages && 'pointer-events-none text-gray-300'
-                  }`}
-                  onClick={() => handlePageChange(currentPage + 1)}
-                >
-                  <MdOutlineKeyboardArrowRight />
-                </a>
-              </Link>
-            </li>
-          </ul>
-        </nav>
-        <div className="ml-3">
-          <select className="pr-8 py-1 border border-gray-300 rounded" onChange={(e) => handlePageChange(Number(e.target.value))}>
-            <option value="10">10 / trang</option>
-            <option value="20">20 / trang</option>
-            <option value="30">30 / trang</option>
-            <option value="40">40 / trang</option>
-          </select>
-        </div>
-      </div>
+    <div className="flex justify-end mt-3 mr-2">
+      <Pagination
+        current={currentPage}
+        total={100}
+        onChange={handlePageChange}
+        showSizeChanger={true}
+        pageSize={pageSize}
+        pageSizeOptions={['10', '20', '30', '40']}
+        defaultCurrent={3}
+        className="flex justify-end mt-3 mr-2"
+      />
     </div>
   );
 }

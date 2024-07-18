@@ -5,7 +5,7 @@ import Meta from "antd/es/card/Meta";
 import { Avatar, Card } from "antd";
 import {EllipsisOutlined, LikeOutlined, MessageOutlined } from "@ant-design/icons";
 import Image from "next/image";
-import { FoodType } from '@/app/lib/DataTypes/nhatro';
+import { FoodType } from '@/app/lib/types/anuong';
 const RelatedNews = ({foods}: {foods: FoodType[]}) => {
 
     return (
