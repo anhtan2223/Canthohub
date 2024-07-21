@@ -1,10 +1,10 @@
 'use client'
 import type { PaginationProps } from 'antd';
 import { Pagination } from 'antd';
-import Card from "@/app/ui/nhatro/Card";
-import News from "@/app/ui/nhatro/News";
-import { FilterPrice, FilterArea, FilterLocation } from "../ui/nhatro/Filters";
 import Breadcrumbs from "@/app/ui/breadcrums";
+import Card from '../ui/nhatro/card';
+import { FilterArea, FilterLocation, FilterPrice } from '../ui/nhatro/filters';
+import News from '../ui/nhatro/news';
 export default function Page() {
     const breadcrumbs = [
         { label: 'Trang chủ', href: '/' },
@@ -55,10 +55,10 @@ export default function Page() {
                 </div>
             </div>
             <div className="site-right col-span-4 rounded">
-                <FilterLocation/>
-                <FilterPrice/>
-                <FilterArea/>
-                <News/>
+                <FilterLocation />
+                <FilterPrice />
+                <FilterArea />
+                <News />
             </div>
         </div>
     </div>
