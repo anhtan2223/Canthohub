@@ -2,9 +2,9 @@
 // pages/index.js (Pages Router)
 
 import dynamic from 'next/dynamic';
-import Breadcrumbs from "@/app/ui/breadcrums";
+import Breadcrumbs from "@/app/ui/Master/breadcrums";
 
-const FoodForm = dynamic( () => import( '@/app/ui/anuong/FoodForm' ), { ssr: false } );
+const FoodForm = dynamic( () => import('@/app/ui/Home/anuong/FoodForm' ), { ssr: false } );
 
 function Home() {
     const user = {

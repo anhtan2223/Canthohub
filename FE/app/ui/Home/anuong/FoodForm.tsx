@@ -14,7 +14,7 @@ import {
   Row,
   Select,
 } from 'antd';
-import UserAvatar from '@/app/ui/anuong/UserAvatar';
+import UserAvatar from '@/app/ui/Home/anuong/UserAvatar';
 import { UserType } from '@/app/lib/types/anuong';
 
 interface DataNodeType {
