@@ -51,8 +51,6 @@ ul.ant-card-actions {
     bottom: 0;
 }
 
-.custom-input:focus {
-  outline: none;
-  box-shadow: none;
-  border-bottom-color: #3559E0;
+.ck .ck-content li {
+    margin-left: 24px !important;
 }
