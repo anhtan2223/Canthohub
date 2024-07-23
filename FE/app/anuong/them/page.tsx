@@ -3,7 +3,6 @@
 
 import dynamic from 'next/dynamic';
 import Breadcrumbs from "@/app/ui/breadcrums";
-import UserAvatar from '@/app/ui/anuong/UserAvatar';
 
 const FoodForm = dynamic( () => import( '@/app/ui/anuong/FoodForm' ), { ssr: false } );
 
@@ -20,10 +19,8 @@ function Home() {
   return (
       <>
         <Breadcrumbs breadcrumbs={breadcrumbs}/>
-        <div className="bg-white px-6 pt-6 pb-10 rounded-md space-y-6 flex-grow my-4">
-            <h2 className=' text-lg font-semibold'>Thêm điểm ăn uống</h2>
-            <UserAvatar user={user}/>
-            <FoodForm />
+        <div className="bg-white px-6 pt-6 pb-10 rounded-md space-y-6 flex-grow">
+            <FoodForm user={user} />
         </div>
       </>
   );

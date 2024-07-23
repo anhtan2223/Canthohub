@@ -17,6 +17,11 @@ input[type='number']::-webkit-outer-spin-button {
   margin: 0;
 }
 
+input[type='text']{
+    border-color: #d9d9d9;
+}
+  
+
 img {
     max-width: none;
 }
