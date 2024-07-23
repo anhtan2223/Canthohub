@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation';
+import {EllipsisOutlined} from '@ant-design/icons'
 
 const info = {
     id : "item-001" ,
@@ -16,11 +17,17 @@ const info = {
     avatar : "/vieclam/avartar.png"
 }
 
-export default function Card() {
+export default function Card({isSetting=false}:{
+    isSetting? : boolean
+}) {
     
     const router = useRouter()
     const onClick = () => {
         router.push(`/vieclam/${info.id}`)
+    }
+    const onSetting = (e:any) => {
+        e.stopPropagation();
+        router.push(`/baidang/vieclam/${info.id}`)
     }
 
     return (
@@ -31,8 +38,19 @@ export default function Card() {
                 </Image>
             </div>
             <div className='w-8/12'>
-                <h3 className="mt-3 title text-xl font-bold">
-                    {info.title}
+                <h3 className="mt-3 flex title text-xl font-bold">
+                    <div className='w-10/12'>
+                        {info.title}
+                    </div>
+                    {isSetting &&
+                        <div 
+                        className='flex cursor-alias items-center justify-center w-2/12'
+                        onClick={onSetting}
+                        >
+                            <EllipsisOutlined className='w-[32px] h-[32px]' />
+                        </div>
+                    }
+                    
                 </h3>
                 <p className="mb-1 company text-xs">
                     {info.company}

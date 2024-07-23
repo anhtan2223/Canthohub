@@ -13,7 +13,7 @@ export default function Breadcrumbs({
   breadcrumbs: Breadcrumb[];
 }) {
   return (
-    <nav aria-label="Breadcrumb" className="mb-6 block">
+    <nav aria-label="Breadcrumb" className="block">
       <p className="my-4">
         {breadcrumbs.map((breadcrumb, index) => (
           <span key={breadcrumb.href} className="ml-2">
