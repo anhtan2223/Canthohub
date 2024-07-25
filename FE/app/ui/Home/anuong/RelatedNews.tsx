@@ -1,56 +1,20 @@
-'use client';
-
 import React from 'react';
-import Meta from "antd/es/card/Meta";
-import { Avatar, Card } from "antd";
-import {EllipsisOutlined, LikeOutlined, MessageOutlined } from "@ant-design/icons";
-import Image from "next/image";
-import { FoodType } from '@/app/lib/types/anuong';
-const RelatedNews = ({foods}: {foods: FoodType[]}) => {
-
+import FoodCard from './FoodCard';
+const RelatedNews = () => {
+    const foods = [...Array(3)].map((_, index) => ({
+        image: "https://down-vn.img.susercontent.com/vn-11134259-7r98o-lwi1z0l8xec93b@resize_ss640x400",
+        title: "Cơm gà Lê Trang",
+        description: "Cơm gà lê Trang siêu ngon, địa chỉ tại Phường Hưng Lợi Ninh Kiều Cần Thơ abc",
+        price: "20.000 - 275.000",
+        address: "Ninh Kiều, Cái Răng, Cần Thơ",
+        avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=8"
+    }));
     return (
         <div className="bg-white px-6 pt-6 pb-10 rounded-md space-y-6 flex-grow my-10">
             <p className='font-bold text-lg mb-6'>Liên quan</p>
             <div className="grid grid-cols-3 gap-3">
-                {foods.map((card, index) => (
-                        <Card
-                            key={index}
-                            className="w-full h-auto"
-                            cover={
-                                <Image
-                                width={400}
-                                height={400}
-                                alt="anh mon an"
-                                src={card.image}
-                                />
-                            }
-                            actions={[
-                                <LikeOutlined key="like" />,
-                                <MessageOutlined key="message" />,
-                                <EllipsisOutlined key="ellipsis" />,
-                            ]}
-                        >
-                            <Meta
-                                title={
-                                <>
-                                    <p className="text-[#000] font-semibold">{card.title}</p>
-                                </>
-                                }
-                                description={
-                                <>
-                                    <p>{card.description}</p>
-                                    <span className="font-semibold">Giá: </span>
-                                    <span className="text-[red]">{card.price}</span>
-                                    <br />
-                                    <span className="font-semibold"> Địa chỉ tại: </span>
-                                    <span className="">{card.address}</span>
-                                </>
-                                }
-                                avatar={
-                                <Avatar src={card.avatar} size={50} />
-                                }
-                            />
-                        </Card>
+                {foods.map((food, index) => (
+                    <FoodCard food={food} key={index}></FoodCard>
                 ))}
             </div>
         </div>

@@ -1,32 +1,10 @@
-// "use client"
-// import Head from 'next/head';
-// import AddressSearch from '@/app/ui/Master/Map';
-// import FormAdd from '@/app/ui/Home/nhatro/FormAdd';
-
-// export default function Home() {
-//     return (
-//         <div className="bg-white border rounded-lg p-5">
-//             <Head>
-//                 <title>Address Search</title>
-//                 <meta name="description" content="Search address and get lat/lon" />
-//                 <link rel="icon" href="/favicon.ico" />
-//             </Head>
-//             <main>
-//                 <FormAdd />
-//                 <AddressSearch />
-//             </main>
-//         </div>
-//     );
-// }
-
-
 // app/page.js (App Router)
 // pages/index.js (Pages Router)
 
 import dynamic from 'next/dynamic';
 import Breadcrumbs from "@/app/ui/Master/breadcrums";
 
-const FoodFormCreate = dynamic( () => import('@/app/ui/Home/nhatro/FormAdd' ), { ssr: false } );
+const FoodFormEdit = dynamic( () => import('@/app/ui/Home/anuong/FoodFormEdit' ), { ssr: false } );
 
 function Home() {
     const user = {
@@ -36,7 +14,7 @@ function Home() {
     const breadcrumbs = [
         { label: 'Trang chủ', href: '/' },
         { label: 'Bài đăng của tôi', href: '/baidang' },
-        { label: 'Tạo mới bài đăng nhà trọ', href: '/baidang/them', active: true },
+        { label: ' Chỉnh sửa bài đăng', href: '/baidang/sua', active: true },
     ];
     const validAddress = {
         id: 1,
@@ -66,11 +44,33 @@ function Home() {
             name: 'Province 1'
         }
     };
+    const mockFoodData = {
+        resname: 'Delicious Restaurant',
+        pricefrom: 100000,
+        priceto: 300000,
+        fblink: 'https://facebook.com/deliciousrestaurant',
+        address1: '123 Food Street, Food City, FC 12345',
+        description: '<p>Welcome to Delicious Restaurant! We offer a variety of dishes...</p>',
+        files: [
+            {
+                uid: '-1',
+                name: 'food1.png',
+                url: 'https://example.com/food1.png'
+            },
+            {
+                uid: '-2',
+                name: 'food2.png',
+                url: 'https://example.com/food2.png'
+            }
+        ],
+        address: validAddress
+    };
+    
   return (
       <>
         <Breadcrumbs breadcrumbs={breadcrumbs}/>
         <div className="bg-white p-6 rounded-md space-y-6 flex-grow">
-            <FoodFormCreate user={user} alladdress={validAddress} />
+            <FoodFormEdit user={user} alladdress={validAddress} />
         </div>
       </>
   );

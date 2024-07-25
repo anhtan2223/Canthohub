@@ -7,7 +7,7 @@ export default function Page() {
         { label: 'Bài Đăng Của Tôi', href: '/vieclam', active: true },
     ];
   return <div>
-        <Breadcrumbs breadcrumbs={breadcrumbs}/>
-        <NavBar></NavBar>
+            <Breadcrumbs breadcrumbs={breadcrumbs}/>
+            <NavBar></NavBar>
   </div>
 }

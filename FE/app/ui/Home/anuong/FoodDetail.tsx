@@ -2,12 +2,18 @@ import Image from 'next/image';
 import { FiArrowRight } from 'react-icons/fi';
 import { FoodType, UserType } from '@/app/lib/types/anuong';
 export default function FoodDetail({
-    food,
     user,
   }: {
-    food: FoodType;
     user: UserType;
   }) {
+    const food = {
+        image: "https://down-vn.img.susercontent.com/vn-11134259-7r98o-lwi1z0l8xec93b@resize_ss640x400",
+        title: "Cơm gà Lê Trang",
+        description: "Cơm gà lê Trang siêu ngon, địa chỉ tại Phường Hưng Lợi Ninh Kiều Cần Thơ abc",
+        price: "20.000 - 275.000",
+        address: "Ninh Kiều, Cái Răng, Cần Thơ",
+        avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=8"
+    };
     return (
         <>
             <div className="bg-secondary border p-4 border-border-color rounded-lg">
@@ -34,7 +40,7 @@ export default function FoodDetail({
                     <span>{food.description}</span>
                 </div>
                 <div className="img-container grid grid-cols-10 mt-3">
-                    <div className="col-span-8">
+                    <div className="col-span-9">
                         <figure>
                             <Image width={800} height={400} src="https://down-vn.img.susercontent.com/vn-11134259-7r98o-lwi1z0l8xec93b@resize_ss640x400" alt="" className="w-full h-auto rounded-lg" />
                         </figure>
@@ -51,9 +57,12 @@ export default function FoodDetail({
                             <figure>
                                 <Image width={200} height={40} src="https://down-vn.img.susercontent.com/vn-11134259-7r98o-lwi1z0l8xec93b@resize_ss640x400" className="w-full h-auto rounded-lg" alt="" />
                             </figure>
+                            <figure>
+                                <Image width={200} height={40} src="https://down-vn.img.susercontent.com/vn-11134259-7r98o-lwi1z0l8xec93b@resize_ss640x400" className="w-full h-auto rounded-lg" alt="" />
+                            </figure>
                         </div>
                     </div>
-                    <div className="col-span-2"></div>
+                    <div className="col-span-1"></div>
                 </div>
                 <a
                         href="#"
