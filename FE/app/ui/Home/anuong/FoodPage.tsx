@@ -1,9 +1,8 @@
 import { MdFoodBank } from "react-icons/md";
 import SearchWithSort from "@/app/ui/Home/anuong/SearchWithSort";
 import MyPagination from "@/app/ui/Master/Pagination";
-import FoodContainer from "@/app/ui/Home/anuong/FoodContainer";
 import { FilterLocation, FilterPrice } from "@/app/ui/Home/nhatro/filters";
-import { Button } from "antd";
+import FoodCard from "./FoodCard";
 
 export default function FoodPage({isAdd} : {
     isAdd? : boolean
@@ -28,13 +27,13 @@ export default function FoodPage({isAdd} : {
                                     Điểm ăn uống
                                 </h2>
                             </div>
-                            <div className=" flex">
-                                <SearchWithSort/>
-                                {isAdd ? <Button type="primary" className="mx-3">Tạo mới</Button> : ''}
-                            </div>
+                            <SearchWithSort isAdd={isAdd}/>
+                                
                         </div>
                         <div className="mx-auto grid grid-cols-3 gap-[10px]">
-                            <FoodContainer foods={mockfoods}/>
+                        {mockfoods.map((food, index) => (
+                            <FoodCard key={index} food={food} />
+                        ))}
                         </div>  
                         <MyPagination totalPages={10}/>
                     </div>

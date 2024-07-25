@@ -20,7 +20,7 @@ input[type='number']::-webkit-outer-spin-button {
 input[type='text']{
     border-color: #d9d9d9;
 }
-  
+
 
 img {
     max-width: none;
@@ -54,6 +54,9 @@ ul.ant-card-actions {
     position: absolute;
     width: 100%;
     bottom: 0;
+}
+.ck .ck-content {
+    min-height: 200px;
 }
 
 .ck .ck-content li {
