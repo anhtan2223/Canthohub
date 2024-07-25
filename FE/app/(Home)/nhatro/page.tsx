@@ -2,7 +2,7 @@
 import type { PaginationProps } from 'antd';
 import { Pagination } from 'antd';
 import Breadcrumbs from "@/app/ui/Master/breadcrums";
-import Card from '@/app/ui/Home/nhatro/card';
+import Card from '@/app/ui/Home/nhatro/Card';
 import { FilterArea, FilterLocation, FilterPrice } from '../../ui/Home/nhatro/filters';
 import News from '@/app/ui/Home/nhatro/news';
 import { useRouter} from 'next/navigation'
