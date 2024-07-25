@@ -7,7 +7,7 @@ import { Button, Col, Form, Input, InputNumber, Row, Select, Upload } from 'antd
 import ImgCrop from 'antd-img-crop';
 import UserAvatar from '@/app/ui/Home/anuong/UserAvatar';
 import { UserType } from '@/app/lib/types/anuong';
-import AddressSearch from '@/app/ui/Master/Map';
+// import AddressSearch from '@/app/ui/Master/Map';
 import { Address } from '@/app/lib/types/master';
 import { useState } from 'react';
 import type { UploadFile, UploadProps } from 'antd';
@@ -190,11 +190,11 @@ const FormAdd = ({ user, alladdress }: { user: UserType, alladdress: Address }) 
                                         onChange={handleDistrictChange}
                                         disabled={!selectedCity}
                                     >
-                                        {selectedCity && districts[selectedCity]?.map(district => (
+                                        {/* {selectedCity && districts[selectedCity]?.map(district => (
                                             <Select.Option key={district.value} value={district.value}>
                                                 {district.label}
                                             </Select.Option>
-                                        ))}
+                                        ))} */}
                                     </Select>
                                 </Form.Item>
                             </Col>
@@ -207,11 +207,11 @@ const FormAdd = ({ user, alladdress }: { user: UserType, alladdress: Address }) 
                                         placeholder="Phường/Xã"
                                         disabled={!selectedDistrict}
                                     >
-                                        {selectedDistrict && wards[selectedDistrict]?.map(ward => (
+                                        {/* {selectedDistrict && wards[selectedDistrict]?.map(ward => (
                                             <Select.Option key={ward.value} value={ward.value}>
                                                 {ward.label}
                                             </Select.Option>
-                                        ))}
+                                        ))} */}
                                     </Select>
                                 </Form.Item>
                             </Col>
@@ -237,7 +237,7 @@ const FormAdd = ({ user, alladdress }: { user: UserType, alladdress: Address }) 
                 </Col>
 
                 <Col span={12}>
-                    <AddressSearch />
+                    {/* <AddressSearch /> */}
                 </Col>
             </Row>
             <Form.Item
