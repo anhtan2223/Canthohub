@@ -9,9 +9,8 @@ export default function EditorComponent(
 ) {
     const [content, setContent] = useState('');
     return (
-        <div className='w-full h-30'>
+        <div className='w-full'>
             <CKEditor
-
                 editor={ClassicEditor}
                 config={{
                     toolbar: {
