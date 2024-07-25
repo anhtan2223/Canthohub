@@ -1,7 +1,7 @@
-'use client'
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
 import Job from '@/app/ui/Home/vieclam/Job'
+import FoodPage from '../../Home/anuong/FoodPage';
 
 
 const App = () => {
@@ -24,7 +24,7 @@ const App = () => {
     {
       key: '4',
       label: 'Ăn Uống',
-      children: 'Content of Tab Pane 4',
+      children: <FoodPage isAdd={true}></FoodPage>,
     },
   ];
 

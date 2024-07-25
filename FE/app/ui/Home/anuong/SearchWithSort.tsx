@@ -1,21 +1,15 @@
 'use client'
-import { Input } from "antd";
+import { Button, Input } from "antd";
 export default function SearchWithSort() {
     const { Search } = Input;
     return (
         <>
         <div className="flex items-center">
-            <Search
-                placeholder="Tìm kiếm"
-                allowClear
-                enterButton="Tìm"
-                size="large"
-                onSearch={()=>{}}
-            />
-            <div className="w-full ml-3 flex justify-start items-center">
-                <span>Sắp xếp: </span>
-                <div className="">
-                    <form className="max-w-sm mx-auto ml-3">
+            <Search placeholder="Tìm...." allowClear onSearch={() => {}} className="w-[200px]" />
+            <div className="flex justify-end items-center">
+                <div className="flex ml-3 items-center">
+                    <span className="w-full">Sắp xếp:</span>
+                    <form className="max-w-sm ml-3 mx-auto">
                         <select id="countries" className="custom-select">
                             <option defaultChecked>Mặc định</option>
                             <option value="US">United States</option>
