@@ -13,8 +13,8 @@ function Home() {
     }
     const breadcrumbs = [
         { label: 'Trang chủ', href: '/' },
-        { label: 'Bài đăng của tôi', href: '/mypost' },
-        { label: ' Chỉnh sửa bài đăng', href: '/mypost/create', active: true },
+        { label: 'Bài đăng của tôi', href: '/baidang' },
+        { label: ' Chỉnh sửa bài đăng', href: '/baidang/sua', active: true },
     ];
     const validAddress = {
         id: 1,
