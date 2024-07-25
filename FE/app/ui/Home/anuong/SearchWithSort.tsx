@@ -1,7 +1,10 @@
-'use client'
+'use client';
+
 import { Button, Input } from "antd";
-export default function SearchWithSort() {
+import { useRouter } from "next/navigation";
+export default function SearchWithSort({isAdd}: {isAdd?: boolean}) {
     const { Search } = Input;
+    const router = useRouter();
     return (
         <>
         <div className="flex items-center">
@@ -20,6 +23,7 @@ export default function SearchWithSort() {
                     </form>
                 </div>
             </div>
+            {isAdd ? <Button type="primary" className="mx-3" onClick={() => {router.push("/baidang/anuong/them");}}>Tạo mới</Button> : ''}
         </div>
 
         </>

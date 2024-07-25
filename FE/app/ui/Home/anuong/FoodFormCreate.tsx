@@ -110,10 +110,11 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
         <Form
             name="basic"
             layout="vertical"
-            initialValues={{ remember: true, pricefrom: 0, priceto: 0 }}
+            initialValues={{ remember: true, pricefrom: 0, priceto: 100000 }}
             autoComplete="off"
             className="space-y-1 border rounded-lg p-4"
             onFinish={onFinish}
+            
         >
             <div className="flex justify-between items-center mb-4">
                 <h2 className='text-lg font-semibold'>Thêm điểm ăn uống</h2>
@@ -143,7 +144,7 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
                                 rules={[{ required: true, message: 'Cần nhập giá từ!'}]}
                                 style={{ display: 'inline-block', width: 'calc(50% - 16px)' }}
                             >
-                                <InputNumber placeholder="Nhập giá từ..." className='h-[32px] w-full rounded'/>
+                                <InputNumber controls={false} suffix="VNĐ" placeholder="Nhập giá từ..." className='h-[32px] w-full pl-0 rounded'/>
                             </Form.Item>
                             <span className='text-xl h-[32px] inline-block mx-2'>~</span>
                             <Form.Item
@@ -151,7 +152,7 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
                                 rules={[{ required: true, message: 'Cần nhập giá đến!'}]}
                                 style={{ display: 'inline-block', width: 'calc(50% - 16px)'}}
                             >
-                                <InputNumber placeholder="Nhập giá đến..." className='h-[32px] w-full rounded'/>
+                                <InputNumber controls={false} suffix="VNĐ" placeholder="Nhập giá đến..." className='h-[32px] w-full pl-0 rounded'/>
                             </Form.Item>
                         </div>
                     </Form.Item>
@@ -207,7 +208,7 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
                         plugins: [
                             Essentials, Bold, Italic, Underline, Undo, Paragraph, Heading, List
                         ],
-                        initialData: '<p>Hello from CKEditor 5 in React!</p>'
+                        initialData: ''
                     }}
                     onChange={(event, editor) => {
                         const data = editor.getData();
@@ -216,16 +217,16 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
                 />
             </Form.Item>
             <div className="img-container mt-[12px]">
-            <ImgCrop aspect={250 / 142} quality={1} modalTitle="Edit Image" modalWidth={800}>
-                <Upload
-                    listType="picture-card"
-                    fileList={fileList} 
-                    onChange={onChange}
-                    onPreview={onPreview}
-                >
-                    {fileList.length < 5 && '+ Upload'}
-                </Upload>
-            </ImgCrop>
+                <ImgCrop aspect={250 / 142} quality={1} modalTitle="Edit Image" modalWidth={800}>
+                    <Upload
+                        listType="picture-card"
+                        fileList={fileList} 
+                        onChange={onChange}
+                        onPreview={onPreview}
+                    >
+                        {fileList.length < 5 && '+ Upload'}
+                    </Upload>
+                </ImgCrop>
             </div>
         </Form>
     );

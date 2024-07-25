@@ -5,6 +5,7 @@ import Breadcrumbs from "@/app/ui/Master/breadcrums";
 import Card from '@/app/ui/Home/nhatro/card';
 import { FilterArea, FilterLocation, FilterPrice } from '../../ui/Home/nhatro/filters';
 import News from '@/app/ui/Home/nhatro/news';
+import { useRouter} from 'next/navigation'
 export default function Page() {
     const breadcrumbs = [
         { label: 'Trang chủ', href: '/' },
@@ -13,6 +14,7 @@ export default function Page() {
     const onShowSizeChange: PaginationProps['onShowSizeChange'] = (current, pageSize) => {
         console.log(current, pageSize);
     };
+    const router = useRouter();
     return <div className="">
         <Breadcrumbs breadcrumbs={breadcrumbs}/>
         <div className="content-center mx-auto grid grid-cols-12 gap-4">
@@ -40,11 +42,18 @@ export default function Page() {
                             </form>
                         </div>
                     </div>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
+                    <div className='cursor-pointer' onClick={()=>{router.push(`/nhatro/1`)}}>
+                        <Card></Card>
+                    </div>
+                    <div className='cursor-pointer' onClick={()=>{router.push(`/nhatro/1`)}}>
+                        <Card></Card>
+                    </div>
+                    <div className='cursor-pointer' onClick={()=>{router.push(`/nhatro/1`)}}>
+                        <Card></Card>
+                    </div>
+                    <div className='cursor-pointer' onClick={()=>{router.push(`/nhatro/1`)}}>
+                        <Card></Card>
+                    </div>
                     <Pagination
                         showSizeChanger
                         onShowSizeChange={onShowSizeChange}
