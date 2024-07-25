@@ -128,9 +128,9 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
             <Row gutter={40}>
                 <Col span={12}>
                     <Form.Item
-                        label="Tên quán ăn"
-                        name="resname"
-                        rules={[{ required: true, message: 'Tên quán ăn không hợp lệ! Vui lòng nhập lại' }]}
+                        label="Tên đầy đủ"
+                        name="name"
+                        rules={[{ required: true, message: 'Vui lòng nhập tên hợp lệ!' }]}
                         className="w-full"
                     >
                         <Input className="h-[32px] rounded p-0" />
