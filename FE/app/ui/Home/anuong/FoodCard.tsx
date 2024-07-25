@@ -15,8 +15,10 @@ export default function FoodCard( { food }: { food: FoodType} ) {
     const handleCardClick = (index: number) => {
         router.push(`/anuong/${index}`);
     };
+    const handleActionClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
+    };
     return (
-        <div onClick={() => handleCardClick(1)} style={{ cursor: 'pointer' }}>
             <Card
                 loading={loading}
                 className="w-full h-auto"
@@ -30,9 +32,10 @@ export default function FoodCard( { food }: { food: FoodType} ) {
                         onError={()=>{setLoading(false)}}
                     />
                 }
+                onClick={() => handleCardClick(1)} style={{ cursor: 'pointer' }}
                 actions={[
-                    <LikeOutlined key="like" />,
-                    <MessageOutlined key="message" />,
+                    <LikeOutlined key="like" onClick={handleActionClick}/>,
+                    <MessageOutlined key="message" onClick={handleActionClick}/>,
                 ]}
             >
                 <Meta
@@ -56,6 +59,5 @@ export default function FoodCard( { food }: { food: FoodType} ) {
                     }
                 />
             </Card>
-        </div>
     );
 };
