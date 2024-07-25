@@ -21,6 +21,7 @@
         "autoprefixer": "10.4.19",
         "axios": "^1.7.2",
         "bcrypt": "^5.1.1",
+        "ckeditor5": "^42.0.1",
         "clsx": "^2.1.1",
         "dotenv": "^16.4.5",
         "leaflet": "^1.9.4",

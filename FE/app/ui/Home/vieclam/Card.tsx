@@ -34,7 +34,7 @@ export default function Card({isSetting=false}:{
       <>
         <div className='flex hover:cursor-pointer hover:border-black hover:border-2 items-center mt-4 gap-x-8  w-full border border-border-color rounded-lg' onClick={ onClick }>
             <div className='image w-4/12'>
-                <Image src={info.conpany_logo} width={300} height={200} className='w-full' alt='Logo' >
+                <Image src={info.conpany_logo} width={250} height={100} className='w-full' alt='Logo' >
                 </Image>
             </div>
             <div className='w-8/12'>

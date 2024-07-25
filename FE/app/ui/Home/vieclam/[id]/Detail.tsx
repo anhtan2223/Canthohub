@@ -1,4 +1,3 @@
-import React from 'react'
 import Image from 'next/image'
 import { JobInfo } from '@/app/lib/types/vieclam'
 import { FiArrowRight } from 'react-icons/fi';
@@ -13,7 +12,7 @@ interface DetailProps {
 
 export default async function Detail( {info} : DetailProps) {
   return (
-    <div className='bg-white border border-border-color rounded-lg p-3'>
+    <div className='bg-white border border-border-color rounded-lg p-5'>
       <div className='flex items-center' >
         <Image 
         src={info.avatar} width={50} height={50} className='w-[40px] border-2 aspect-square rounded-full ' alt='Logo' >
@@ -27,11 +26,11 @@ export default async function Detail( {info} : DetailProps) {
           <div className='w-9/12'>
               <p className='text-lg font-bold mb-1'>Thông Tin Công Ty</p> 
               <div className='flex text-base mb-2 items-center'>
-                <p className='font-bold mr-2'>Công Ty : </p> 
+                <p className='font-bold mr-1'>Công Ty : </p> 
                 <p>{info.company}</p> 
               </div> 
               <div className='flex text-base items-center' >
-                <p className='font-bold mr-2'>Địa Chỉ :</p> 
+                <p className='font-bold mr-1'>Địa Chỉ :</p> 
                 <p>{info.address}</p> 
               </div> 
           </div>
