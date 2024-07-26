@@ -21,7 +21,7 @@ export default function MainPage() {
         { name : "___________________" , url : "/" } ,
         { name : "Food" , url : "/anuong" } ,
         { name : "Food Detail" , url : "/anuong/1" } ,
-        { name : "Create/Edit Food" , url : "/baidang/anuong/them" } ,
+        { name : "Create/Edit Food" , url : "/baidang/anuong" } ,
 
 
     ]
