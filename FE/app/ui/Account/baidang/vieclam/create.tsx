@@ -3,7 +3,6 @@ import { useState } from 'react'
 import type { FormProps, CascaderProps, UploadFile } from 'antd';
 import { Button, Form, Input, Avatar, Cascader, Select, DatePicker, InputNumber } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import type { Address } from '@/app/lib/types/master'
 import UploadImage from '@/app/ui/Account/baidang/vieclam/upload-image'
 import { Level } from "@/app/lib/types/vieclam"
 import dynamic from 'next/dynamic';
@@ -437,7 +436,10 @@ export default function CreateForm() {
 
       </div>
       <div>
-        <p className='font-bold text-lg mb-4'>Mô Tả Công Việc</p>
+        <div className='font-bold flex text-lg mb-4'> 
+          <p className='mx-2 text-red-600'>*</p> 
+          Mô Tả Công Việc
+        </div>
         <Form.Item
           name="description"
           labelAlign='right'
