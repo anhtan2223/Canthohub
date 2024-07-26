@@ -9,6 +9,7 @@ export default function MainPage() {
         { name : "___________________" , url : "/" } ,
         { name : "News" , url : "/tintuc" } ,
         { name : "Detail News" , url : "/tintuc/1" } ,
+        { name : "Add/Edit News" , url : "/baidang/tintuc" } ,
         { name : "___________________" , url : "/" } ,
         { name : "Rooming House" , url : "/nhatro" } ,
         { name : "Detail Rooming House" , url : "/nhatro/1" } ,
@@ -20,7 +21,7 @@ export default function MainPage() {
         { name : "___________________" , url : "/" } ,
         { name : "Food" , url : "/anuong" } ,
         { name : "Food Detail" , url : "/anuong/1" } ,
-        { name : "Create/Edit Food" , url : "/baidang/anuong/them" } ,
+        { name : "Create/Edit Food" , url : "/baidang/anuong" } ,
 
 
     ]

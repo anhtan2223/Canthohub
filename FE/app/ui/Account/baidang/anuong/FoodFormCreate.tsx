@@ -14,7 +14,7 @@ import UserAvatar from '@/app/ui/Home/anuong/UserAvatar';
 import { UserType } from '@/app/lib/types/anuong';
 import { Address } from '@/app/lib/types/master';
 import { useState } from 'react';
-import UploadImage from "../../../Master/UploadImage";
+import UploadImage from "@/app/ui/Master/UploadImage";
 
 interface DataNodeType {
     value: string;

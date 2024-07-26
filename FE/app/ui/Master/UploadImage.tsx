@@ -37,7 +37,7 @@ export default function UploadImage({ onChange, width, height }: UploadImageProp
                 onChange={handleChange}
                 onPreview={onPreview}
             >
-                {fileList.length < 5 && '+ Upload'}
+                {fileList.length < 5 && '+'}
             </Upload>
     </ImgCrop>
       )

@@ -19,7 +19,6 @@ export default function SearchBar({isAdd = false}:{
           isAdd && <Button className="mx-3" type="primary" onClick={()=>{router.push("/baidang/vieclam")}}>Tạo Mới</Button>
         }
         <div className="flex justify-end items-center w-4/12">
-            <span>Sắp xếp: </span>
             <div className="flex items-center">
                 <form className="ml-3">
                     <select id="countries" className="custom-select">
