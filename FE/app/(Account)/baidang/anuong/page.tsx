@@ -4,7 +4,7 @@
 import dynamic from 'next/dynamic';
 import Breadcrumbs from "@/app/ui/Master/breadcrums";
 
-const FoodFormCreate = dynamic( () => import('@/app/ui/Home/anuong/FoodFormCreate' ), { ssr: false } );
+const FoodFormCreate = dynamic( () => import('@/app/ui/Account/baidang/anuong/FoodFormCreate' ), { ssr: false } );
 
 function Home() {
     const user = {
@@ -16,7 +16,7 @@ function Home() {
         { label: 'Bài đăng của tôi', href: '/baidang' },
         { label: ' Bài đăng ăn uống mới', href: '/baidang/them', active: true },
     ];
-    const validAddress = {
+    const validAddress = {  
         id: 1,
         address: '123 Main St, Example City',
         ward: {

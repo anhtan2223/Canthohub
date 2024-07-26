@@ -7,12 +7,11 @@ import ImgCrop from 'antd-img-crop';
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 
 interface UploadImageProps {
-  value?: UploadFile[];
   onChange?: (fileList: UploadFile[]) => void;
 }
 
 export default function UploadImage(
-  { value = [], onChange }: UploadImageProps
+  { onChange }: UploadImageProps
 ) {
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const handleChange: UploadProps['onChange'] = ({ fileList: newFileList }) => {

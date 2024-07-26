@@ -4,7 +4,7 @@
 import dynamic from 'next/dynamic';
 import Breadcrumbs from "@/app/ui/Master/breadcrums";
 
-const FoodFormEdit = dynamic( () => import('@/app/ui/Home/anuong/FoodFormEdit' ), { ssr: false } );
+const FoodFormEdit = dynamic( () => import('@/app/ui/Account/baidang/anuong/FoodFormEdit' ), { ssr: false } );
 
 function Home() {
     const user = {
