@@ -11,7 +11,7 @@ export default function FoodPage({isAdd} : {
         image: "https://down-vn.img.susercontent.com/vn-11134259-7r98o-lwi1z0l8xec93b@resize_ss640x400",
         title: "Cơm gà Lê Trang",
         description: "Cơm gà lê Trang siêu ngon, địa chỉ tại Phường Hưng Lợi Ninh Kiều Cần Thơ abc",
-        price: "20.000 - 275.000",
+        price: "20K - 275K",
         address: "Ninh Kiều, Cái Răng, Cần Thơ",
         avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=8"
     }));
@@ -21,19 +21,17 @@ export default function FoodPage({isAdd} : {
                 <div className="site-left col-span-8">
                     <div className="bg-secondary border p-4 border-border-color rounded-lg">
                         <div className="h-[60px] rounded w-100 mb-2 flex items-center justify-between">
-                            <div className="flex items-center">
+                            <div className="flex items-center mr-3">
                                 <MdFoodBank className=" text-medium-blue text-[50px]"></MdFoodBank>
-                                <h2 className="font-bold text-lg ml-2">
-                                    Điểm ăn uống
-                                </h2>
+                                {!isAdd ? <h2 className="font-bold text-lg ml-2">Điểm ăn uống</h2> : ''}
                             </div>
                             <SearchWithSort isAdd={isAdd}/>
                                 
                         </div>
                         <div className="mx-auto grid grid-cols-3 gap-[10px]">
-                        {mockfoods.map((food, index) => (
-                            <FoodCard key={index} food={food} />
-                        ))}
+                            {mockfoods.map((food, index) => (
+                                <FoodCard isAdd={isAdd} key={index} food={food} />
+                            ))}
                         </div>  
                         <MyPagination totalPages={10}/>
                     </div>

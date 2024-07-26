@@ -1,15 +1,16 @@
 'use client'
 import { useState } from "react";
 import { Card, Avatar, Skeleton } from "antd";
-import { LikeOutlined, MessageOutlined } from "@ant-design/icons";
+import { EllipsisOutlined, LikeOutlined, MessageOutlined } from "@ant-design/icons";
 import Meta from "antd/es/card/Meta";
 import Image from "next/image";
 import {FoodType} from "@/app/lib/types/anuong/index"
 import  { useRouter } from "next/navigation";
+import  {truncateText}  from "@/app/lib/utils"
 
 
 
-export default function FoodCard( { food }: { food: FoodType} ) {
+export default function FoodCard( { food, isAdd }: { food: FoodType, isAdd?: boolean} ) {
     let [loading, setLoading] = useState(true);
     const router = useRouter();
     const handleCardClick = (index: number) => {
@@ -18,6 +19,16 @@ export default function FoodCard( { food }: { food: FoodType} ) {
     const handleActionClick = (e: React.MouseEvent) => {
         e.stopPropagation();
     };
+
+    const actions = [
+        <LikeOutlined key="like" onClick={handleActionClick} />,
+        <MessageOutlined key="message" onClick={handleActionClick} />
+    ];
+
+    if (isAdd) {
+        actions.push(<EllipsisOutlined key="ellipsis" onClick={handleActionClick} />);
+    }
+
     return (
             <Card
                 loading={loading}
@@ -33,10 +44,7 @@ export default function FoodCard( { food }: { food: FoodType} ) {
                     />
                 }
                 onClick={() => handleCardClick(1)} style={{ cursor: 'pointer' }}
-                actions={[
-                    <LikeOutlined key="like" onClick={handleActionClick}/>,
-                    <MessageOutlined key="message" onClick={handleActionClick}/>,
-                ]}
+                actions={actions}
             >
                 <Meta
                     title={
@@ -46,7 +54,7 @@ export default function FoodCard( { food }: { food: FoodType} ) {
                     }
                     description={
                     <>
-                        <p>{food.description}</p>
+                        <p>{truncateText(food.description, 10)}</p>
                         <span className="font-semibold">Giá: </span>
                         <span className="text-[red]">{food.price}</span>
                         <br />

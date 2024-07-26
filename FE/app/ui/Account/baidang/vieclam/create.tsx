@@ -7,8 +7,9 @@ import type { Address } from '@/app/lib/types/master'
 import UploadImage from '@/app/ui/Account/baidang/vieclam/upload-image'
 import { Level } from "@/app/lib/types/vieclam"
 import dynamic from 'next/dynamic';
-const Editor = dynamic(() => import('@/app/ui/Account/baidang/vieclam/editor'), { ssr: false });
+const Editor = dynamic(() => import('@/app/ui/Master/editor'), { ssr: false });
 import UploadJD from "@/app/ui/Account/baidang/vieclam/upload_jd"
+import { formatCurrency, formatNumber} from "@/app/lib/utils"
 
 const { RangePicker } = DatePicker;
 
@@ -183,10 +184,6 @@ const onFinish: FormProps['onFinish'] = (values) => {
 
 const onFinishFailed: FormProps['onFinishFailed'] = (errorInfo) => {
   console.log('Failed:', errorInfo);
-};
-const formatNumber = (value: any) => {
-  if (value === undefined || value === null) return '';
-  return new Intl.NumberFormat('vi-VN').format(value);
 };
 
 export default function CreateForm() {
@@ -406,7 +403,7 @@ export default function CreateForm() {
                 value={salary_from}
                 onChange={handleFrom}
                 formatter={(value) => formatNumber(value)}
-                parser={(value) => value?.replace(/\./g, '')}
+                parser={(value) => formatCurrency(value)}
                 placeholder="Enter salary from"
                 style={{ width: '100%' }}
                 suffix="VNĐ"
@@ -426,7 +423,7 @@ export default function CreateForm() {
                 value={salary_to}
                 onChange={handleTo}
                 formatter={(value) => formatNumber(value)}
-                parser={(value) => value?.replace(/\./g, '')}
+                parser={(value) => formatCurrency(value)}
                 // style={{ width: '100%' }}
                 suffix="VNĐ"
                 prefix={<p className='w-8'>Đến</p>}

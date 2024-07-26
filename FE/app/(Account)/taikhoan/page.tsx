@@ -79,7 +79,10 @@ export default function Account() {
                                 },
                                 ]}
                             >
-                                <Input className="h-[32px] rounded-lg"/>
+                                <Input 
+                                    className="h-[32px] rounded-lg"
+                                    placeholder="Nguyễn Văn A"
+                                />
                             </Form.Item>
                             <Form.Item
                                 name="phone"
@@ -87,6 +90,7 @@ export default function Account() {
                             >
                                 <Input
                                     className="h-[32px] rounded-lg"
+                                    placeholder="0123456789"
                                 />
                             </Form.Item>
                             <Form.Item
@@ -110,7 +114,7 @@ export default function Account() {
                             </Form.Item>
                             <Form.Item
                                 name="confirm"
-                                label="Xác nhận mật khẩu"
+                                label="Xác nhận"
                                 dependencies={['password']}
                                 hasFeedback
                                 rules={[
