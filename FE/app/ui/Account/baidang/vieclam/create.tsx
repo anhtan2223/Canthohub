@@ -186,15 +186,6 @@ const onFinishFailed: FormProps['onFinishFailed'] = (errorInfo) => {
 };
 
 export default function CreateForm() {
-  const [salary_from, setSalaryFrom] = useState(null);
-  const [salary_to, setSalaryTo] = useState(null);
-
-  const handleFrom = (newValue: any) => {
-    setSalaryFrom(newValue);
-  };
-  const handleTo = (newValue: any) => {
-    setSalaryTo(newValue);
-  };
 
   return <div>
     <Form
@@ -387,7 +378,9 @@ export default function CreateForm() {
             >
               <InputNumber
                 min={1}
-                className='w-full text-base rounded-lg'>
+                className='w-full text-base rounded-lg'
+                placeholder='Số Lượng Tuyển Dụng'
+              >
               </InputNumber>
             </Form.Item>
 
@@ -399,14 +392,11 @@ export default function CreateForm() {
               name="salary_from"
             >
               <InputNumber
-                value={salary_from}
-                onChange={handleFrom}
-                formatter={(value) => formatNumber(value)}
-                parser={(value) => formatCurrency(value)}
-                placeholder="Enter salary from"
-                style={{ width: '100%' }}
-                suffix="VNĐ"
-                prefix={<p className='w-8'>Từ</p>}
+                formatter={formatNumber}
+                parser={formatCurrency}
+                placeholder="Mức Lương Từ"
+                addonAfter = "VNĐ"
+                addonBefore= {<p className='w-8'>Từ</p>}
                 controls={false}
               />
             </Form.Item>
@@ -419,13 +409,10 @@ export default function CreateForm() {
               name="salary_to"
             >
               <InputNumber
-                value={salary_to}
-                onChange={handleTo}
-                formatter={(value) => formatNumber(value)}
-                parser={(value) => formatCurrency(value)}
-                // style={{ width: '100%' }}
-                suffix="VNĐ"
-                prefix={<p className='w-8'>Đến</p>}
+                formatter={formatNumber}
+                parser={formatCurrency}
+                addonAfter = "VNĐ"
+                addonBefore= {<p className='w-8'>Đến</p>}
                 controls={false}
                 className='w-full'
               />

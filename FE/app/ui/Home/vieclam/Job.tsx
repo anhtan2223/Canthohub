@@ -1,7 +1,7 @@
 import Card from '@/app/ui/Home/vieclam/Card'
 import Filter from '@/app/ui/Home/vieclam/Filter'
 import Search from '@/app/ui/Home/vieclam/search-bar'
-import Pagination from '@/app/ui/Home/vieclam/Pagination'
+import Pagination from '@/app/ui/Master/Pagination'
 
 export default function Job({isAdd=false} : {
     isAdd? : boolean
@@ -22,7 +22,10 @@ export default function Job({isAdd=false} : {
                         <Card isSetting={isAdd}></Card>
                         <Card isSetting={isAdd}></Card>
                     </div>
-                <Pagination></Pagination>
+                <Pagination
+                    total={100}
+                    className='flex mt-5 justify-center'
+                ></Pagination>
                 </div>
             </div>
             <div className='sticky top-5 w-4/12 ml-4 h-fit bg-white border rounded-lg'>

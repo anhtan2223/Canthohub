@@ -2,13 +2,13 @@
 
 import { Button, Input } from "antd";
 import { useRouter } from "next/navigation";
+import Search from "@/app/ui/Master/search"
 export default function SearchWithSort({isAdd}: {isAdd?: boolean}) {
-    const { Search } = Input;
     const router = useRouter();
     return (
         <>
         <div className="flex flex-grow items-center">
-            <Search placeholder="Tìm...." allowClear onSearch={() => {}} className="w-full flex-grow" />
+            <Search placeholder="Tìm...." className="w-full flex-grow" />
             <div className="flex justify-end items-center">
                 <div className="flex ml-3 items-center">
                     <form className="max-w-sm mx-auto">

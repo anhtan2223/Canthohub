@@ -33,7 +33,7 @@ export default function FoodPage({isAdd} : {
                                 <FoodCard isAdd={isAdd} key={index} food={food} />
                             ))}
                         </div>  
-                        <MyPagination totalPages={10}/>
+                        <MyPagination total={100} className="flex justify-end mt-5 mr-2"/>
                     </div>
                 </div>
                 <div className="site-right col-span-4 rounded">
