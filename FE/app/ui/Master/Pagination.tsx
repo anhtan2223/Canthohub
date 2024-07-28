@@ -1,49 +1,52 @@
 'use client';
 
-import clsx from 'clsx';
-import Link from 'next/link';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 import { Pagination } from 'antd';
 
-export default function MyPagination({ totalPages }: { totalPages: number }) {
+export default function MyPagination(
+  { 
+    className ,
+    total 
+  }:
+  { className? : string
+    total: number 
+  }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [currentPage, setCurrentPage] = useState<number>(Number(searchParams.get('page')) || 1);
-  const [pageSize, setPageSize] = useState<number>(Number(searchParams.get('pageSize')) || 10);
+  const currentPage = Number(searchParams.get('page')) || 1
+  const pageSize = Number(searchParams.get('size')) || 10
 
-  useEffect(() => {
-    setCurrentPage(Number(searchParams.get('page')) || 1);
-    setPageSize(Number(searchParams.get('pageSize')) || 10);
-  }, [searchParams]);
 
   const createPageURL = (pageNumber: number, pageSize: number) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', pageNumber.toString());
-    params.set('pageSize', pageSize.toString());
+    params.set('size', pageSize.toString());
     return `${pathname}?${params.toString()}`;
   };
 
+  if(currentPage*pageSize > total){
+    const url = createPageURL(Math.floor(total/pageSize),pageSize)
+    router.replace(url)
+  }
+
   const handlePageChange = (page: number, pageSize: number) => {
-    setCurrentPage(page);
-    setPageSize(pageSize);
     const url = createPageURL(page, pageSize);
-    window.history.pushState(null, '', createPageURL(page, pageSize));
-    router.push(url);
+    router.replace(url)
   };
 
   return (
-    <div className="flex justify-end mt-3 mr-2">
+    <div className={className}>
       <Pagination
         current={currentPage}
-        total={100}
+        total={total}
+        showQuickJumper
+        size='small' 
+        showLessItems 
         onChange={handlePageChange}
         showSizeChanger={true}
         pageSize={pageSize}
-        pageSizeOptions={['10', '20', '30', '40']}
-        defaultCurrent={3}
-        className="flex justify-end mt-3 mr-2"
+        pageSizeOptions={['10', '20', '50']}
       />
     </div>
   );

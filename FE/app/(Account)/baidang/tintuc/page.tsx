@@ -4,9 +4,9 @@ import type { FormProps, CascaderProps, UploadFile } from 'antd';
 import { Button, Form, Input, Avatar, Select } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import dynamic from 'next/dynamic';
-const Editor = dynamic(() => import('@/app/ui/Master/editor'), { ssr: false });
-import Breadcrumbs from "@/app/ui/Master/breadcrums";
-import UploadImage from "@/app/ui/Master/UploadImage";
+const Editor = dynamic(() => import('@ui/Master/editor'), { ssr: false });
+import Breadcrumbs from "@ui/Master/breadcrums";
+import UploadImage from "@ui/Master/UploadImage";
 
 
 const tagOpt = [

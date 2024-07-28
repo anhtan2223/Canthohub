@@ -1,5 +1,5 @@
 'use client'
-import Breadcrumbs from "@/app/ui/Master/breadcrums"
+import Breadcrumbs from "@ui/Master/breadcrums"
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, DatePicker, GetProp, Image, Input, Upload, UploadProps } from 'antd';
 import { Form } from "antd";

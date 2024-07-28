@@ -38,7 +38,7 @@ export default function Menu() {
   
     return (
     <>
-        <div className='flex gap-2 items-center cursor-pointer' onClick={toogle}>
+        <div className='flex gap-2 items-center cursor-pointer ml-4' onClick={toogle}>
             <div>
                 <div className='flex justify-end font-sm font-medium'>{user.name}</div>
                 <div className='flex justify-end font-xs text-gray-400 font-light'>{user.role}</div>

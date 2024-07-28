@@ -24,7 +24,8 @@
 // pages/index.js (Pages Router)
 
 import dynamic from 'next/dynamic';
-import Breadcrumbs from "@/app/ui/Master/breadcrums";
+import Breadcrumbs from "@ui/Master/breadcrums";
+
 
 const FoodFormCreate = dynamic( () => import('@/app/ui/Home/nhatro/FormAdd' ), { ssr: false } );
 
@@ -69,9 +70,9 @@ function Home() {
   return (
       <>
         <Breadcrumbs breadcrumbs={breadcrumbs}/>
-        <div className="bg-white p-6 rounded-md space-y-6 flex-grow">
-            <FoodFormCreate user={user} alladdress={validAddress} />
-        </div>
+            <div className="bg-white p-6 rounded-md space-y-6 flex-grow">
+                <FoodFormCreate user={user} alladdress={validAddress} />
+            </div>
       </>
   );
 }

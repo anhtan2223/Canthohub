@@ -1,39 +1,52 @@
+'use client'
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
 import Job from '@/app/ui/Home/vieclam/Job'
-import FoodPage from '../../Home/anuong/FoodPage';
+import FoodPage from '@/app/ui/Home/anuong/FoodPage';
+import News from '@/app/ui/Account/baidang/tintuc/news'
+import { useSearchParams, useRouter } from 'next/navigation';
 
 
 const App = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const items: TabsProps['items'] = [
     {
-      key: '1',
+      key: 'news',
       label: 'Tin Tức',
-      children: 'Content of Tab Pane 1',
+      children: <News/>,
     },
     {
-      key: '2',
+      key: 'hostel',
       label: 'Nhà Trọ',
       children: 'Content of Tab Pane 2',
     },
     {
-      key: '3',
+      key: 'job',
       label: 'Việc Làm',
       children: <Job isAdd={true}></Job> ,
     },
     {
-      key: '4',
+      key: 'food',
       label: 'Ăn Uống',
       children: <FoodPage isAdd={true}></FoodPage>,
     },
   ];
 
+
+  const onChange = (keyActive : string) => {
+    const params = new URLSearchParams(searchParams);
+    params.set('type',keyActive)
+    router.replace(`/baidang?type=${keyActive}`)
+  }
+
   return <>
     <Tabs
-      defaultActiveKey="1"
+      activeKey={searchParams.get('type') || "news"}
       items={items}
       size='small'
       className='pl-2 text-xs'
+      onChange={onChange}
     />
   </>
 };
