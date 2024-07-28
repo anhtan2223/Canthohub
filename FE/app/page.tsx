@@ -6,6 +6,7 @@ export default function MainPage() {
         { name: "Register", url: "/dangky" },
         { name: "My Account", url: "/taikhoan" },
         { name: "My Post", url: "/baidang" },
+        { name: "Master Search", url: "/timkiem" },
         { name: "___________________", url: "/" },
         { name: "News", url: "/tintuc" },
         { name: "Detail News", url: "/tintuc/1" },
