@@ -1,10 +1,9 @@
-// app/page.js (App Router)
-// pages/index.js (Pages Router)
-
 import dynamic from 'next/dynamic';
-import Breadcrumbs from "@/app/ui/Master/breadcrums";
+import Breadcrumbs from "@ui/Master/breadcrums";
+import { Suspense } from 'react';
 
-const FoodFormCreate = dynamic( () => import('@/app/ui/Account/baidang/anuong/FoodFormCreate' ), { ssr: false } );
+
+const FoodFormCreate = dynamic( () => import('@ui/Account/baidang/anuong/FoodFormCreate' ), { ssr: false } );
 
 function Home() {
     const user = {
@@ -46,10 +45,12 @@ function Home() {
     };
   return (
       <>
+        <Suspense fallback={<div>Loading...</div>}>
         <Breadcrumbs breadcrumbs={breadcrumbs}/>
-        <div className="bg-white p-6 rounded-md space-y-6 flex-grow">
-            <FoodFormCreate user={user} alladdress={validAddress} />
-        </div>
+            <div className="bg-white p-6 rounded-md space-y-6 flex-grow">
+                <FoodFormCreate user={user} alladdress={validAddress} />
+            </div>
+        </Suspense>
       </>
   );
 }

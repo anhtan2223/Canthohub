@@ -1,11 +1,13 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Button , Input} from "antd";
+import { Button, Input } from "antd";
 import { SearchOutlined, SunOutlined } from '@ant-design/icons';
 import Menu from '@/app/ui/Master/Menu'
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
+import Search from '@/app/ui/Master/MasterSearch'
+import { Suspense } from 'react';
 
 const info = [
     { name: "TIN TỨC", href: "/tintuc" },
@@ -25,10 +27,15 @@ export default function Header() {
             </div>
 
             <div className='flex items-center w-2/3 justify-end '>
-                <div className='flex hidden'>
-                    <Input size="large" className='h-[40px]' placeholder="Tìm Kiếm" suffix={<SearchOutlined />} />
-                    <Button type="text" className='h-[40px] ml-5'>Đăng Ký Thành Viên</Button>
-                    <Button className='bg-medium-blue h-[40px] ml-5 text-white'>Đăng Nhập</Button>
+                <div className='flex'>
+                    {/* <Input size="middle" className='h-[40px]' placeholder="Tìm Kiếm" suffix={<SearchOutlined />} /> */}
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <Search className='h-[40px]' placeholder="Tìm Kiếm"></Search>
+                    </Suspense>
+                    <div className='flex hidden' >
+                        <Button type="text" className='h-[40px] ml-5'>Đăng Ký Thành Viên</Button>
+                        <Button className='bg-medium-blue h-[40px] ml-5 text-white'>Đăng Nhập</Button>
+                    </div>
                 </div>
                 <Menu />
 

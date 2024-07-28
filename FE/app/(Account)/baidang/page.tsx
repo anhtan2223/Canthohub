@@ -1,5 +1,5 @@
-import Breadcrumbs from "@/app/ui/Master/breadcrums";
-import NavBar from "@/app/ui/Account/baidang/nav-bar"
+import Breadcrumbs from "@ui/Master/breadcrums";
+import NavBar from "@ui/Account/baidang/nav-bar"
 
 export default function Page() {
     const breadcrumbs = [

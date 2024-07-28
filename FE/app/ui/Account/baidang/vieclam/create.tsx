@@ -8,7 +8,7 @@ import { Level } from "@/app/lib/types/vieclam"
 import dynamic from 'next/dynamic';
 const Editor = dynamic(() => import('@/app/ui/Master/editor'), { ssr: false });
 import UploadJD from "@/app/ui/Account/baidang/vieclam/upload_jd"
-import { formatCurrency, formatNumber} from "@/app/lib/utils"
+import { formatCurrency, formatNumber } from "@/app/lib/utils"
 
 const { RangePicker } = DatePicker;
 
@@ -395,8 +395,8 @@ export default function CreateForm() {
                 formatter={formatNumber}
                 parser={formatCurrency}
                 placeholder="Mức Lương Từ"
-                addonAfter = "VNĐ"
-                addonBefore= {<p className='w-8'>Từ</p>}
+                addonAfter="VNĐ"
+                addonBefore={<p className='w-8'>Từ</p>}
                 controls={false}
               />
             </Form.Item>
@@ -411,8 +411,8 @@ export default function CreateForm() {
               <InputNumber
                 formatter={formatNumber}
                 parser={formatCurrency}
-                addonAfter = "VNĐ"
-                addonBefore= {<p className='w-8'>Đến</p>}
+                addonAfter="VNĐ"
+                addonBefore={<p className='w-8'>Đến</p>}
                 controls={false}
                 className='w-full'
               />
@@ -423,8 +423,8 @@ export default function CreateForm() {
 
       </div>
       <div>
-        <div className='font-bold flex text-lg mb-4'> 
-          <p className='mx-2 text-red-600'>*</p> 
+        <div className='font-bold flex text-lg mb-4'>
+          <p className='mx-2 text-red-600'>*</p>
           Mô Tả Công Việc
         </div>
         <Form.Item
@@ -453,9 +453,9 @@ export default function CreateForm() {
         >
           <Editor></Editor>
         </Form.Item>
-        
+
         <Form.Item
-          label = ""
+          label=""
           name="jd_file"
           labelAlign='right'
           wrapperCol={{ span: 24 }}
@@ -480,18 +480,14 @@ export default function CreateForm() {
       <div className='flex w-full items-center'>
         <p className='font-bold w-1/3 text-lg mb-4 mr-8'>Đường Dẫn Facebook</p>
         <Form.Item
-          wrapperCol={{span:24}}
+          wrapperCol={{ span: 24 }}
           colon={false}
           name="facebook"
           className='w-full'
         >
-          <Input  placeholder='Đường Dẫn Facebook' className='text-base w-full rounded-lg'></Input>
+          <Input placeholder='Đường Dẫn Facebook' className='text-base w-full rounded-lg'></Input>
         </Form.Item>
       </div>
-
-
-
-
     </Form>
 
   </div>
