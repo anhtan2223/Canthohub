@@ -3,8 +3,8 @@ export default function Card() {
     return (
       <>
         <div className="container mt-4 grid grid-cols-10 border border-border-color p-4 rounded-lg">
-            <div className="col-span-3 w-full bg-white rounded m-auto">
-                <figure className="w-full overflow-hidden aspect-square rounded-lg shadow-lg relative">
+            <div className="col-span-3 flex justify-center w-full bg-white rounded m-auto">
+                <figure className="w-full max-w-[200px] max-h-[200px] overflow-hidden aspect-square rounded-lg shadow-lg relative">
                     <Image width={200} height={40} className="h-full w-full rounded-lg shadow-lg aspect-square" src="https://hoanghamobile.com/tin-tuc/wp-content/webp-express/webp-images/uploads/2023/07/anh-phong-canh-dep-1-1.jpg.webp" alt="this is image" />
                     <div className="absolute bottom-2 left-4 text-white text-xs bg-translucent-black px-2 py-1 rounded-md">5 ảnh</div>
                 </figure>

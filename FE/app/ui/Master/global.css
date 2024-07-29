@@ -46,6 +46,11 @@ img {
     padding: 10px!important;
 }
 
+.ant-card-meta-title {
+    overflow: visible!important;
+    white-space: wrap!important;
+}
+
 .ant-card-meta-avatar {
     padding: 0!important;
 }
@@ -62,3 +67,4 @@ ul.ant-card-actions {
 .ck .ck-content li {
     margin-left: 24px !important;
 }
+

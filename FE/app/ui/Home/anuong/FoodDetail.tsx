@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { FiArrowRight } from 'react-icons/fi';
 import { FoodType, UserType } from '@/app/lib/types/anuong';
+import { Button } from 'antd';
+import Link from 'next/link';
 export default function FoodDetail({
     user,
   }: {
@@ -64,12 +66,12 @@ export default function FoodDetail({
                     </div>
                     <div className="col-span-1"></div>
                 </div>
-                <a
-                        href="#"
-                        className="flex items-center text-xl h-12 w-56 text-blue-500 border border-black-500 rounded-md mt-3 px-2 py-1"
-                    >
-                        Xem trên facebook <FiArrowRight className="ml-1 text-black" />
-                </a>
+                    <Button className='my-3'>
+                        <p className='text-medium-blue text-lg'>
+                            Xem trên facebook 
+                        </p>
+                        <FiArrowRight className="ml-1 text-black" />
+                    </Button>
                 <div className="mt-2 text-gray-500 text-xs flex space-x-4">
                     <div className="flex items-center space-x-1">
                         <span>190k</span>

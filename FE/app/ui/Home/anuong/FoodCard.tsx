@@ -32,11 +32,11 @@ export default function FoodCard( { food, isAdd }: { food: FoodType, isAdd?: boo
     return (
             <Card
                 loading={loading}
-                className="w-full h-auto"
+                className="w-full box-border h-auto"
                 cover={
                     <Image
-                        width={400}
-                        height={400}
+                        width={200}
+                        height={200}
                         alt="anh mon an"
                         src={food.image}
                         onLoadingComplete={()=>{setLoading(false)}}
@@ -49,12 +49,14 @@ export default function FoodCard( { food, isAdd }: { food: FoodType, isAdd?: boo
                 <Meta
                     title={
                     <>
-                        <p className="text-[#000] font-semibold">{food.title}</p>
+                        <div className="block">
+                            <h2 className="text-[#000] font-semibold">{food.title}</h2>
+                        </div>
                     </>
                     }
                     description={
                     <>
-                        <p>{truncateText(food.description, 10)}</p>
+                        <p>{truncateText(food.description, 4)}</p>
                         <span className="font-semibold">Giá: </span>
                         <span className="text-[red]">{food.price}</span>
                         <br />
