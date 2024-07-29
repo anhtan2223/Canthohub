@@ -2,7 +2,7 @@ import Detail from '@/app/ui/Home/vieclam/[id]/Detail'
 import Breadcrumbs from "@/app/ui/Master/breadcrums";
 import { JobInfo } from '@/app/lib/types/vieclam'
 import Events from "@/app/ui/Home/tintuc/events";
-import EventsSection from "@/app/ui/Home/tintuc/EventsSection";
+import EventsSection from "@/app/ui/Home/tintuc/EventSection";
 import RelateJob from '@/app/ui/Home/vieclam/[id]/RelateJob'
 
 
