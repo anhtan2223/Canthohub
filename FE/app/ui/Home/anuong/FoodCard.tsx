@@ -50,7 +50,7 @@ export default function FoodCard( { food, isAdd }: { food: FoodType, isAdd?: boo
                     title={
                     <>
                         <div className="block">
-                            <h2 className="text-[#000] font-semibold">{food.title}</h2>
+                            <h2 className="font-semibold">{food.title}</h2>
                         </div>
                     </>
                     }

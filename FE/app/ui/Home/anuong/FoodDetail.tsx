@@ -20,7 +20,7 @@ export default function FoodDetail({
     };
     return (
         <>
-            <div className="bg-secondary border p-4 border-border-color rounded-lg">
+            <div className="bg-secondary border p-4 border-border-color dark:text-dark-text dark:bg-dark-secondary dark:border-dark rounded-lg">
                 <div className="flex items-center">
                     <figure className="mr-2">
                         <Image width={400} height={200} className=" object-cover w-12 h-12 rounded-full shadow-lg aspect-w-1 aspect-h-1" src={user.avatar} alt="this is image" />

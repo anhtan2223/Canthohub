@@ -47,7 +47,7 @@ function Home() {
       <>
         <Suspense fallback={<div>Loading...</div>}>
         <Breadcrumbs breadcrumbs={breadcrumbs}/>
-            <div className="bg-white p-6 rounded-md space-y-6 flex-grow">
+            <div className="bg-white p-6 rounded-md space-y-6 dark:text-dark-text dark:bg-dark flex-grow">
                 <FoodFormCreate user={user} alladdress={validAddress} />
             </div>
         </Suspense>
