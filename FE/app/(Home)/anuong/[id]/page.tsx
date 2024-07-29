@@ -1,5 +1,5 @@
 import Breadcrumbs from "@/app/ui/Master/breadcrums";
-import EventSection from "@/app/ui/Home/tintuc/EventsSection";
+import EventSection from "@/app/ui/Home/tintuc/EventSection";
 import Events from "@/app/ui/Home/tintuc/events";
 import FoodDetail from "@/app/ui/Home/anuong/FoodDetail";
 import RelatedNews from "@/app/ui/Home/anuong/RelatedNews";

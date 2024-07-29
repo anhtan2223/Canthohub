@@ -156,7 +156,7 @@ export default function Account() {
                                     beforeUpload={beforeUpload}
                                     onChange={handleChange}
                                 >
-                                    {imageUrl ? <img src={imageUrl} alt="avatar" className="aspect-square rounded-full" style={{ width: '100%' }} /> : uploadButton}
+                                    {imageUrl ? <Image width={100} height={100} src={imageUrl} alt="avatar" className="aspect-square rounded-full" style={{ width: '100%' }} /> : uploadButton}
                                 </Upload>
                             </ImgCrop>
                             <Input name="email" disabled value={"ABC@example.commmm"} className="text-center" variant="borderless" />
