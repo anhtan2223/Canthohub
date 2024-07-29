@@ -19,16 +19,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} text-base bg-body`}>
-        <header className="border bg-white h-fit">
+      <body className={`${inter.className} text-base bg-body dark:text-dark-text dark:bg-dark`}>
+        <header className="border bg-white h-fit dark:bg-dark-secondary">
         <AntdRegistry>
             <Header></Header>
         </AntdRegistry>
         </header>
-        <div className="container mx-auto w-9/12 my-6">
+        <div className="container mx-auto w-9/12 my-6 dark:text-dark-text dark:bg-dark">
           <AntdRegistry>{children}</AntdRegistry>
         </div>
-        <footer className="h-[486px] bg-white">
+        <footer className="h-[486px] bg-white dark:text-dark-text dark:bg-dark">
             <Footer></Footer>
         </footer>
       </body>
