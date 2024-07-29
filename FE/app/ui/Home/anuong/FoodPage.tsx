@@ -19,7 +19,7 @@ export default function FoodPage({isAdd} : {
         <>
             <div className="grid grid-cols-12 gap-4">
                 <div className="site-left col-span-8">
-                    <div className="bg-secondary border p-4 border-border-color rounded-lg">
+                    <div className="bg-secondary border p-4 border-border-color dark:text-dark-text dark:bg-dark-secondary dark:border-dark rounded-lg">
                         <div className="h-[60px] rounded w-100 mb-2 flex items-center justify-between">
                             <div className="flex items-center mr-3">
                                 <MdFoodBank className=" text-medium-blue text-[50px]"></MdFoodBank>

@@ -6,6 +6,8 @@ export default function EditorComponent(
     { onChange }:
         { onChange?: (content: string) => void; }
 ) {
+    
+
     return (
         <div className='w-full'>
             <CKEditor

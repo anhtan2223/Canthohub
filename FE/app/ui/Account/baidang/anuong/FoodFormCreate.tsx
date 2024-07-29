@@ -68,7 +68,7 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
             layout="vertical"
             initialValues={{ remember: true, pricefrom: 0, priceto: 100000 }}
             autoComplete="off"
-            className="space-y-1 border rounded-lg p-4"
+            className="space-y-1 border rounded-lg !p-4"
             onFinish={onFinish}
             
         >
@@ -88,7 +88,7 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
                         label="Tên đầy đủ"
                         name="name"
                         rules={[{ required: true, message: 'Vui lòng nhập tên hợp lệ!' }]}
-                        className="w-full"
+                        className="!w-full"
                     >
                         <Input className="h-[32px] rounded p-0" />
                     </Form.Item>
@@ -100,7 +100,7 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
                                 rules={[{ required: true, message: 'Cần nhập giá từ!'}]}
                                 style={{ display: 'inline-block', width: 'calc(50% - 16px)' }}
                             >
-                                <InputNumber controls={false} suffix="VNĐ" placeholder="Nhập giá từ..." className='h-[32px] w-full pl-0 rounded'/>
+                                <InputNumber controls={false} suffix="VNĐ" placeholder="Nhập giá từ..." className='h-[32px] !w-full !pl-0 rounded'/>
                             </Form.Item>
                             <span className='text-xl h-[32px] inline-block mx-2'>~</span>
                             <Form.Item
@@ -108,7 +108,7 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
                                 rules={[{ required: true, message: 'Cần nhập giá đến!'}]}
                                 style={{ display: 'inline-block', width: 'calc(50% - 16px)'}}
                             >
-                                <InputNumber controls={false} suffix="VNĐ" placeholder="Nhập giá đến..." className='h-[32px] w-full pl-0 rounded'/>
+                                <InputNumber controls={false} suffix="VNĐ" placeholder="Nhập giá đến..." className='h-[32px] !w-full !pl-0 rounded'/>
                             </Form.Item>
                         </div>
                     </Form.Item>
