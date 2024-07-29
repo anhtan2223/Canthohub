@@ -3,6 +3,7 @@ import { inter } from '@/app/ui/Master/fonts';
 import { Metadata } from 'next';
 import Header from '@/app/ui/Master/Header'
 import Footer from '@/app/ui/Master/Footer'
+import { AntdRegistry } from '@ant-design/nextjs-registry';
  
 export const metadata: Metadata = {
     title: {
@@ -20,10 +21,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} text-base bg-body`}>
         <header className="border bg-white h-fit">
+        <AntdRegistry>
             <Header></Header>
+        </AntdRegistry>
         </header>
         <div className="container mx-auto w-9/12 my-6">
-            {children}
+          <AntdRegistry>{children}</AntdRegistry>
         </div>
         <footer className="h-[486px] bg-white">
             <Footer></Footer>

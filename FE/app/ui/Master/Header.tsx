@@ -21,9 +21,11 @@ export default function Header() {
     return <>
         <div className='h-fit w-3/4 flex mx-auto'>
             <div className='w-1/3 flex items-center'>
-                <Image
-                    src="/Logo.png" width={180} height={100} className='w-auto h-auto' alt='Logo' >
-                </Image>
+                <Link href={'/'}>
+                    <Image
+                        src="/Logo.png" width={180} height={100} className='w-auto h-auto' alt='Logo' >
+                    </Image>
+                </Link>
             </div>
 
             <div className='flex items-center w-2/3 justify-end '>
