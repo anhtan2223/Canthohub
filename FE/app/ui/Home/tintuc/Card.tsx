@@ -60,7 +60,7 @@ export default function CardNews({ isSetting = false }: {
                             </div>
                         </div>
                     </div>
-                    <div className="flex items-center w-1/4">
+                    <div className="flex items-center w-1/4 max-w-[200px]">
                         <Image src="/bun.png" alt="Food" width={200} height={200} className="w-full object-cover rounded-md" />
                     </div>
 
