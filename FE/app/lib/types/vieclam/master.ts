@@ -1,8 +1,9 @@
 import {Id , SearchPaging} from "@type/master"
-import { Career } from "@type/vieclam/career"
-import { Level } from "@type/vieclam/level"
-import { Form } from "@type/vieclam/Form"
-import { Address } from "@type/master/address"
+import { Career } from "@type/vieclam/career.interface"
+import { Level } from "@/app/lib/types/vieclam/level.enum"
+import { Form } from "@/app/lib/types/vieclam/form.enum"
+import { Address } from "@type/master/address.interface"
+import { Experience } from "@type/vieclam/experience.interface"
 
 
 export interface JobFilter extends SearchPaging {

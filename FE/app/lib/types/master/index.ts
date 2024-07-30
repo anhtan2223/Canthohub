@@ -1,6 +1,6 @@
-export * from "@type/master/search"
+export * from "@/app/lib/types/master/search.interface"
 export * from "@type/master/master"
-export * from "@type/master/address"
-export * from "@type/master/search"
-export * from "@type/master/file"
+export * from "@type/master/address.interface"
+export * from "@/app/lib/types/master/search.interface"
+export * from "@type/master/file.interface"
 
