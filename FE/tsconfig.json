@@ -22,9 +22,9 @@
     "paths": {
       "@/*": ["./*"] ,
       "@ui/*" : ["./app/ui/*"] ,
-      "@types/*" : ["./app/lib/types/*"] ,
-      "@utils" : ["./app/lib/utils"] ,
-      "@actions/*" : ["./app/lib/actions/*"] ,
+      "@type/*" : ["./app/lib/types/*"] ,
+      "@util" : ["./app/lib/utils"] ,
+      "@action/*" : ["./app/lib/actions/*"] ,
     }
   },
   "include": [
