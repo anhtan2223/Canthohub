@@ -1,1 +1,0 @@
-export type Form = "FULL_TIME" | "PART_TIME" | "REMOTE"

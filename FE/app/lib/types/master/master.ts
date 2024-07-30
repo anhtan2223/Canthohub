@@ -1,4 +1,4 @@
-import {File} from "@type/master/file"
+import {File} from "@type/master/file.interface"
 
 export interface Id {
     id: number

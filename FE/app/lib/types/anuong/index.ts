@@ -1,4 +1,4 @@
-import {Address} from '@/app/lib/types/master';
+import { Address } from '@type/master';
 
 export interface FoodType {
     image: string;
