@@ -1,6 +1,6 @@
 'use client'
 import Pagination from '@/app/ui/Master/Pagination'
-import Card from '@/app/ui/Home/nhatro/card';
+import Card from '@/app/ui/Home/nhatro/Card';
 import { useRouter} from 'next/navigation'
 
 export default function Page() {

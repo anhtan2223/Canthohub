@@ -2,6 +2,7 @@
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
 import Job from '@/app/ui/Home/vieclam/Job'
+import RealEstate from '@/app/ui/Home/nhatro/RealEstate'
 import FoodPage from '@/app/ui/Home/anuong/FoodPage';
 import News from '@/app/ui/Account/baidang/tintuc/news'
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -19,12 +20,12 @@ const App = () => {
     {
       key: 'hostel',
       label: 'Nhà Trọ',
-      children: 'Content of Tab Pane 2',
+      children: <RealEstate isAdd={true}></RealEstate>,
     },
     {
       key: 'job',
       label: 'Việc Làm',
-      children: <Job isAdd={true}></Job> ,
+      children: <Job isAdd={true}></Job>,
     },
     {
       key: 'food',

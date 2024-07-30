@@ -1,7 +1,7 @@
 import Events from "@/app/ui/Home/tintuc/events";
 import EventsSection from "@/app/ui/Home/tintuc/EventSection";
 import Detail from "@/app/ui/Home/nhatro/detail"
-import Card from "@/app/ui/Home/nhatro/card";
+import Card from "@/app/ui/Home/nhatro/Card";
 import Breadcrumbs from "@/app/ui/Master/breadcrums";
 
 export default function Page() {

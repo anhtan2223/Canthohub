@@ -1,11 +1,10 @@
 "use client"
 import dynamic from 'next/dynamic';
-import Breadcrumbs from "@ui/Master/breadcrums";
+import Breadcrumbs from "@/app/ui/Master/breadcrums";
 
+const FormEdit = dynamic(() => import('@/app/ui/Account/baidang/nhatro/FormEdit'), { ssr: false });
 
-const FormAdd = dynamic(() => import('@/app/ui/Account/baidang/nhatro/FormAdd'), { ssr: false });
-
-function Create() {
+function Edit() {
     const user = {
         avatar: 'https://hoanghamobile.com/tin-tuc/wp-content/webp-express/webp-images/uploads/2023/07/anh-phong-canh-dep-1-1.jpg.webp',
         name: 'Cô Minh Hiếu'
@@ -13,16 +12,16 @@ function Create() {
     const breadcrumbs = [
         { label: 'Trang chủ', href: '/' },
         { label: 'Bài đăng của tôi', href: '/baidang' },
-        { label: 'Tạo mới bài đăng nhà trọ', href: '/baidang/them', active: true },
+        { label: ' Chỉnh sửa bài đăng', href: '/baidang/sua', active: true },
     ];
     return (
         <>
             <Breadcrumbs breadcrumbs={breadcrumbs} />
             <div className="bg-white p-6 rounded-md space-y-6 flex-grow">
-                <FormAdd user={user} />
+                <FormEdit user={user} />
             </div>
         </>
     );
 }
 
-export default Create;
+export default Edit;
