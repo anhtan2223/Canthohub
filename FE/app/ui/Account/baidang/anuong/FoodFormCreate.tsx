@@ -1,10 +1,6 @@
 'use client';
-
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import { ClassicEditor, Bold, Essentials, Italic, Paragraph, Undo, Heading, List, Underline } from 'ckeditor5';
-import 'ckeditor5/ckeditor5.css';
+import Editor from "@/app/ui/Master/editor"
 import type { CascaderProps, GetProp, UploadFile, UploadProps } from 'antd';
-import ImgCrop from 'antd-img-crop'
 import {
   Button,
   Cascader,
@@ -13,12 +9,12 @@ import {
   Input,
   InputNumber,
   Row,
-  Upload,
 } from 'antd';
 import UserAvatar from '@/app/ui/Home/anuong/UserAvatar';
 import { UserType } from '@/app/lib/types/anuong';
 import { Address } from '@/app/lib/types/master';
 import { useState } from 'react';
+import UploadImage from "@/app/ui/Master/UploadImage";
 
 interface DataNodeType {
     value: string;
@@ -26,32 +22,10 @@ interface DataNodeType {
     children?: DataNodeType[];
 }
 
-type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
-
 
 const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Address}) => {
-    const [fileList, setFileList] = useState<UploadFile[]>([]);
-    const [editorData, setEditorData] = useState('');
     const [cascadeData, setCascadeData] = useState(['']);
-    const onChange: UploadProps['onChange'] = ({ fileList: newFileList }) => {
-        setFileList(newFileList);
-        console.log(fileList);
-      };
-    
-      const onPreview = async (file: UploadFile) => {
-        let src = file.url as string;
-        if (!src) {
-          src = await new Promise((resolve) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file.originFileObj as FileType);
-            reader.onload = () => resolve(reader.result as string);
-          });
-        }
-        const image = new Image();
-        image.src = src;
-        const imgWindow = window.open(src);
-        imgWindow?.document.write(image.outerHTML);
-      };
+
 
       const address: CascaderProps<DataNodeType>['options'] = [
         {
@@ -73,37 +47,19 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
     ];
 
     const onFinish = (values: any) => {
-        // try {
-            console.log(cascadeData);
-            const cascadeValue = cascadeData.join(', ')
-            
-            const formData = new FormData();
-            formData.append('resname', values.resname);
-            formData.append('pricefrom', values.pricefrom);
-            formData.append('priceto', values.priceto);
-            formData.append('fblink', values.fblink);
-            formData.append('address1', values.address1);
-            formData.append('description', editorData);
-            formData.append('address', cascadeValue);
-
-            // Append files to formData
-            fileList.forEach(file => {
-                if (file.originFileObj) {
-                    formData.append('files', file.originFileObj);
-                }
-            });
-
-            // Send formData to server
-            // const response = await axios.put(`https://your-server-url.com/api/food/${foodId}`, formData, {
-            //     headers: {
-            //         'Content-Type': 'multipart/form-data',
-            //     },
-            // });
-
-            // console.log('Server Response:', response.data);
-        // } catch (error) {
-        //     console.error('Error submitting form:', error);
-        // }
+        console.log(cascadeData);
+        const cascadeValue = cascadeData.join(', ')
+        
+        const formData = new FormData();
+        formData.append('resname', values.resname);
+        formData.append('pricefrom', values.pricefrom);
+        formData.append('priceto', values.priceto);
+        formData.append('fblink', values.fblink);
+        formData.append('address1', values.address1);
+        formData.append('description', values.content);
+        formData.append('address', cascadeValue);
+        formData.append('images', values.images);
+        console.log(values);
     };
 
     return (
@@ -112,7 +68,7 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
             layout="vertical"
             initialValues={{ remember: true, pricefrom: 0, priceto: 100000 }}
             autoComplete="off"
-            className="space-y-1 border rounded-lg p-4"
+            className="space-y-1 border rounded-lg !p-4"
             onFinish={onFinish}
             
         >
@@ -132,7 +88,7 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
                         label="Tên đầy đủ"
                         name="name"
                         rules={[{ required: true, message: 'Vui lòng nhập tên hợp lệ!' }]}
-                        className="w-full"
+                        className="!w-full"
                     >
                         <Input className="h-[32px] rounded p-0" />
                     </Form.Item>
@@ -144,7 +100,7 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
                                 rules={[{ required: true, message: 'Cần nhập giá từ!'}]}
                                 style={{ display: 'inline-block', width: 'calc(50% - 16px)' }}
                             >
-                                <InputNumber controls={false} suffix="VNĐ" placeholder="Nhập giá từ..." className='h-[32px] w-full pl-0 rounded'/>
+                                <InputNumber controls={false} suffix="VNĐ" placeholder="Nhập giá từ..." className='h-[32px] !w-full !pl-0 rounded'/>
                             </Form.Item>
                             <span className='text-xl h-[32px] inline-block mx-2'>~</span>
                             <Form.Item
@@ -152,7 +108,7 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
                                 rules={[{ required: true, message: 'Cần nhập giá đến!'}]}
                                 style={{ display: 'inline-block', width: 'calc(50% - 16px)'}}
                             >
-                                <InputNumber controls={false} suffix="VNĐ" placeholder="Nhập giá đến..." className='h-[32px] w-full pl-0 rounded'/>
+                                <InputNumber controls={false} suffix="VNĐ" placeholder="Nhập giá đến..." className='h-[32px] !w-full !pl-0 rounded'/>
                             </Form.Item>
                         </div>
                     </Form.Item>
@@ -194,39 +150,20 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
                 label="Mô tả"
                 name="description"
                 className="w-full"
+                valuePropName="content"
+                getValueFromEvent={(e: { content: string }) => e}
             >
-                <CKEditor
-                    editor={ClassicEditor}
-                    config={{
-                        toolbar: {
-                            items: [
-                                'undo', 'redo',
-                                'bold', 'italic', 'underline',
-                                'bulletedList', 'numberedList',
-                            ]
-                        },
-                        plugins: [
-                            Essentials, Bold, Italic, Underline, Undo, Paragraph, Heading, List
-                        ],
-                        initialData: ''
-                    }}
-                    onChange={(event, editor) => {
-                        const data = editor.getData();
-                        setEditorData(data);
-                    }}
-                />
+                <Editor></Editor>
             </Form.Item>
             <div className="img-container mt-[12px]">
-                <ImgCrop aspect={250 / 142} quality={1} modalTitle="Edit Image" modalWidth={800}>
-                    <Upload
-                        listType="picture-card"
-                        fileList={fileList} 
-                        onChange={onChange}
-                        onPreview={onPreview}
-                    >
-                        {fileList.length < 5 && '+ Upload'}
-                    </Upload>
-                </ImgCrop>
+                <Form.Item
+                    name="images"
+                    className="w-full"
+                    valuePropName="info"
+                    getValueFromEvent={(e: { info: any }) => e}
+                >
+                    <UploadImage width={250} height={100}></UploadImage>
+                </Form.Item>
             </div>
         </Form>
     );

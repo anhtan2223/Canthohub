@@ -12,7 +12,7 @@ const user = {
 
 export default function Menu() {
     function ChangePage() {
-        return <div onClick={toogle} className='absolute mr-[60px] top-[60px] border z-10 border-black rounded-lg bg-white'>
+        return <div onClick={toogle} className='absolute mr-[60px] top-[60px] border z-10 border-black rounded-lg bg-white dark:bg-dark dark:text-dark-text'>
             <Link href='/baidang' className='flex gap-3 px-4 py-2 hover:bg-color cursor-pointer transition-colors'>
                 <FormOutlined style={{ fontSize: '20px'}} />
                 Bài Đăng Của Tôi
@@ -38,7 +38,7 @@ export default function Menu() {
   
     return (
     <>
-        <div className='flex gap-2 items-center cursor-pointer' onClick={toogle}>
+        <div className='flex gap-2 items-center cursor-pointer ml-4' onClick={toogle}>
             <div>
                 <div className='flex justify-end font-sm font-medium'>{user.name}</div>
                 <div className='flex justify-end font-xs text-gray-400 font-light'>{user.role}</div>

@@ -8,6 +8,7 @@
     },
     "dependencies": {
         "@ant-design/icons": "^5.3.7",
+        "@ant-design/nextjs-registry": "^1.0.0",
         "@ckeditor/ckeditor5-react": "^8.0.0",
         "@heroicons/react": "^2.1.4",
         "@prisma/client": "5.16.0",

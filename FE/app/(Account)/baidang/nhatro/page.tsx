@@ -1,6 +1,7 @@
 "use client"
 import dynamic from 'next/dynamic';
-import Breadcrumbs from "@/app/ui/Master/breadcrums";
+import Breadcrumbs from "@ui/Master/breadcrums";
+
 
 const FormAdd = dynamic(() => import('@/app/ui/Account/baidang/nhatro/FormAdd'), { ssr: false });
 

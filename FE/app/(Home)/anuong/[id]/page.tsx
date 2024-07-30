@@ -1,5 +1,5 @@
 import Breadcrumbs from "@/app/ui/Master/breadcrums";
-import EventSection from "@/app/ui/Home/tintuc/EventsSection";
+import EventSection from "@/app/ui/Home/tintuc/EventSection";
 import Events from "@/app/ui/Home/tintuc/events";
 import FoodDetail from "@/app/ui/Home/anuong/FoodDetail";
 import RelatedNews from "@/app/ui/Home/anuong/RelatedNews";
@@ -13,18 +13,24 @@ export default function Page() {
         avatar: 'https://hoanghamobile.com/tin-tuc/wp-content/webp-express/webp-images/uploads/2023/07/anh-phong-canh-dep-1-1.jpg.webp',
         name: 'Cô Minh Hiếu'
     }
-    
+
     return (
-        <>  
+        <>
             <Breadcrumbs breadcrumbs={breadcrumbs} />
-            <div className="content-center mx-auto grid grid-cols-12 gap-4">
-                <div className="site-left col-span-8">
-                    <FoodDetail user={user}/>
-                    <RelatedNews/>
+            <div className='flex'>
+                <div className='w-8/12'>
+                    <FoodDetail user={user} />
+                    <div className='mt-6'>
+                        <RelatedNews />
+                    </div>
                 </div>
-                <div className="site-right col-span-4 rounded">
-                    <Events/>
-                    <EventSection/>
+                <div className='w-4/12 ml-4'>
+                    <div className='mb-5 border rounded-lg '>
+                        <Events></Events>
+                    </div>
+                    <div className='mt-5 border rounded-lg'>
+                        <EventSection />
+                    </div>
                 </div>
             </div>
         </>

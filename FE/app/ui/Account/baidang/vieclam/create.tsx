@@ -3,12 +3,12 @@ import { useState } from 'react'
 import type { FormProps, CascaderProps, UploadFile } from 'antd';
 import { Button, Form, Input, Avatar, Cascader, Select, DatePicker, InputNumber } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import type { Address } from '@/app/lib/types/master'
 import UploadImage from '@/app/ui/Account/baidang/vieclam/upload-image'
 import { Level } from "@/app/lib/types/vieclam"
 import dynamic from 'next/dynamic';
-const Editor = dynamic(() => import('@/app/ui/Account/baidang/vieclam/editor'), { ssr: false });
+const Editor = dynamic(() => import('@/app/ui/Master/editor'), { ssr: false });
 import UploadJD from "@/app/ui/Account/baidang/vieclam/upload_jd"
+import { formatCurrency, formatNumber } from "@/app/lib/utils"
 
 const { RangePicker } = DatePicker;
 
@@ -184,21 +184,8 @@ const onFinish: FormProps['onFinish'] = (values) => {
 const onFinishFailed: FormProps['onFinishFailed'] = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
-const formatNumber = (value: any) => {
-  if (value === undefined || value === null) return '';
-  return new Intl.NumberFormat('vi-VN').format(value);
-};
 
 export default function CreateForm() {
-  const [salary_from, setSalaryFrom] = useState(null);
-  const [salary_to, setSalaryTo] = useState(null);
-
-  const handleFrom = (newValue: any) => {
-    setSalaryFrom(newValue);
-  };
-  const handleTo = (newValue: any) => {
-    setSalaryTo(newValue);
-  };
 
   return <div>
     <Form
@@ -391,7 +378,9 @@ export default function CreateForm() {
             >
               <InputNumber
                 min={1}
-                className='w-full text-base rounded-lg'>
+                className='w-full text-base rounded-lg'
+                placeholder='Số Lượng Tuyển Dụng'
+              >
               </InputNumber>
             </Form.Item>
 
@@ -403,14 +392,11 @@ export default function CreateForm() {
               name="salary_from"
             >
               <InputNumber
-                value={salary_from}
-                onChange={handleFrom}
-                formatter={(value) => formatNumber(value)}
-                parser={(value) => value?.replace(/\./g, '')}
-                placeholder="Enter salary from"
-                style={{ width: '100%' }}
-                suffix="VNĐ"
-                prefix={<p className='w-8'>Từ</p>}
+                formatter={formatNumber}
+                parser={formatCurrency}
+                placeholder="Mức Lương Từ"
+                addonAfter="VNĐ"
+                addonBefore={<p className='w-8'>Từ</p>}
                 controls={false}
               />
             </Form.Item>
@@ -423,13 +409,10 @@ export default function CreateForm() {
               name="salary_to"
             >
               <InputNumber
-                value={salary_to}
-                onChange={handleTo}
-                formatter={(value) => formatNumber(value)}
-                parser={(value) => value?.replace(/\./g, '')}
-                // style={{ width: '100%' }}
-                suffix="VNĐ"
-                prefix={<p className='w-8'>Đến</p>}
+                formatter={formatNumber}
+                parser={formatCurrency}
+                addonAfter="VNĐ"
+                addonBefore={<p className='w-8'>Đến</p>}
                 controls={false}
                 className='w-full'
               />
@@ -440,7 +423,10 @@ export default function CreateForm() {
 
       </div>
       <div>
-        <p className='font-bold text-lg mb-4'>Mô Tả Công Việc</p>
+        <div className='font-bold flex text-lg mb-4'>
+          <p className='mx-2 text-red-600'>*</p>
+          Mô Tả Công Việc
+        </div>
         <Form.Item
           name="description"
           labelAlign='right'
@@ -467,9 +453,9 @@ export default function CreateForm() {
         >
           <Editor></Editor>
         </Form.Item>
-        
+
         <Form.Item
-          label = ""
+          label=""
           name="jd_file"
           labelAlign='right'
           wrapperCol={{ span: 24 }}
@@ -494,18 +480,14 @@ export default function CreateForm() {
       <div className='flex w-full items-center'>
         <p className='font-bold w-1/3 text-lg mb-4 mr-8'>Đường Dẫn Facebook</p>
         <Form.Item
-          wrapperCol={{span:24}}
+          wrapperCol={{ span: 24 }}
           colon={false}
           name="facebook"
           className='w-full'
         >
-          <Input  placeholder='Đường Dẫn Facebook' className='text-base w-full rounded-lg'></Input>
+          <Input placeholder='Đường Dẫn Facebook' className='text-base w-full rounded-lg'></Input>
         </Form.Item>
       </div>
-
-
-
-
     </Form>
 
   </div>

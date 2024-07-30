@@ -20,7 +20,11 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"] ,
+      "@ui/*" : ["./app/ui/*"] ,
+      "@types/*" : ["./app/lib/types/*"] ,
+      "@utils" : ["./app/lib/utils"] ,
+      "@actions/*" : ["./app/lib/actions/*"] ,
     }
   },
   "include": [

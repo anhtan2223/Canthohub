@@ -6,6 +6,7 @@ import Card from '@/app/ui/Home/nhatro/Card';
 import { FilterArea, FilterLocation, FilterPrice } from '../../ui/Home/nhatro/filters';
 import News from '@/app/ui/Home/nhatro/news';
 import { useRouter} from 'next/navigation'
+import Sort from '@ui/Master/sort'
 export default function Page() {
     const breadcrumbs = [
         { label: 'Trang chủ', href: '/' },
@@ -14,6 +15,11 @@ export default function Page() {
     const onShowSizeChange: PaginationProps['onShowSizeChange'] = (current, pageSize) => {
         console.log(current, pageSize);
     };
+    const sortOtp = [
+        { label: 'Giá', value: 'price' },
+        { label: 'Cao - Thấp', value: 'high-to-low' },
+        { label: 'Thấp - Cao', value: 'low-to-high' }
+    ]
     const router = useRouter();
     return <div className="">
         <Breadcrumbs breadcrumbs={breadcrumbs}/>
@@ -30,17 +36,7 @@ export default function Page() {
                     </div>
                     <div className="flex justify-start items-center mt-4">
                         <span>Sắp xếp: </span>
-                        <div className="">
-                            <form className="max-w-sm mx-auto ml-3">
-                                <select id="countries" className="custom-select">
-                                    <option defaultChecked>Mặc định</option>
-                                    <option value="US">United States</option>
-                                    <option value="CA">Canada</option>
-                                    <option value="FR">France</option>
-                                    <option value="DE">Germany</option>
-                                </select>
-                            </form>
-                        </div>
+                        <div className="ml-3"><Sort options={sortOtp}/></div>
                     </div>
                     <div className='cursor-pointer' onClick={()=>{router.push(`/nhatro/1`)}}>
                         <Card></Card>

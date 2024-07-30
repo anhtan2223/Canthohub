@@ -1,5 +1,5 @@
 'use client'
-import Breadcrumbs from "@/app/ui/Master/breadcrums"
+import Breadcrumbs from "@ui/Master/breadcrums"
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, DatePicker, GetProp, Image, Input, Upload, UploadProps } from 'antd';
 import { Form } from "antd";
@@ -79,7 +79,10 @@ export default function Account() {
                                 },
                                 ]}
                             >
-                                <Input className="h-[32px] rounded-lg"/>
+                                <Input 
+                                    className="h-[32px] rounded-lg"
+                                    placeholder="Nguyễn Văn A"
+                                />
                             </Form.Item>
                             <Form.Item
                                 name="phone"
@@ -87,6 +90,7 @@ export default function Account() {
                             >
                                 <Input
                                     className="h-[32px] rounded-lg"
+                                    placeholder="0123456789"
                                 />
                             </Form.Item>
                             <Form.Item
@@ -110,7 +114,7 @@ export default function Account() {
                             </Form.Item>
                             <Form.Item
                                 name="confirm"
-                                label="Xác nhận mật khẩu"
+                                label="Xác nhận"
                                 dependencies={['password']}
                                 hasFeedback
                                 rules={[
@@ -152,7 +156,7 @@ export default function Account() {
                                     beforeUpload={beforeUpload}
                                     onChange={handleChange}
                                 >
-                                    {imageUrl ? <img src={imageUrl} alt="avatar" className="aspect-square rounded-full" style={{ width: '100%' }} /> : uploadButton}
+                                    {imageUrl ? <Image width={100} height={100} src={imageUrl} alt="avatar" className="aspect-square rounded-full" style={{ width: '100%' }} /> : uploadButton}
                                 </Upload>
                             </ImgCrop>
                             <Input name="email" disabled value={"ABC@example.commmm"} className="text-center" variant="borderless" />
