@@ -20,7 +20,7 @@ export default function CardNews({ isSetting = false }: {
     return (
         <div>
             <div className='' >
-                <div key={post.id} className="p-4 flex gap-2 border my-4 rounded-lg h-full ">
+                <div key={post.id} className="p-4 flex gap-2 border my-4 rounded-lg h-full dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
                     <div className="flex-1 w-3/4 h-fit">
                         {isSetting &&
                             <Link href={`/baidang/tintuc/${post.id}`}
@@ -35,13 +35,13 @@ export default function CardNews({ isSetting = false }: {
                             </div>
                             <div className="flex flex-grow flex-col px-2 gap-1">
                                 <div>
-                                    <div className="font-bold border-r inline-block mr-2 pr-2 border-[#898989] text-sm">{post.author}</div>
+                                    <div className="font-bold border-r inline-block mr-2 pr-2 text-sm">{post.author}</div>
                                     <div className="font-bold inline-block  text-sm">{post.title}</div>
                                 </div>
-                                <div className="italic text-xs text-[#231F20]">{post.time}</div>
+                                <div className="italic text-xs">{post.time}</div>
                             </div>
                         </div>
-                        <div className="text-sm text-black mt-3">
+                        <div className="text-sm mt-3">
                             [Trung Kinh] - Flutter<br />
                             {post.description}
                             <p>

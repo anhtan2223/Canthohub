@@ -64,9 +64,9 @@ export default function Account() {
         >
             <div className="grid grid-cols-12 gap-4">
                 <div className="site-left col-span-8">
-                    <div className="bg-white">
+                    <div className="bg-white dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
                         <div className="py-3 px-2 bg-medium-blue">
-                            <h2 className="text-white font-semibold text-lg">Cài đặt tài khoản</h2>
+                            <h2 className="font-semibold text-lg">Cài đặt tài khoản</h2>
                         </div>
                         <div className="p-5">
                             <Form.Item
@@ -142,9 +142,9 @@ export default function Account() {
                     </div>
                 </div>
                 <div className="site-right col-span-4 rounded">
-                    <div className="bg-white">
+                    <div className="bg-white dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
                         <div className="py-3 px-2 bg-medium-blue">
-                            <h2 className="text-white font-semibold text-lg text-center">Thông tin cá nhân</h2>
+                            <h2 className=" font-semibold text-lg text-center">Thông tin cá nhân</h2>
                         </div>
                         <div className="flex justify-center items-center flex-col p-3">
                             <ImgCrop cropShape="round" quality={1} modalTitle="Edit Image" modalWidth={800}>

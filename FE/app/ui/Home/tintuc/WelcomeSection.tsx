@@ -4,7 +4,7 @@ import React from 'react';
 
 const WelcomeSection = () => {
     return (
-        <div className="bg-white p-6 rounded-md border border-gray-200">
+        <div className="bg-white p-6 rounded-md border border-gray-200 dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
             <p className="text-[#1677FF] font-semibold text-[16px]">
                 Chào mừng bạn đến với Cần Thơ Hub trang thông tin tổng hợp cuộc sống ở Cần Thơ
             </p>

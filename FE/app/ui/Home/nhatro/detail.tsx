@@ -58,14 +58,14 @@ const Detail = () => {
                         <div>
                             <div className="font-bold border-r border-[#898989] inline-block pr-2 text-sm">{post.author}</div>
                             <div className="font-bold inline-block p-2 text-sm">{post.title}</div>
-                            <div className="italic text-xs text-[#231F20]">{post.time}</div>
+                            <div className="italic text-xs">{post.time}</div>
                         </div>
                         <div className='flex flex-grow justify-end'>
                             <ReportModal />
                         </div>
 
                     </div>
-                    <div className="text-sm text-black">
+                    <div className="text-sm">
                         <p className='pl-2 text-lg font-bold'>{post.description.title}</p>
                         <p className='pl-2'>
                             <span className="font-bold text-red-600">{post.description.price}</span> - {post.description.square}

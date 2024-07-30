@@ -18,18 +18,18 @@ export default function Page() {
             </div>
             <div className="flex">
                 <div className="w-8/12 ">
-                    <div className="bg-white border rounded-lg p-5">
+                    <div className="bg-white border rounded-lg p-5 dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
                         <NewsDetail />
                     </div>
-                    <div className="mt-5 bg-white border rounded-lg p-5">
+                    <div className="mt-5 bg-white  border rounded-lg p-5 dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
                         <RelatedNews />
                     </div>
                 </div>
                 <div className='w-4/12 ml-4'>
-                    <div className='mb-5 border rounded-lg '>
+                    <div className='mb-5 rounded-lg '>
                         <Events></Events>
                     </div>
-                    <div className='mt-5 border rounded-lg'>
+                    <div className='mt-5 rounded-lg'>
                         <EventsSection></EventsSection>
                     </div>
                 </div>

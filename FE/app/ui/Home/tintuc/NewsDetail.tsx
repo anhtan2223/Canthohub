@@ -25,15 +25,15 @@ const NewsDetail = () => {
                             <Image width={40} height={40} src="/avatar.jpg" alt="Avatar" className="rounded-full w-full h-full" />
                         </div>
                         <div>
-                            <div className="font-bold border-r border-[#898989] inline-block pr-2 text-sm">{post.author}</div>
+                            <div className="font-bold border-r inline-block pr-2 text-sm">{post.author}</div>
                             <div className="font-bold inline-block p-2 text-sm">{post.title}</div>
-                            <div className="italic text-xs text-[#231F20]">{post.time}</div>
+                            <div className="italic text-xs">{post.time}</div>
                         </div>
                         <div className='flex flex-grow justify-end'>
                             <ReportModal />
                         </div>
                     </div>
-                    <div className="text-sm text-black">
+                    <div className="text-sm">
                         {post.description}
                         <div className="object-contain w-full mt-4">
                             <Image width={500} height={500} src="/avadagroup.png" alt="Food" className="w-full h-auto object-cover rounded-md" />

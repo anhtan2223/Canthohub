@@ -11,7 +11,7 @@ interface DetailProps {
 
 export default async function Detail({ info }: DetailProps) {
   return (
-    <div className='bg-white border rounded-lg p-5'>
+    <div className='bg-white border rounded-lg p-5 dark:text-dark-text dark:bg-dark-secondary dark:border-dark'>
       <div className='flex items-center' >
         <Image
           src={info.avatar} width={50} height={50} className='w-[40px] border-2 aspect-square rounded-full ' alt='Logo' >

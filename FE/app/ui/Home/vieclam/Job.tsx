@@ -11,7 +11,7 @@ export default function Job({isAdd=false} : {
             <div className='w-8/12' >
                 <Search isAdd={isAdd}></Search>
 
-                <div className='mt-5 p-5 h-fit bg-white border rounded-lg'>
+                <div className='mt-5 p-5 h-fit bg-white border rounded-lg dark:text-dark-text dark:bg-dark-secondary dark:border-dark'>
                     <div className='text-lg font-bold'>
                         Tổng 20 Kết Quả
                     </div>
@@ -28,7 +28,7 @@ export default function Job({isAdd=false} : {
                 ></Pagination>
                 </div>
             </div>
-            <div className='sticky top-5 w-4/12 ml-4 h-fit bg-white border rounded-lg'>
+            <div className='sticky top-5 w-4/12 ml-4 h-fit bg-white border dark:text-dark-text dark:bg-dark-secondary dark:border-dark rounded-lg'>
                 <Filter></Filter>
             </div>
         </div>

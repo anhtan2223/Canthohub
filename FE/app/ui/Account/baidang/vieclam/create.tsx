@@ -127,7 +127,7 @@ const onFinishFailed: FormProps['onFinishFailed'] = (errorInfo) => {
 
 export default function CreateForm() {
 
-  return <div className='bg-white w-full border rounded-lg p-5'>
+  return <div className='bg-white w-full border rounded-lg p-5 dark:text-dark-text dark:bg-dark-secondary dark:border-dark'>
     <Form
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}

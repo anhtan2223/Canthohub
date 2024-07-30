@@ -8,7 +8,7 @@ export default function Page() {
     return <div className="">
         <div className="content-center mx-auto grid grid-cols-12 gap-4">
             <div className="site-left col-span-12">
-                <div className="border border-border-color rounded-lg p-4 bg-secondary">
+                <div className="border border-border-color rounded-lg p-4 bg-secondary dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
                     <div className='cursor-pointer' onClick={()=>{router.push(`/nhatro/1`)}}>
                         <Card></Card>
                     </div>

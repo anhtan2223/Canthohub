@@ -2,7 +2,7 @@ import { FaChevronRight } from "react-icons/fa6";
 export function FilterPrice() {
     return (
       <>
-        <div className="container mt-3 px-4 py-6 border border-border-color rounded-lg bg-secondary w-full rounded">
+        <div className="container mt-3 px-4 py-6 border border-border-color rounded-lg bg-secondary w-full dark:text-dark-text dark:bg-dark-secondary dark:border-dark rounded">
             <h2 className="font-bold text-lg">Xem theo giá</h2>
             <div className="grid grid-cols-2 mt-3 gap-4">
                 <div className=" rounded">
@@ -51,7 +51,7 @@ export function FilterPrice() {
 export function FilterArea() {
     return(
         <>
-            <div className="container mt-3 px-4 py-6 border border-border-color rounded-lg bg-secondary w-full rounded">
+            <div className="container mt-3 px-4 py-6 border border-border-color rounded-lg bg-secondary w-full dark:text-dark-text dark:bg-dark-secondary dark:border-dark rounded">
                 <h2 className="font-bold text-lg">Xem diện tích </h2>
                 <div className="grid grid-cols-2 mt-3 gap-4">
                     <div className=" rounded">
@@ -100,7 +100,7 @@ export function FilterArea() {
 export function FilterLocation() {
     return (
         <>
-            <div className="container px-4 py-6 border border-border-color rounded-lg bg-secondary w-full rounded">
+            <div className="container px-4 py-6 border border-border-color rounded-lg bg-secondary w-full !dark:text-dark-text dark:bg-dark-secondary dark:border-dark rounded">
                 <h2 className="font-bold text-lg">Tìm trọ ở khu vực</h2>
                 <div className="grid grid-cols-2 mt-3 gap-4">
                     <div className=" rounded">
