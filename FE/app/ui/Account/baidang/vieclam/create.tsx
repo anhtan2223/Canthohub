@@ -104,67 +104,7 @@ const careerOpt = [
   "Web Developer",
   "IT Project Manager",
   "DevOps Engineer",
-  "AI Specialist",
-  "Nurse Practitioner",
-  "Medical Doctor",
-  "Pharmacist",
-  "Physical Therapist",
-  "Radiologic Technologist",
-  "Occupational Therapist",
-  "Medical Laboratory Technician",
-  "Health Information Manager",
-  "Clinical Psychologist",
-  "Speech-Language Pathologist",
-  "Financial Analyst",
-  "Marketing Manager",
-  "Business Consultant",
-  "Human Resources Specialist",
-  "Account Manager",
-  "Investment Banker",
-  "Risk Manager",
-  "Supply Chain Coordinator",
-  "Project Manager",
-  "Sales Director",
-  "Graphic Designer",
-  "Art Director",
-  "Copywriter",
-  "Film Director",
-  "Photographer",
-  "Music Producer",
-  "Fashion Designer",
-  "Animator",
-  "Creative Director",
-  "Illustrator",
-  "Teacher",
-  "School Counselor",
-  "Principal",
-  "Educational Consultant",
-  "Special Education Teacher",
-  "Curriculum Developer",
-  "Academic Advisor",
-  "Librarian",
-  "Instructional Designer",
-  "College Professor",
-  "Civil Engineer",
-  "Mechanical Engineer",
-  "Electrical Engineer",
-  "Chemical Engineer",
-  "Aerospace Engineer",
-  "Environmental Engineer",
-  "Industrial Engineer",
-  "Structural Engineer",
-  "Biomedical Engineer",
-  "Petroleum Engineer",
-  "Lawyer",
-  "Paralegal",
-  "Legal Secretary",
-  "Judge",
-  "Legal Consultant",
-  "Court Reporter",
-  "Compliance Officer",
-  "Mediator",
-  "Intellectual Property Specialist",
-  "Criminal Investigator"
+  "AI Specialist"
 ];
 
 const formOpt = [
@@ -187,7 +127,7 @@ const onFinishFailed: FormProps['onFinishFailed'] = (errorInfo) => {
 
 export default function CreateForm() {
 
-  return <div>
+  return <div className='bg-white w-full border rounded-lg p-5'>
     <Form
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
@@ -195,7 +135,7 @@ export default function CreateForm() {
       labelCol={{ span: 3 }}
       wrapperCol={{ span: 12 }}
       labelAlign='left'
-      className='bg-white w-full border flex flex-col rounded-lg p-5 gap-4'
+      className=' flex flex-col  gap-4'
     >
       <div className='flex relative w-full h-fit items-center mb-6'>
         <div className="flex-grow flex items-center gap-3 ">

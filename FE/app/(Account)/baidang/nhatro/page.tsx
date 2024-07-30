@@ -18,7 +18,7 @@ function Create() {
     return (
         <>
             <Breadcrumbs breadcrumbs={breadcrumbs} />
-            <div className="bg-white p-6 rounded-md space-y-6 flex-grow">
+            <div className="rounded-lg bg-white border p-5 flex-grow">
                 <FormAdd user={user} />
             </div>
         </>
