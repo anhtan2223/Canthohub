@@ -2,6 +2,7 @@ import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
 import Job from '@/app/ui/Home/vieclam/Job'
 import FoodPage from '../../Home/anuong/FoodPage';
+import RealEstate from '@/app/ui/Home/nhatro/RealEstate'
 
 
 const App = () => {
@@ -14,12 +15,12 @@ const App = () => {
     {
       key: '2',
       label: 'Nhà Trọ',
-      children: 'Content of Tab Pane 2',
+      children: <RealEstate isAdd={true}></RealEstate>,
     },
     {
       key: '3',
       label: 'Việc Làm',
-      children: <Job isAdd={true}></Job> ,
+      children: <Job isAdd={true}></Job>,
     },
     {
       key: '4',
