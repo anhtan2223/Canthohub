@@ -41,10 +41,10 @@ export default function DetailPage() {
         </div>
       </div>
       <div className='w-4/12 ml-4'>
-        <div className='mb-5 border rounded-lg '>
+        <div className='mb-5 rounded-lg '>
           <Events></Events>
         </div>
-        <div className='mt-5 border rounded-lg'>
+        <div className='mt-5 rounded-lg'>
           <EventsSection></EventsSection>
         </div>
       </div>

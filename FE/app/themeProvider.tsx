@@ -68,7 +68,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         <ConfigProvider
             theme={{
                 algorithm: isDarkMode ? [antdTheme.darkAlgorithm] : [antdTheme.defaultAlgorithm],
-                token: isDarkMode ? darkTheme.token : lightTheme.token
             }}
             >
             {children}

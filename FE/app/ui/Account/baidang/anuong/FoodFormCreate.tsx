@@ -63,7 +63,7 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
     };
 
     return (
-        <div className="space-y-2 border bg-white rounded-lg p-5" >
+        <div className="space-y-2 border bg-white rounded-lg p-5 dark:text-dark-text dark:bg-dark-secondary dark:border-dark" >
             <Form
                 name="basic"
                 layout="vertical"

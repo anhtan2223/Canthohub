@@ -8,7 +8,7 @@ export default function Job({isAdd=false} : {
     <div className='flex'>
             <div className='w-full' >
 
-                <div className='p-5 h-fit bg-white border rounded-lg'>
+                <div className='p-5 h-fit bg-white border rounded-lg dark:text-dark-text dark:bg-dark-secondary dark:border-dark'>
                     <div className='my-2'>
                         <Card isSetting={isAdd}></Card>
                         <Card isSetting={isAdd}></Card>

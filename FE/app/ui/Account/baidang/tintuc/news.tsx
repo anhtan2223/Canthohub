@@ -5,7 +5,7 @@ export default function MyNews() {
     return (
         <div>
             <SearchBar></SearchBar>
-            <div className="bg-white p-4 mt-5 border rounded-lg">
+            <div className="bg-white p-4 mt-5 border rounded-lg dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
                 <News isSetting></News>
             </div>
         </div>

@@ -2,11 +2,11 @@ import Image from 'next/image';
 export default function News() {
     return (
       <>
-        <div className="container mt-3 px-4 py-6 border border-border-color rounded-lg bg-secondary w-full rounded">
+        <div className="container mt-3 px-4 py-6 border border-border-color rounded-lg bg-secondary w-full dark:text-dark-text dark:bg-dark-secondary dark:border-dark rounded">
             <h2 className="font-bold text-lg">Tin mới đăng </h2>
             <div className="grid grid-cols-10 mt-5">
-                <div className="col-span-2 w-full bg-white rounded container">
-                    <figure className="w-full shadow-lg relative">
+                <div className="col-span-2 w-full rounded container">
+                    <figure className="w-full shadow-lg flex items-center relative">
                         <Image width={200} height={200} className="block w-full h-full rounded-lg aspect-square shadow-lg" src="https://hoanghamobile.com/tin-tuc/wp-content/webp-express/webp-images/uploads/2023/07/anh-phong-canh-dep-1-1.jpg.webp" alt="this is image" />
                     </figure>
                 </div>

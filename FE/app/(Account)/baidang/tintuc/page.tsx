@@ -48,7 +48,7 @@ export default function CreateForm() {
     ];
   return <div>
     <Breadcrumbs breadcrumbs={breadcrumbs}/>
-    <div className='p-5 bg-white w-full border rounded-lg'>
+    <div className='p-5 bg-white w-full border rounded-lg dark:text-dark-text dark:bg-dark-secondary dark:border-dark'>
       <Form
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}

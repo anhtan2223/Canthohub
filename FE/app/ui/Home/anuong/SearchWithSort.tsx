@@ -7,8 +7,7 @@ import Sort from "../../Master/sort";
 export default function SearchWithSort({ isAdd }: { isAdd?: boolean }) {
     const router = useRouter();
     const sortOpt = [
-        { label: 'Mặc định', value: 'default' },
-        { label: 'Giá', value: 'price' },
+        { label: 'Giá mặc định', value: 'default' },
         { label: 'Cao - Thấp', value: 'high-to-low' },
         { label: 'Thấp - Cao', value: 'low-to-high' }
     ]

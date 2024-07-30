@@ -25,10 +25,10 @@ export default function Page() {
                     </div>
                 </div>
                 <div className='w-4/12 ml-4'>
-                    <div className='mb-5 border rounded-lg '>
+                    <div className='mb-5 border dark:text-dark-text dark:bg-dark-secondary dark:border-dark rounded-lg '>
                         <Events></Events>
                     </div>
-                    <div className='mt-5 border rounded-lg'>
+                    <div className='mt-5 border dark:text-dark-text dark:bg-dark-secondary dark:border-dark rounded-lg'>
                         <EventSection />
                     </div>
                 </div>

@@ -28,11 +28,10 @@ const config: Config = {
         'text': 'rgba(137, 137, 137, 1)',
         'dark-text': 'rgb(174, 183, 192)', // Dark mode text color
         'dark-text-secondary': 'rgb(174, 183, 192)', // Dark mode text color
-        'dark': '#4A5568', // Dark mode border color
+        'dark': 'rgb(61, 77, 96)', // Dark mode border color
       },
       borderColor: {
         'border-color': 'rgba(217, 217, 217, 1)',
-        'dark-color': 'rgb(61, 77, 96)', // Dark mode border color
       },
     },
     keyframes: {

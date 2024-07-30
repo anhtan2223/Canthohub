@@ -1,8 +1,8 @@
 import { MdFoodBank } from "react-icons/md";
 import SearchWithSort from "@/app/ui/Home/anuong/SearchWithSort";
 import MyPagination from "@/app/ui/Master/Pagination";
-import { FilterLocation, FilterPrice } from "@/app/ui/Home/nhatro/filters";
-import FoodCard from "./FoodCard";
+import FoodCard from "@ui/Home/anuong/FoodCard";
+import FoodFilter from "@ui/Home/anuong/FoodFilter";
 
 export default function FoodPage({ isAdd }: {
     isAdd?: boolean
@@ -36,9 +36,8 @@ export default function FoodPage({ isAdd }: {
                     </div>
                 </div>
                 <div className="site-right col-span-4 rounded">
-                    <FilterLocation />
-                    <div className="mt-4">
-                        <FilterPrice />
+                    <div className="sticky top-5 h-fit bg-white border dark:text-dark-text dark:bg-dark-secondary dark:border-dark rounded-lg">
+                        <FoodFilter/>
                     </div>
                 </div>
             </div>

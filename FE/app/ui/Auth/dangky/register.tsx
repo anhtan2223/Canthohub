@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const Register = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#F5F5F5]">
+    <div className="flex items-center justify-center min-h-screen bg-[#F5F5F5] dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
       <div className="bg-white p-10 rounded-lg shadow-lg text-center w-96">
         <h1 className="text-3xl mb-8 font-bold text-gray-700">Đăng Ký</h1>
         <div className="text-left mb-6">
