@@ -21,18 +21,18 @@ export default function RootLayout({
   return (
     <ThemeProvider>
         <html lang="en">
-            <body className={`${inter.className} text-base bg-body dark:text-dark-text dark:bg-dark transition-colors`}>
+            <body className={`${inter.className} h-full relative text-base bg-body dark:text-dark-text dark:bg-dark transition-colors pb-12`}>
                 <header className="border bg-white h-fit dark:bg-dark-secondary dark:border-dark">
                 <AntdRegistry>
                     <Header></Header>
                 </AntdRegistry>
                 </header>
-                <div className="container mx-auto w-9/12 my-6 dark:text-dark-text dark:bg-dark">
+                <div className="container mx-auto w-11/12 lg:w-9/12 mb-12 lg:my-6 dark:text-dark-text dark:bg-dark">
                 <AntdRegistry>{children}</AntdRegistry>
                 </div>
-                <footer className="h-[486px] bg-white dark:text-dark-text dark:bg-dark-secondary">
+                {/* <footer className="h-[486px] bg-white dark:text-dark-text dark:bg-dark-secondary">
                     <Footer></Footer>
-                </footer>
+                </footer> */}
             </body>
         </html>
     </ThemeProvider>

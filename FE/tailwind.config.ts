@@ -18,7 +18,7 @@ const config: Config = {
         'dark-secondary': 'rgb(36, 48, 63)' // Dark mode secondary color
       },
       fontSize: {
-        base: '14px',
+        base: '0.875rem',
       },
       colors: {
         'dark-blue': 'rgba(15, 33, 103, 1)',

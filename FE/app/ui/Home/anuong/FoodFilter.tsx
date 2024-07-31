@@ -1,14 +1,12 @@
 'use client'
-import { useRef, useState } from 'react'
-import { InputNumber , Select , Form  , SelectProps , Button} from "antd";
-import type { JobFilter , Career } from '@/app/lib/types/vieclam';
+import { useState } from 'react'
+import { InputNumber , Select , SelectProps , Button} from "antd";
+import type { JobFilter } from '@/app/lib/types/vieclam';
 import type { Address } from '@/app/lib/types/master'
-import { Level , Form as EForm } from '@/app/lib/types/vieclam';
 import { formatCurrency, formatNumber} from "@/app/lib/utils"
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 
 
-const formList : string[] = Object.values(EForm)
 const addressList : Address[] = [
     { id : 1 , address : "Ninh Kiều" } ,
     { id : 2 , address : "An Hoà" } ,
@@ -22,11 +20,7 @@ addressList.forEach((i:Address)=>{ address.push({
     label: i.address,
     value: i.id
 }) })
-const formOpt: SelectProps['options'] = [];
-formList.forEach((i:string)=>{ formOpt.push({
-    label: i,
-    value: i
-}) })
+
 interface FilterType{
     address? : string[]  | null
     price_from? : string | null
