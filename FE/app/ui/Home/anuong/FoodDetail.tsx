@@ -46,12 +46,12 @@ export default function FoodDetail({
                     <span className="font-semibold">Mô tả: </span>
                     <span>{food.description}</span>
                 </div>
-                <div className="img-container grid grid-cols-10 mt-3">
-                    <div className="col-span-9">
+                <div className="img-container grid lg:grid-cols-10 mt-3">
+                    <div className="lg:col-span-9">
                         <figure>
                             <Image width={800} height={400} src="https://down-vn.img.susercontent.com/vn-11134259-7r98o-lwi1z0l8xec93b@resize_ss640x400" alt="" className="w-full h-auto rounded-lg" />
                         </figure>
-                        <div className="flex gap-4 mt-3">
+                        <div className="flex gap-2 mt-3">
                             <figure>
                                 <Image width={200} height={40} src="https://down-vn.img.susercontent.com/vn-11134259-7r98o-lwi1z0l8xec93b@resize_ss640x400" className="w-full h-auto rounded-lg" alt="" />
                             </figure>
@@ -69,7 +69,7 @@ export default function FoodDetail({
                             </figure>
                         </div>
                     </div>
-                    <div className="col-span-1"></div>
+                    <div className="lg:col-span-1"></div>
                 </div>
                 <Button className='my-3'>
                     <p className='text-medium-blue text-lg'>

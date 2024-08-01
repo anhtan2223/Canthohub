@@ -96,19 +96,21 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
                         <Form.Item label="Giá" required style={{ marginBottom: 0 }}>
                             <div className="">
                                 <Form.Item
+                                    layout="horizontal"
                                     name='pricefrom'
                                     rules={[{ required: true, message: 'Cần nhập giá từ!'}]}
                                     style={{ display: 'inline-block', width: 'calc(50% - 16px)' }}
                                 >
-                                    <InputNumber controls={false} suffix="VNĐ" placeholder="Nhập giá từ..." className='h-[32px] !w-full !pl-0 rounded'/>
+                                    <InputNumber controls={false} placeholder="Nhập giá từ..." className='h-[32px] !w-full !pl-0 rounded'/>
                                 </Form.Item>
                                 <span className='text-xl h-[32px] inline-block mx-2'>~</span>
                                 <Form.Item
+                                    layout="horizontal"
                                     name='priceto'
                                     rules={[{ required: true, message: 'Cần nhập giá đến!'}]}
                                     style={{ display: 'inline-block', width: 'calc(50% - 16px)'}}
                                 >
-                                    <InputNumber controls={false} suffix="VNĐ" placeholder="Nhập giá đến..." className='h-[32px] !w-full !pl-0 rounded'/>
+                                    <InputNumber controls={false} placeholder="Nhập giá đến..." className='h-[32px] !w-full !pl-0 rounded'/>
                                 </Form.Item>
                             </div>
                         </Form.Item>
