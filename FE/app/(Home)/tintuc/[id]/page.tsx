@@ -3,6 +3,7 @@ import EventsSection from "@/app/ui/Home/tintuc/EventSection";
 import NewsDetail from "@ui/Home/tintuc/NewsDetail";
 import RelatedNews from "@ui/Home/tintuc/RelatedNews";
 import Breadcrumbs from "@ui/Master/breadcrums";
+import { newsPostSeeding } from "@data"
 
 export default function Page() {
     const breadcrumbs = [
@@ -19,7 +20,7 @@ export default function Page() {
             <div className="flex">
                 <div className="w-8/12 ">
                     <div className="bg-white border rounded-lg p-5 dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
-                        <NewsDetail />
+                        <NewsDetail post={newsPostSeeding}/>
                     </div>
                     <div className="mt-5 bg-white  border rounded-lg p-5 dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
                         <RelatedNews />

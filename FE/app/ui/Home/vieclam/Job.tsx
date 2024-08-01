@@ -2,6 +2,7 @@ import Card from '@/app/ui/Home/vieclam/Card'
 import Filter from '@/app/ui/Home/vieclam/Filter'
 import Search from '@/app/ui/Home/vieclam/search-bar'
 import Pagination from '@/app/ui/Master/Pagination'
+import {jobPostSeeding} from "@data"
 import MobileFilter from '../../Master/MobileFilter'
 
 export default function Job({isAdd=false} : {
@@ -22,11 +23,11 @@ export default function Job({isAdd=false} : {
 
                     </div>
                     <div className='my-2'>
-                        <Card isSetting={isAdd}></Card>
-                        <Card isSetting={isAdd}></Card>
-                        <Card isSetting={isAdd}></Card>
-                        <Card isSetting={isAdd}></Card>
-                        <Card isSetting={isAdd}></Card>
+                        <Card post={jobPostSeeding} isSetting={isAdd}></Card>
+                        <Card post={jobPostSeeding} isSetting={isAdd}></Card>
+                        <Card post={jobPostSeeding} isSetting={isAdd}></Card>
+                        <Card post={jobPostSeeding} isSetting={isAdd}></Card>
+                        <Card post={jobPostSeeding} isSetting={isAdd}></Card>
                     </div>
                 <Pagination
                     total={100}
