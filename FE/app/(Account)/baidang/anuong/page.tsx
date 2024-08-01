@@ -17,18 +17,12 @@ async function Home() {
         { label: ' Bài đăng ăn uống mới', href: '/baidang/them', active: true },
     ];
 
-    const address = await AddressService.getAllAddresses()
-    console.log(address)
-    const validAddress = {  
-        address: '123 Main St, Example City',
-        options : address
-    };
   return (
       <>
         <Suspense fallback={<div>Loading...</div>}>
         <Breadcrumbs breadcrumbs={breadcrumbs}/>
             {/* <div className="bg-white p-6 rounded-md space-y-6 dark:text-dark-text dark:bg-dark flex-grow"> */}
-                <FoodFormCreate user={user} alladdress={validAddress} />
+                <FoodFormCreate user={user}/>
             {/* </div> */}
         </Suspense>
       </>

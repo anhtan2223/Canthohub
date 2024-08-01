@@ -1,3 +1,4 @@
+'use client'
 import { Upload, type GetProp, type UploadFile, type UploadProps } from 'antd';
 import ImgCrop from 'antd-img-crop'
 import { useState } from 'react';
