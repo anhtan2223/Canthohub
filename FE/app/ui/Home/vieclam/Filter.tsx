@@ -1,29 +1,19 @@
 'use client'
 import { useState } from 'react'
 import { InputNumber, Select, SelectProps, Button } from "antd"
-import type { JobFilter } from '@/app/lib/types/vieclam/master'
+import { Filter } from "@type/master"
 import { Level } from '@type/vieclam'
 import { Form } from "@/app/lib/types/vieclam/form.enum"
 import { formatCurrency, formatNumber } from "@/app/lib/utils"
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
+import { carrerList , districtList } from "@data"
 
-
-const career: SelectProps['options'] = [
-    { id: 1, name: "Software Developer" },
-    { id: 2, name: "Web Application Developer" },
-    { id: 3, name: "Mobile Developer" },
-    { id: 4, name: "IOT Developer" }
-].map(i => ({
+const career: SelectProps['options'] = carrerList.map(i => ({
     label: i.name,
     value: i.id
 }))
-const address: SelectProps['options'] = [
-    { id: 1, address: "Ninh Kiều" },
-    { id: 2, address: "An Hoà" },
-    { id: 3, address: "An Phú" },
-    { id: 4, address: "Hưng Phú" }
-].map(i => ({
-    label: i.address,
+const address: SelectProps['options'] = districtList.map(i => ({
+    label: i.name,
     value: i.id
 }))
 const level: SelectProps['options'] = Object.keys(Level).map(key => ({
@@ -35,58 +25,49 @@ const formOpt: SelectProps['options'] = Object.keys(Form).map(key => ({
     value: key
 }))
 
-interface FilterType {
-    career_id?: string | null
-    level?: string[] | null
-    address?: string[] | null
-    form?: string[] | null
-    salary_from?: string | null
-    salary_to?: string | null
-}
-
-export default function JobFilter() {
+export default function JobFilterPage() {
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const { replace } = useRouter();
     const params = new URLSearchParams(searchParams);
 
-    const [filter, setFilter] = useState<FilterType>({
-        career_id: searchParams.get('career_id'),
-        level: searchParams.getAll('level'),
-        address: searchParams.getAll('address'),
-        form: searchParams.getAll('form'),
+    const [filter, setFilter] = useState<Filter>({
+        career_ids: searchParams.get('career_id'),
+        levels: searchParams.getAll('level'),
+        district_ids: searchParams.getAll('address'),
+        forms: searchParams.getAll('form'),
         salary_from: searchParams.get('salary_from'),
         salary_to: searchParams.get('salary_to'),
     })
 
-    const onChange = (value: string | string[], type: 'career_id' | 'level' | 'address' | 'form' | 'salary_from' | 'salary_to') => {
+    const onChange = (value: string | string[], type: 'career_ids' | 'levels' | 'district_ids' | 'forms' | 'salary_from' | 'salary_to') => {
         setFilter({
             ...filter,
             [type]: value
         })
     }
     const onApply = () => {
-        if (filter.career_id)
-            params.set("career_id", filter.career_id)
+        if (filter.career_ids)
+            params.set("career_id", filter.career_ids)
         if (filter.salary_from)
             params.set("salary_from", filter.salary_from)
         if (filter.salary_to)
             params.set("salary_to", filter.salary_to)
-        if (filter.address) {
+        if (filter.district_ids) {
             params.delete("address")
-            for (const value of filter.address) {
+            for (const value of filter.district_ids) {
                 params.append("address", value)
             }
         }
-        if (filter.form) {
+        if (filter.forms) {
             params.delete("form")
-            for (const value of filter.form) {
+            for (const value of filter.forms) {
                 params.append("form", value)
             }
         }
-        if (filter.level) {
+        if (filter.levels) {
             params.delete("level")
-            for (const value of filter.level) {
+            for (const value of filter.levels) {
                 params.append("level", value)
             }
         }
@@ -94,13 +75,13 @@ export default function JobFilter() {
         replace(`${pathname}?${params.toString()}`);
     }
     const onReset = () => {
-        for (const i of ["career_id", "level", "address", "form", "salary_from", "salary_to"])
+        for (const i of ["career_ids", "levels", "district_ids", "forms", "salary_from", "salary_to"])
             params.delete(i)
         setFilter({
-            career_id: null,
-            level: null,
-            address: null,
-            form: null,
+            career_ids: null,
+            levels: null,
+            district_ids: null,
+            forms: null,
             salary_from: null,
             salary_to: null,
         })
@@ -116,8 +97,8 @@ export default function JobFilter() {
                     className='mt-1'
                     style={{ width: '100%' }}
                     placeholder="Chọn Công Việc"
-                    value={filter.career_id}
-                    onChange={(value: string) => { onChange(value, 'career_id') }}
+                    value={filter.career_ids}
+                    onChange={(value: string) => { onChange(value, 'career_ids') }}
                     options={career}
                 />
             </div>
@@ -131,8 +112,8 @@ export default function JobFilter() {
                 mode="multiple"
                 style={{ width: '100%' }}
                 placeholder="Chọn Cấp Bậc Công Việc"
-                onChange={(value: string[]) => { onChange(value, 'level') }}
-                value={filter.level}
+                onChange={(value: string[]) => { onChange(value, 'levels') }}
+                value={filter.levels}
                 options={level}
             />
         </div>
@@ -145,8 +126,8 @@ export default function JobFilter() {
                 mode="multiple"
                 style={{ width: '100%' }}
                 placeholder="Chọn Khu Vực Công Việc"
-                onChange={(value: string[]) => { onChange(value, 'address') }}
-                value={filter.address}
+                onChange={(value: string[]) => { onChange(value, 'district_ids') }}
+                value={filter.district_ids}
                 options={address}
             />
         </div>
@@ -158,8 +139,8 @@ export default function JobFilter() {
                 mode="multiple"
                 style={{ width: '100%' }}
                 placeholder="Chọn Hình Thức Công Việc"
-                onChange={(value: string[]) => { onChange(value, 'form') }}
-                value={filter.form || null}
+                onChange={(value: string[]) => { onChange(value, 'forms') }}
+                value={filter.forms || null}
                 options={formOpt}
             />
         </div>

@@ -6,7 +6,6 @@ import Breadcrumbs from "@/app/ui/Master/breadcrums";
 import Image from 'next/image'
 import { Suspense } from 'react';
 
-
 export default function Page() {
     const breadcrumbs = [
         { label: 'Trang chủ', href: '/' },
