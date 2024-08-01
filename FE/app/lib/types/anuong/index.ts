@@ -23,3 +23,10 @@ export interface FoodFormType {
     address1: string;
     description: string;
 }
+
+export interface OptionType {
+    id: Number;
+    value: string;
+    label: string;
+    children?: OptionType[];
+}
