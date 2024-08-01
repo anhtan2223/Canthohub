@@ -1,7 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { InputNumber , Select , SelectProps , Button} from "antd";
-import type { JobFilter } from '@/app/lib/types/vieclam';
+import { InputNumber , Select  , SelectProps , Button} from "antd";
 import type { Address } from '@/app/lib/types/master'
 import { formatCurrency, formatNumber} from "@/app/lib/utils"
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
@@ -14,7 +13,6 @@ const addressList : Address[] = [
     { id : 4 , address : "Hưng Phú" } 
 ]
 
-const carrer: SelectProps['options'] = [];
 const address: SelectProps['options'] = [];
 addressList.forEach((i:Address)=>{ address.push({
     label: i.address,

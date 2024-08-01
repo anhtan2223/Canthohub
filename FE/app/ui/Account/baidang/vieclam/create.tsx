@@ -9,7 +9,6 @@ import dynamic from 'next/dynamic';
 const Editor = dynamic(() => import('@/app/ui/Master/editor'), { ssr: false });
 import UploadJD from "@/app/ui/Account/baidang/vieclam/upload_jd"
 import { formatCurrency, formatNumber } from "@/app/lib/utils"
-
 const { RangePicker } = DatePicker;
 
 interface Option {

@@ -26,6 +26,7 @@
       "@util" : ["./app/lib/utils"] ,
       "@action/*" : ["./app/lib/actions/*"] ,
       "@service/*" : ["./app/services/*"] ,
+      "@data" : ["./app/data/index.ts"]
     }
   },
   "include": [

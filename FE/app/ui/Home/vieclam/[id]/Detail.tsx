@@ -1,12 +1,13 @@
 import Image from 'next/image'
-import { JobInfo } from '@/app/lib/types/vieclam'
+import { Post } from '@type/master'
 import { FiArrowRight } from 'react-icons/fi';
 import { Button } from 'antd';
 import { AiOutlineLike, AiOutlineComment } from "react-icons/ai";
 import ReportModal from '@ui/Master/report-modal'
+import { stringityAddress, formatNumber } from "@util"
 
 interface DetailProps {
-  info: JobInfo;
+  info: Post;
 }
 
 export default async function Detail({ info }: DetailProps) {
@@ -14,9 +15,9 @@ export default async function Detail({ info }: DetailProps) {
     <div className='bg-white border rounded-lg p-5 dark:text-dark-text dark:bg-dark-secondary dark:border-dark'>
       <div className='flex items-center' >
         <Image
-          src={info.avatar} width={50} height={50} className='w-[40px] border-2 aspect-square rounded-full ' alt='Logo' >
+          src={info.user.avatar_image?.url} width={50} height={50} className='w-[40px] border-2 aspect-square rounded-full ' alt='Logo' >
         </Image>
-        <span className='ml-2 text-base font-bold'>{info.user_upload}</span>
+        <span className='ml-2 text-base font-bold'>{info.user.full_name}</span>
         <div className='flex flex-grow justify-end'>
           <ReportModal />
         </div>
@@ -26,67 +27,68 @@ export default async function Detail({ info }: DetailProps) {
       </div>
       <div className='flex'>
         <div className='w-9/12'>
-          <p className='text-lg font-bold mb-1'>Thông Tin Công Ty</p>
+          <p className='text-[16px] font-bold mb-3'>Thông Tin Công Ty</p>
           <div className='flex text-base mb-2 items-center'>
-            <p className='font-bold mr-1'>Công Ty : </p>
-            <p>{info.company}</p>
+            <p className='font-bold w-2/12'>Công Ty</p>
+            <p>{info?.job_post?.company_name}</p>
           </div>
           <div className='flex text-base items-center' >
-            <p className='font-bold mr-1'>Địa Chỉ :</p>
-            <p>{info.address}</p>
+            <p className='font-bold w-2/12'>Địa Chỉ</p>
+            <p>{info?.job_post?.address && stringityAddress(info?.job_post?.address)}</p>
           </div>
         </div>
         <div className='w-3/12 flex justify-end items-center'>
-          <Image src={info.company_logo} width={200} height={100} className='w-full h-fit' alt='Logo' ></Image>
+          <Image src={info?.job_post?.company_cover_image.url ?? ""} width={200} height={100} className='w-full h-fit' alt='Logo' ></Image>
         </div>
       </div>
 
       <div className='mt-5'>
-        <p className='text-lg font-bold mb-1'>Thông tin Tuyển Dụng</p>
+        <p className='text-[16px] font-bold mb-3'>Thông tin Tuyển Dụng</p>
         <div className='flex'>
           <div className='flex text-base mb-2 items-center w-1/2'>
-            <p className='font-bold w-fit mr-2'>Ngành Nghề : </p>
-            <p>{info.career}</p>
+            <p className='font-bold w-6/12'>Ngành Nghề</p>
+            <p>{info?.job_post?.career.name}</p>
           </div>
           <div className='flex text-base mb-2 items-center w-1/2'>
-            <p className='font-bold mr-2'>Vị Trí : </p>
-            <p>{info.level}</p>
+            <p className='font-bold w-6/12'>Vị Trí</p>
+            <p>{info?.job_post?.career.name}</p>
           </div>
         </div>
         <div className='flex'>
           <div className='flex text-base mb-2 items-center w-1/2'>
-            <p className='font-bold w-fit mr-2'>Hình Thức : </p>
-            <p>{info.form}</p>
+            <p className='font-bold w-6/12'>Hình Thức</p>
+            <p>{info?.job_post?.form}</p>
           </div>
           <div className='flex text-base mb-2 items-center w-1/2'>
-            <p className='font-bold mr-2'>Số Lượng : </p>
-            <p>{info.quantity}</p>
+            <p className='font-bold w-6/12'>Số Lượng</p>
+            <p>{info?.job_post?.quantity}</p>
           </div>
         </div>
         <div className='flex'>
           <div className='flex text-base mb-2 items-center w-1/2'>
-            <p className='font-bold w-fit mr-2'>Kinh Nghiệm : </p>
-            <p>{info.experience}</p>
+            <p className='font-bold w-6/12'>Kinh Nghiệm</p>
+            <p>{info?.job_post?.experience.name}</p>
           </div>
           <div className='flex text-base mb-2 items-center w-1/2'>
-            <p className='font-bold mr-2'>Mức Lương : </p>
-            <p>{info.salary}</p>
+            <p className='font-bold w-6/12'>Mức Lương</p>
+            <p>{(info?.job_post?.salary_from && info?.job_post?.salary_to) ? `${formatNumber(info?.job_post?.salary_from)} - ${formatNumber(info?.job_post?.salary_from)}` : "Thoả Thuận"}</p>
+
           </div>
         </div>
-        <div className='flex text-base mb-2 items-center w-full'>
-          <p className='font-bold w-fit mr-2'>Thời gian tuyển dụng : </p>
-          <p>{info.apply_from} đến {info.apply_to}</p>
+        <div className='flex text-base w-full'>
+          <p className='font-bold w-3/12'>Thời gian tuyển dụng</p>
+          <p>
+            {/* { info?.job_post?.apply_date_from?.toLocaleString("vi") } */}
+          {info?.job_post?.apply_date_from?.toLocaleDateString('en-GB')} - {info?.job_post?.apply_date_to?.toLocaleDateString('en-GB')}
+          
+          </p>
         </div>
       </div>
 
       <div className='mt-5'>
-        <p className='text-lg font-bold mb-1'>Mô Tả Công Việc</p>
+        <p className='text-lg font-bold mb-3'>Mô Tả Công Việc</p>
         <span>
-          Hỗ trợ các dự án hiện tại của công ty theo sự hướng dẫn của quản lý và đồng nghiệp.
-          Tham gia vào các buổi họp nhóm và đóng góp ý kiến, ý tưởng sáng tạo.
-          Thực hiện nghiên cứu, thu thập và phân tích dữ liệu liên quan đến dự án.
-          Hỗ trợ các công việc hành chính, tổ chức và quản lý tài liệu.
-          Thực hiện các nhiệm vụ khác theo yêu cầu nhằm hỗ trợ hoạt động hàng ngày của công ty.
+          {info?.job_post?.job_description}
         </span>
         <div className='font-lg text-medium-blue my-2 cursor-pointer'>
           <p>Tải File Mô Tả Công Việc</p>
@@ -95,27 +97,17 @@ export default async function Detail({ info }: DetailProps) {
       </div>
 
       <div className='mt-5'>
-        <p className='text-lg font-bold mb-1'>Yêu Cầu</p>
+        <p className='text-lg font-bold mb-3'>Yêu Cầu</p>
         <span>
-          Trên 1-2 năm kinh nghiệm làm việc với NodeJS và ReactJS
-          Có kinh nghiệm làm việc với mô hình Agile; làm việc với Database NoSQL: MongoDB hoặc Firestore
-          Có kinh nghiệm với điện toán đám mây, một trong: Google Cloud, Firebase, AWS, kiến trúc hệ thống microservice
-          Khả năng đọc hiểu Tiếng Anh tốt, độ tuổi từ 23 - 30.
+          {info?.job_post?.requirement}
         </span>
 
       </div>
 
       <div className='mt-5'>
-        <p className='text-lg font-bold mb-1'>Phúc Lợi</p>
+        <p className='text-lg font-bold mb-3'>Phúc Lợi</p>
         <span>
-          Được làm việc với những công nghệ hot nhất
-          Tham gia xây dựng hệ thống lớn
-          Được cung cấp thiết bị làm việc đầy đủ, hiện đại
-          Được hưởng đầy đủ chế độ phúc lợi như BHXH, thưởng lễ Tết, lương tháng 13, du lịch hàng năm...
-          Phụ cấp gửi xe, phụ cấp đi lại,..
-          Văn phòng làm việc tiện nghi; cung cấp trà, cafe và có tủ đồ ăn uống, bánh kẹo hàng ngày
-          Tham gia các CLB chạy, đá bóng, boardgame, văn nghệ ...
-          Nghỉ T7, CN và nhiều chế độ cực hấp dẫn.oán đám mây, một trong: Google Cloud, Firebase, AWS, kiến trúc hệ thống microservice
+          {info?.job_post?.benefits}
         </span>
       </div>
 
