@@ -1,6 +1,6 @@
 'use client';
 import Editor from "@/app/ui/Master/editor"
-import type { CascaderProps, GetProp, UploadFile, UploadProps } from 'antd';
+import type { CascaderProps } from 'antd';
 import {
   Button,
   Cascader,
@@ -12,40 +12,22 @@ import {
 } from 'antd';
 import UserAvatar from '@/app/ui/Home/anuong/UserAvatar';
 import { UserType } from '@/app/lib/types/anuong';
-import { Address } from '@/app/lib/types/master';
 import { useState } from 'react';
 import UploadImage from "@/app/ui/Master/UploadImage";
+import {OptionType} from '@/app/lib/types/anuong'
 
-interface DataNodeType {
-    value: string;
-    label: string;
-    children?: DataNodeType[];
+
+interface AddressesNodeType {
+    address : string
+    options: OptionType[]
 }
 
 
-const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Address}) => {
+const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: AddressesNodeType}) => {
     const [cascadeData, setCascadeData] = useState(['']);
 
-
-      const address: CascaderProps<DataNodeType>['options'] = [
-        {
-            value: alladdress.province?.name.toLowerCase() || '',
-            label: alladdress.province?.name || '',
-            children: [
-                {
-                    value: alladdress.district?.name.toLowerCase() || '',
-                    label: alladdress.district?.name || '',
-                    children: [
-                        {
-                            value: alladdress.ward?.name.toLowerCase() || '',
-                            label: alladdress.ward?.name || '',
-                        },
-                    ],
-                },
-            ],
-        },
-    ];
-
+    console.log(alladdress)
+    const options = alladdress.options
     const onFinish = (values: any) => {
         console.log(cascadeData);
         const cascadeValue = cascadeData.join(', ')
@@ -132,7 +114,7 @@ const FoodFormCreate = ({ user, alladdress }: { user: UserType, alladdress: Addr
                             ]}
                         >
                             <Cascader
-                                options={address}
+                                options={options}
                                 onChange={(value) => {
                                     setCascadeData(value);
                                 }}
