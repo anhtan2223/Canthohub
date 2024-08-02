@@ -18,7 +18,7 @@ export default function Page() {
                 <Breadcrumbs breadcrumbs={breadcrumbs} />
             </div>
             <div className="flex">
-                <div className="w-8/12 ">
+                <div className="w-full lg:w-8/12 ">
                     <div className="bg-white border rounded-lg p-5 dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
                         <NewsDetail post={newsPostSeeding}/>
                     </div>
@@ -26,7 +26,7 @@ export default function Page() {
                         <RelatedNews />
                     </div>
                 </div>
-                <div className='w-4/12 ml-4'>
+                <div className='hidden lg:block w-4/12 ml-4'>
                     <div className='mb-5 rounded-lg '>
                         <Events></Events>
                     </div>

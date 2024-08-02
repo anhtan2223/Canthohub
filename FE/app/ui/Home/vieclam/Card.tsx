@@ -25,12 +25,12 @@ export default function Card( { post = jobPostSeeding ,  isSetting=false }:{
 
     return (
       <>
-        <div className='flex hover:cursor-pointer hover:border-black hover:border-2 items-center mt-4 gap-x-8 dark:text-dark-text dark:bg-dark-secondary dark:border-dark  w-full border border-border-color rounded-lg' onClick={ onClick }>
-            <div className='image w-4/12'>
+        <div className='flex flex-col md:flex-row hover:cursor-pointer hover:border-black hover:border-2 items-center mt-4 gap-x-8 dark:text-dark-text dark:bg-dark-secondary dark:border-dark  w-full border border-border-color rounded-lg' onClick={ onClick }>
+            <div className='image w-full md:w-4/12'>
                 <Image src={info?.company_cover_image.url ?? ""} width={250} height={100} className='w-full' alt='Logo' >
                 </Image>
             </div>
-            <div className='w-8/12'>
+            <div className='w-full p-4 md:p-0 md:w-8/12'>
                 <h3 className="mt-3 flex title text-xl font-bold">
                     <div className='w-10/12'>
                         {post.title}
