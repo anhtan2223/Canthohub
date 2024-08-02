@@ -18,17 +18,17 @@ export default function Page() {
         <>
             <Breadcrumbs breadcrumbs={breadcrumbs} />
             <div className='flex'>
-                <div className='w-8/12'>
+                <div className='w-full lg:w-8/12'>
                     <FoodDetail user={user} />
                     <div className='mt-6'>
                         <RelatedNews />
                     </div>
                 </div>
-                <div className='w-4/12 ml-4'>
-                    <div className='mb-5 border rounded-lg '>
+                <div className='hidden lg:block w-4/12 ml-4'>
+                    <div className='mb-5 border dark:text-dark-text dark:bg-dark-secondary dark:border-dark rounded-lg '>
                         <Events></Events>
                     </div>
-                    <div className='mt-5 border rounded-lg'>
+                    <div className='mt-5 border dark:text-dark-text dark:bg-dark-secondary dark:border-dark rounded-lg'>
                         <EventSection />
                     </div>
                 </div>

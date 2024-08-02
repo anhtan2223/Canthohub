@@ -1,3 +1,5 @@
+import {Address} from "@type/master"
+
 export function truncateText(text: string, wordLimit: number) {
     const words = text.split(' ');
     if (words.length <= wordLimit) {
@@ -13,4 +15,7 @@ export function formatNumber(value: any) {
 
 export function formatCurrency(value: any) {
     return value?.replace(/\./g, '')
+}
+export function stringityAddress(value : Address){
+    return `${value.address} , ${value.ward?.name} , ${value.district?.name} , ${value.province?.name}` 
 }

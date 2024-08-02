@@ -48,97 +48,99 @@ export default function CreateForm() {
     ];
   return <div>
     <Breadcrumbs breadcrumbs={breadcrumbs}/>
-    <Form
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      autoComplete="off"
-      labelAlign='left'
-      className='bg-white w-full border flex flex-col rounded-lg p-8 gap-3 '
-    >
-      <div className='flex relative w-full h-fit items-center mb-6'>
-        <div className="flex-grow flex items-center">
-          <Avatar icon={<UserOutlined />} />
-          <div className='font-sm ml-5 font-medium'>UserName</div>
+    <div className='p-5 bg-white w-full border rounded-lg dark:text-dark-text dark:bg-dark-secondary dark:border-dark'>
+      <Form
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
+        labelAlign='left'
+        className='flex flex-col gap-3 '
+      >
+        <div className='flex relative w-full h-fit items-center mb-6'>
+          <div className="flex-grow flex items-center">
+            <Avatar icon={<UserOutlined />} />
+            <div className='font-sm ml-5 font-medium'>UserName</div>
+          </div>
+          <div className='flex gap-3 items-center'>
+            <Button type='primary' htmlType="submit" ghost className='w-20'>Tạo Mới</Button>
+            <Button danger className='w-20'>Huỷ</Button>
+          </div>
         </div>
-        <div className='flex gap-3 items-center'>
-          <Button type='primary' htmlType="submit" ghost className='w-20'>Tạo Mới</Button>
-          <Button danger className='w-20'>Huỷ</Button>
+        <div className='flex w-full items-center'>
+        <div className='flex font-bold w-1/3 text-[16px] leading-6 mb-4 mr-8'>
+          <p className='mx-2 text-red-600'>*</p>
+          Tiêu Đề Bài Viết
         </div>
-      </div>
-      <div className='flex w-full items-center'>
-      <div className='flex font-bold w-1/3 text-[16px] leading-6 mb-4 mr-8'>
-        <p className='mx-2 text-red-600'>*</p>
-        Tiêu Đề Bài Viết
-      </div>
-        <Form.Item
+          <Form.Item
+              colon={false}
+              name="title"
+              labelAlign='left'
+              rules={[{ required: true, message: 'Vui Lòng Nhập Tiêu Đề Cho Bài Viết' }]}
+              className='w-full '
+          >
+              <Input placeholder='Tiêu Đề Cho Bài Tin Tức' className='text-base h-[28px] rounded-lg' />
+          </Form.Item>
+        </div>
+
+        <div>
+          <div className='font-bold flex text-[16px] leading-6 mb-4'> <p className='mx-2 text-red-600'>*</p>Nội Dung Bài Viết</div>
+          <Form.Item
+            name="content"
+            labelAlign='right'
+            wrapperCol={{ span: 24 }}
+            valuePropName="content"
+            getValueFromEvent={(e: { content: string }) => e}
+            rules={[{
+              required: true,
+              message: 'Vui Lòng Nhập Mô Tả cho Bài Đăng'
+            }
+            ]}
+          >
+            <Editor></Editor>
+          </Form.Item>
+          <Form.Item
+                      name="images"
+                      className="w-full"
+                      valuePropName="info"
+                      getValueFromEvent={(e: { info: any }) => e}
+                  >
+                      <UploadImage width={300} height={300}></UploadImage>
+                  </Form.Item>
+        </div>
+
+        <div className='flex w-full items-center'>
+          <p className='font-bold w-1/3 text-[16px] leading-6 mb-4 mr-8'>Thẻ Cho Bài Viết</p>
+          <Form.Item
+            wrapperCol={{span:24}}
             colon={false}
-            name="title"
-            labelAlign='left'
-            rules={[{ required: true, message: 'Vui Lòng Nhập Tiêu Đề Cho Bài Viết' }]}
-            className='w-full '
-        >
-            <Input placeholder='Tiêu Đề Cho Bài Tin Tức' className='text-base h-[28px] rounded-lg' />
-        </Form.Item>
-      </div>
+            name="tag"
+            className='w-full'
+          >
+              <Select 
+                  mode='multiple'
+                  allowClear 
+                  placeholder='Thẻ Cho Bài Viết' 
+                  className='h-fit text-base rounded-lg'>
+                  {tagOpt.map((i) => {
+                    return <Select.Option key={i} value={i}>{i}</Select.Option>
+                  })}
+              </Select>
+          </Form.Item>
+        </div>
 
-      <div>
-        <div className='font-bold flex text-[16px] leading-6 mb-4'> <p className='mx-2 text-red-600'>*</p>Nội Dung Bài Viết</div>
-        <Form.Item
-          name="content"
-          labelAlign='right'
-          wrapperCol={{ span: 24 }}
-          valuePropName="content"
-          getValueFromEvent={(e: { content: string }) => e}
-          rules={[{
-            required: true,
-            message: 'Vui Lòng Nhập Mô Tả cho Bài Đăng'
-          }
-          ]}
-        >
-          <Editor></Editor>
-        </Form.Item>
-        <Form.Item
-                    name="images"
-                    className="w-full"
-                    valuePropName="info"
-                    getValueFromEvent={(e: { info: any }) => e}
-                >
-                    <UploadImage width={300} height={300}></UploadImage>
-                </Form.Item>
-      </div>
-
-      <div className='flex w-full items-center'>
-        <p className='font-bold w-1/3 text-[16px] leading-6 mb-4 mr-8'>Thẻ Cho Bài Viết</p>
-        <Form.Item
-          wrapperCol={{span:24}}
-          colon={false}
-          name="tag"
-          className='w-full'
-        >
-            <Select 
-                mode='multiple'
-                allowClear 
-                placeholder='Thẻ Cho Bài Viết' 
-                className='h-fit text-base rounded-lg'>
-                {tagOpt.map((i) => {
-                  return <Select.Option key={i} value={i}>{i}</Select.Option>
-                })}
-            </Select>
-        </Form.Item>
-      </div>
-
-      <div className='flex w-full items-center'>
-        <p className='font-bold w-1/3 text-[16px] leading-6 mb-4 mr-8'>Đường Dẫn Facebook</p>
-        <Form.Item
-          wrapperCol={{span:24}}
-          colon={false}
-          name="facebook"
-          className='w-full'
-        >
-          <Input  placeholder='Đường Dẫn Facebook' className='text-base w-full h-[32px] rounded-lg'></Input>
-        </Form.Item>
-      </div>
-    </Form>
+        <div className='flex w-full items-center'>
+          <p className='font-bold w-1/3 text-[16px] leading-6 mb-4 mr-8'>Đường Dẫn Facebook</p>
+          <Form.Item
+            wrapperCol={{span:24}}
+            colon={false}
+            name="facebook"
+            className='w-full'
+          >
+            <Input  placeholder='Đường Dẫn Facebook' className='text-base w-full h-[32px] rounded-lg'></Input>
+          </Form.Item>
+        </div>
+      </Form>
+    </div>
 
   </div>
 }

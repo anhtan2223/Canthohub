@@ -1,10 +1,11 @@
 'use client'
 import Breadcrumbs from "@ui/Master/breadcrums"
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { Button, DatePicker, GetProp, Image, Input, Upload, UploadProps } from 'antd';
+import { Button, DatePicker, Divider, GetProp, Image, Input, Upload, UploadProps } from 'antd';
 import { Form } from "antd";
 import { useState } from "react";
 import ImgCrop from 'antd-img-crop';
+import ChangePassWordModal from '@ui/Account/taikhoan/ChangePasswordModal'
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 
@@ -62,11 +63,12 @@ export default function Account() {
             labelCol={{span: 6}}
             labelAlign='left'
         >
-            <div className="grid grid-cols-12 gap-4">
-                <div className="site-left col-span-8">
-                    <div className="bg-white">
-                        <div className="py-3 px-2 bg-medium-blue">
-                            <h2 className="text-white font-semibold text-lg">Cài đặt tài khoản</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+                <div className="site-left lg:col-span-8">
+                    <div className="bg-white dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
+                        <div className=" flex justify-between py-3 px-5">
+                            <h2 className="font-semibold text-lg">Cài đặt tài khoản</h2>
+                            <Button type="primary" htmlType="submit">Xác nhận</Button>
                         </div>
                         <div className="p-5">
                             <Form.Item
@@ -99,52 +101,19 @@ export default function Account() {
                             >
                                 <DatePicker onChange={()=>{}} />
                             </Form.Item>
+                            <Divider></Divider>
                             <Form.Item
-                                name="password"
                                 label="Mật khẩu"
-                                rules={[
-                                {
-                                    required: true,
-                                    message: 'Vui lòng nhập mật khẩu!',
-                                },
-                                ]}
-                                hasFeedback
                             >
-                                <Input.Password />
+                                <ChangePassWordModal/>
                             </Form.Item>
-                            <Form.Item
-                                name="confirm"
-                                label="Xác nhận"
-                                dependencies={['password']}
-                                hasFeedback
-                                rules={[
-                                {
-                                    required: true,
-                                    message: 'Nhập lại mật khẩu!',
-                                },
-                                ({ getFieldValue }) => ({
-                                    validator(rule, value) {
-                                    if (!value || getFieldValue('password') === value) {
-                                        return Promise.resolve();
-                                    }
-
-                                    return Promise.reject('Mật khẩu không khớp!');
-                                    },
-                                }),
-                                ]}
-                            >
-                                <Input.Password />
-                            </Form.Item>
-                            <div className="flex justify-end">
-                                <Button type="primary" htmlType="submit">Xác nhận</Button>
-                            </div>
                         </div>
                     </div>
                 </div>
-                <div className="site-right col-span-4 rounded">
-                    <div className="bg-white">
-                        <div className="py-3 px-2 bg-medium-blue">
-                            <h2 className="text-white font-semibold text-lg text-center">Thông tin cá nhân</h2>
+                <div className="site-right w-full lg:col-span-4 rounded">
+                    <div className="bg-white dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
+                        <div className="py-3 px-2">
+                            <h2 className=" font-semibold text-lg text-center">Ảnh đại diện</h2>
                         </div>
                         <div className="flex justify-center items-center flex-col p-3">
                             <ImgCrop cropShape="round" quality={1} modalTitle="Edit Image" modalWidth={800}>
@@ -161,7 +130,6 @@ export default function Account() {
                             </ImgCrop>
                             <Input name="email" disabled value={"ABC@example.commmm"} className="text-center" variant="borderless" />
                         </div>
-                        
                     </div>
                 </div>
             </div>

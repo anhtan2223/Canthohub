@@ -10,6 +10,7 @@ import { usePathname } from 'next/navigation';
 import Search from '@/app/ui/Master/MasterSearch'
 import { Suspense } from 'react';
 import { useTheme } from '@/app/themeProvider';
+import MobileMenu from '@ui/Master/MobileMenu'
 
 const info = [
   { name: "TIN TỨC", href: "/tintuc" },
@@ -24,17 +25,18 @@ export default function Header() {
 
   return (
     <>
-      <div className='h-fit w-3/4 flex mx-auto'>
-        <div className='w-1/3 flex items-center'>
+      <div className='h-fit w-11/12 lg:w-3/4 flex mx-auto'>
+        <div className='w-1/2 lg:w-1/3 flex items-center'>
+          <div className="mr-3"><MobileMenu/></div>
           <Link href={'/'}>
             <Image
-              src="/Logo.png" width={180} height={100} className='w-auto h-auto' alt='Logo' >
+              src="/Logo.png" width={180} height={100} className='w-full h-auto' alt='Logo' >
             </Image>
           </Link>
         </div>
 
-        <div className='flex items-center w-2/3 justify-end '>
-          <div className='flex'>
+        <div className='flex items-center w-1/2 lg:w-2/3 justify-end '>
+          <div className='flex hidden lg:block'>
             <Suspense fallback={<div>Loading...</div>}>
               <Search className='h-[40px]' placeholder="Tìm Kiếm"></Search>
             </Suspense>
@@ -43,7 +45,9 @@ export default function Header() {
               <Button className='bg-medium-blue h-[40px] ml-5 text-white'>Đăng Nhập</Button>
             </div>
           </div>
-          <Menu />
+          <div className="hidden lg:block">
+            <Menu/>
+          </div>
           <div className='w-[40px] h-[40px] flex items-center ml-5'>
             <Button
               shape="circle"
@@ -55,12 +59,12 @@ export default function Header() {
         </div>
       </div>
 
-      <div className='h-fit bg-medium-blue'>
-        <div className='flex h-full w-3/4 mx-auto text-white'>
+      <div className='w-full z-40 fixed bottom-[0] lg:relative h-fit bg-medium-blue'>
+        <div className='flex h-full w-full justify-center lg:justify-start lg:w-3/4 mx-auto text-white'>
           {info.map(i => {
             return <Link href={i.href} key={i.name} className={
               clsx(
-                'w-fit h-full py-2 px-8 flex items-center justify-center hover:bg-dark-blue',
+                'w-fit h-full py-2 px-4 lg:px-8 flex items-center justify-center hover:bg-dark-blue',
                 (path == i.href) && 'bg-dark-blue'
               )
             }>

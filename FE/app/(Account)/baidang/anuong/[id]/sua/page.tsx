@@ -4,7 +4,7 @@
 import dynamic from 'next/dynamic';
 import Breadcrumbs from "@ui/Master/breadcrums";
 
-const FoodFormEdit = dynamic( () => import('@ui/Account/baidang/anuong/FoodFormEdit' ), { ssr: false } );
+const FoodFormEdit = dynamic(() => import('@ui/Account/baidang/anuong/FoodFormEdit'), { ssr: false });
 
 function Home() {
     const user = {
@@ -65,15 +65,13 @@ function Home() {
         ],
         address: validAddress
     };
-    
-  return (
-      <>
-        <Breadcrumbs breadcrumbs={breadcrumbs}/>
-        <div className="bg-white p-6 rounded-md space-y-6 flex-grow">
+
+    return (
+        <>
+            <Breadcrumbs breadcrumbs={breadcrumbs} />
             <FoodFormEdit user={user} alladdress={validAddress} />
-        </div>
-      </>
-  );
+        </>
+    );
 }
 
 export default Home;

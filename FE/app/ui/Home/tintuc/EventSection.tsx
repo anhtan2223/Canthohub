@@ -5,7 +5,7 @@ import Image from 'next/image'
 const EventsSection = () => {
     return (
         <div className="space-y-6">
-            <div className="bg-white rounded-md overflow-hidden px-6 pt-6 pb-6">
+            <div className="bg-white dark:text-dark-text dark:bg-dark-secondary dark:border-dark rounded-md overflow-hidden px-6 pt-6 pb-6">
                 <div className='mb-4'>
                     <div className="relative grid grid-cols-2 rounded-md overflow-hidden">
                         <Image width={200} height={150} src="/Rectangle 11.png" alt="Check-in Location 1" className="w-full h-32 object-cover col-span-1" />

@@ -17,9 +17,7 @@ function Edit() {
     return (
         <>
             <Breadcrumbs breadcrumbs={breadcrumbs} />
-            <div className="bg-white p-6 rounded-md space-y-6 flex-grow">
-                <FormEdit user={user} />
-            </div>
+            <FormEdit user={user} /> 
         </>
     );
 }

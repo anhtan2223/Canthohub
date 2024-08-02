@@ -1,3 +1,4 @@
+'use client'
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import { ClassicEditor, Bold, Essentials, Italic, Paragraph, Undo, Heading, List, Underline } from 'ckeditor5';
 import 'ckeditor5/ckeditor5.css';

@@ -18,7 +18,7 @@ const config: Config = {
         'dark-secondary': 'rgb(36, 48, 63)' // Dark mode secondary color
       },
       fontSize: {
-        base: '14px',
+        base: '0.875rem',
       },
       colors: {
         'dark-blue': 'rgba(15, 33, 103, 1)',
@@ -28,11 +28,10 @@ const config: Config = {
         'text': 'rgba(137, 137, 137, 1)',
         'dark-text': 'rgb(174, 183, 192)', // Dark mode text color
         'dark-text-secondary': 'rgb(174, 183, 192)', // Dark mode text color
-        'dark': '#4A5568', // Dark mode border color
+        'dark': 'rgb(61, 77, 96)', // Dark mode border color
       },
       borderColor: {
         'border-color': 'rgba(217, 217, 217, 1)',
-        'dark-color': 'rgb(61, 77, 96)', // Dark mode border color
       },
     },
     keyframes: {
@@ -43,7 +42,9 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [
+    require('@tailwindcss/forms') 
+  ],
 };
 export default config;
 

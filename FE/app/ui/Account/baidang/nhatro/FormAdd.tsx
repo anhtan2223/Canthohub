@@ -1,6 +1,3 @@
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import { ClassicEditor, Bold, Essentials, Italic, Paragraph, Undo, Heading, List, Underline } from 'ckeditor5';
-import 'ckeditor5/ckeditor5.css';
 import { Button, Col, Form, Input, InputNumber, Row, Select, Upload } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import UserAvatar from '@/app/ui/Home/anuong/UserAvatar';
@@ -8,6 +5,8 @@ import { UserType } from '@/app/lib/types/anuong';
 import MapComponent from '@/app/ui/Master/Map';
 import { useState, useEffect } from 'react';
 import type { UploadFile, UploadProps } from 'antd';
+import dynamic from 'next/dynamic';
+const Editor = dynamic(() => import('@/app/ui/Master/editor'), { ssr: false });
 
 interface Option {
     value: string;
@@ -198,7 +197,7 @@ const FormAdd = ({ user }: { user: UserType }) => {
                 ward: selectedWard,
             }}
             autoComplete="off"
-            className="space-y-4 border rounded-lg p-4 md:p-6 lg:p-8"
+            className=" md:p-6 lg:p-8"
             onFinish={onFinish}
         >
             <div className="flex flex-col md:flex-row justify-between items-center mb-4">
@@ -305,20 +304,11 @@ const FormAdd = ({ user }: { user: UserType }) => {
             <Form.Item
                 label="Mô tả"
                 name="description"
-                rules={[{ required: true }]}
+                valuePropName="content"
+                getValueFromEvent={(e: { content: string }) => e}
+                rules={[{ required: true , message : "Vui Lòng Nhập Mô Tả"}]}
             >
-                <CKEditor
-                    editor={ClassicEditor}
-                    config={{
-                        plugins: [Essentials, Paragraph, Bold, Italic, Undo, Heading, List, Underline],
-                        toolbar: ['heading', '|', 'bold', 'italic', 'underline', '|', 'undo', 'redo', 'numberedList', 'bulletedList'],
-                    }}
-                    data={editorData}
-                    onChange={(event, editor) => {
-                        const data = editor.getData();
-                        setEditorData(data);
-                    }}
-                />
+                <Editor></Editor>
             </Form.Item>
 
             <Form.Item name="files">

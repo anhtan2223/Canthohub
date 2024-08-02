@@ -188,195 +188,196 @@ const FormAdd = ({ user }: { user: UserType }) => {
     const wardName = selectedWard ? wardNames[selectedWard] : '';
 
     return (
-        <Form
-            name="basic"
-            layout="vertical"
-            initialValues={{
-                remember: true,
-                resname: 'Nhà trọ sinh viên',
-                pricefrom: 2500000,
-                area: 15,
-                people: 2,
-                city: selectedCity,
-                district: selectedDistrict,
-                ward: selectedWard,
-                address: '44/23/16 Võ Trường Toản',
-            }}
-            autoComplete="off"
-            className="space-y-4 border rounded-lg p-4 md:p-6 lg:p-8"
-            onFinish={onFinish}
-        >
-            <div className="flex flex-col md:flex-row justify-between items-center mb-4">
-                <div className="mb-4 md:mb-0">
-                    <UserAvatar user={user} />
-                </div>
-                <div className="flex flex-col md:flex-row">
-                    <Button type='primary' className='mb-2 md:mb-0 md:mr-3 w-full md:w-24' htmlType='submit'>Lưu</Button>
-                    <Button danger className='w-full md:w-24'>Hủy</Button>
-                </div>
-            </div>
-            <Row gutter={24} className="flex flex-col md:flex-row">
-                <Col xs={24} md={12}>
-                    <Form.Item
-                        label="Tiêu đề"
-                        name="resname"
-                        rules={[{ required: true, message: 'Tiêu đề không hợp lệ! Vui lòng nhập lại' }]}
-                        className="w-full"
-                    >
-                        <Input className="h-[32px] rounded" />
-                    </Form.Item>
-                    <Row gutter={16}>
-                        <Col xs={24} sm={12} md={8} className="mb-4">
-                            <Form.Item
-                                label="Giá(VND)"
-                                name='pricefrom'
-                                rules={[
-                                    { required: true, message: 'Cần nhập giá từ!' },
-                                    {
-                                        type: 'number',
-                                        min: 0,
-                                        message: 'Giá nhập phải là số dương!',
-                                    },
-                                ]}
-                            >
-                                <InputNumber placeholder="Giá từ..." className='h-[32px] w-full rounded' />
-                            </Form.Item>
-                        </Col>
-                        <Col xs={24} sm={12} md={8} className="mb-4">
-                            <Form.Item
-                                label="Diện tích(m²)"
-                                name='area'
-                                rules={[{ required: true, message: 'Cần nhập diện tích!' }]}
-                            >
-                                <InputNumber placeholder="Diện tích (m²)" className='h-[32px] w-full rounded' />
-                            </Form.Item>
-                        </Col>
-                        <Col xs={24} sm={12} md={8} className="mb-4">
-                            <Form.Item
-                                label="Số người"
-                                name='people'
-                                rules={[{ required: true, message: 'Cần nhập số người!' }]}
-                            >
-                                <InputNumber placeholder="Số người" className='h-[32px] w-full rounded' />
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                    <Row gutter={24}>
-                        <Col span={8}>
-                            <Form.Item label="Tỉnh/Thành phố" name="city">
-                                <Select value={selectedCity} onChange={handleCityChange}>
-                                    {cities.map(city => (
-                                        <Select.Option key={city.value} value={city.value}>{city.label}</Select.Option>
-                                    ))}
-                                </Select>
-                            </Form.Item>
-                        </Col>
-                        <Col span={8}>
-                            <Form.Item label="Quận/Huyện" name="district">
-                                <Select value={selectedDistrict} onChange={handleDistrictChange}>
-                                    {selectedCity && districts[selectedCity]?.map(district => (
-                                        <Select.Option key={district.value} value={district.value}>{district.label}</Select.Option>
-                                    ))}
-                                </Select>
-                            </Form.Item>
-                        </Col>
-                        <Col span={8}>
-                            <Form.Item label="Phường/Xã" name="ward">
-                                <Select value={selectedWard} onChange={handleWardChange}>
-                                    {selectedDistrict && wards[selectedDistrict]?.map(ward => (
-                                        <Select.Option key={ward.value} value={ward.value}>{ward.label}</Select.Option>
-                                    ))}
-                                </Select>
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                    <Form.Item
-                        label="Địa chỉ cụ thể"
-                        name="address"
-                        rules={[{ required: true, message: 'Vui lòng nhập địa chỉ' }]}>
-                        <Input className="h-[32px] rounded" value={addressDetails} onChange={handleAddressChange} />
-                    </Form.Item>
-                    <Form.Item
-                        label="Đường dẫn Facebook"
-                        name="fblink"
-                    >
-                        <Input className="h-[32px] rounded" />
-                    </Form.Item>
-                </Col>
-                <Col xs={24} md={12}>
-                    <MapComponent city={cityName} district={districtName} ward={wardName} details={addressDetails} />
-                </Col>
-            </Row>
-            <Form.Item
-                label="Mô tả"
-                name="description"
-                rules={[{ required: true }]}
+        <div className="space-y-4 border bg-white rounded-lg p-4 md:p-6 lg:p-8">
+            <Form
+                name="basic"
+                layout="vertical"
+                initialValues={{
+                    remember: true,
+                    resname: 'Nhà trọ sinh viên',
+                    pricefrom: 2500000,
+                    area: 15,
+                    people: 2,
+                    city: selectedCity,
+                    district: selectedDistrict,
+                    ward: selectedWard,
+                    address: '44/23/16 Võ Trường Toản',
+                }}
+                autoComplete="off"
+                onFinish={onFinish}
             >
-                <CKEditor
-                    editor={ClassicEditor}
-                    config={{
-                        plugins: [Essentials, Paragraph, Bold, Italic, Undo, Heading, List, Underline],
-                        toolbar: ['heading', '|', 'bold', 'italic', 'underline', '|', 'undo', 'redo', 'numberedList', 'bulletedList'],
-                    }}
-                    data={editorData}
-                    onChange={(event, editor) => {
-                        const data = editor.getData();
-                        setEditorData(data);
-                    }}
-                />
-            </Form.Item>
+                <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+                    <div className="mb-4 md:mb-0">
+                        <UserAvatar user={user} />
+                    </div>
+                    <div className="flex flex-col md:flex-row">
+                        <Button type='primary' className='mb-2 md:mb-0 md:mr-3 w-full md:w-24' htmlType='submit'>Lưu</Button>
+                        <Button danger className='w-full md:w-24'>Hủy</Button>
+                    </div>
+                </div>
+                <Row gutter={24} className="flex flex-col md:flex-row">
+                    <Col xs={24} md={12}>
+                        <Form.Item
+                            label="Tiêu đề"
+                            name="resname"
+                            rules={[{ required: true, message: 'Tiêu đề không hợp lệ! Vui lòng nhập lại' }]}
+                            className="w-full"
+                        >
+                            <Input className="h-[32px] rounded" />
+                        </Form.Item>
+                        <Row gutter={16}>
+                            <Col xs={24} sm={12} md={8} className="mb-4">
+                                <Form.Item
+                                    label="Giá(VND)"
+                                    name='pricefrom'
+                                    rules={[
+                                        { required: true, message: 'Cần nhập giá từ!' },
+                                        {
+                                            type: 'number',
+                                            min: 0,
+                                            message: 'Giá nhập phải là số dương!',
+                                        },
+                                    ]}
+                                >
+                                    <InputNumber placeholder="Giá từ..." className='h-[32px] w-full rounded' />
+                                </Form.Item>
+                            </Col>
+                            <Col xs={24} sm={12} md={8} className="mb-4">
+                                <Form.Item
+                                    label="Diện tích(m²)"
+                                    name='area'
+                                    rules={[{ required: true, message: 'Cần nhập diện tích!' }]}
+                                >
+                                    <InputNumber placeholder="Diện tích (m²)" className='h-[32px] w-full rounded' />
+                                </Form.Item>
+                            </Col>
+                            <Col xs={24} sm={12} md={8} className="mb-4">
+                                <Form.Item
+                                    label="Số người"
+                                    name='people'
+                                    rules={[{ required: true, message: 'Cần nhập số người!' }]}
+                                >
+                                    <InputNumber placeholder="Số người" className='h-[32px] w-full rounded' />
+                                </Form.Item>
+                            </Col>
+                        </Row>
+                        <Row gutter={24}>
+                            <Col span={8}>
+                                <Form.Item label="Tỉnh/Thành phố" name="city">
+                                    <Select value={selectedCity} onChange={handleCityChange}>
+                                        {cities.map(city => (
+                                            <Select.Option key={city.value} value={city.value}>{city.label}</Select.Option>
+                                        ))}
+                                    </Select>
+                                </Form.Item>
+                            </Col>
+                            <Col span={8}>
+                                <Form.Item label="Quận/Huyện" name="district">
+                                    <Select value={selectedDistrict} onChange={handleDistrictChange}>
+                                        {selectedCity && districts[selectedCity]?.map(district => (
+                                            <Select.Option key={district.value} value={district.value}>{district.label}</Select.Option>
+                                        ))}
+                                    </Select>
+                                </Form.Item>
+                            </Col>
+                            <Col span={8}>
+                                <Form.Item label="Phường/Xã" name="ward">
+                                    <Select value={selectedWard} onChange={handleWardChange}>
+                                        {selectedDistrict && wards[selectedDistrict]?.map(ward => (
+                                            <Select.Option key={ward.value} value={ward.value}>{ward.label}</Select.Option>
+                                        ))}
+                                    </Select>
+                                </Form.Item>
+                            </Col>
+                        </Row>
+                        <Form.Item
+                            label="Địa chỉ cụ thể"
+                            name="address"
+                            rules={[{ required: true, message: 'Vui lòng nhập địa chỉ' }]}>
+                            <Input className="h-[32px] rounded" value={addressDetails} onChange={handleAddressChange} />
+                        </Form.Item>
+                        <Form.Item
+                            label="Đường dẫn Facebook"
+                            name="fblink"
+                        >
+                            <Input className="h-[32px] rounded" />
+                        </Form.Item>
+                    </Col>
+                    <Col xs={24} md={12}>
+                        <MapComponent city={cityName} district={districtName} ward={wardName} details={addressDetails} />
+                    </Col>
+                </Row>
+                <Form.Item
+                    label="Mô tả"
+                    name="description"
+                    rules={[{ required: true }]}
+                >
+                    <CKEditor
+                        editor={ClassicEditor}
+                        config={{
+                            plugins: [Essentials, Paragraph, Bold, Italic, Undo, Heading, List, Underline],
+                            toolbar: ['heading', '|', 'bold', 'italic', 'underline', '|', 'undo', 'redo', 'numberedList', 'bulletedList'],
+                        }}
+                        data={editorData}
+                        onChange={(event, editor) => {
+                            const data = editor.getData();
+                            setEditorData(data);
+                        }}
+                    />
+                </Form.Item>
 
-            <Form.Item name="files">
-                <div className='rounded' style={{ border: 'solid 1px #D9D9D9', padding: '10px' }}>
-                    <Upload
-                        listType="picture"
-                        fileList={fileList}
-                        onChange={onChange}
-                        onPreview={onPreview}
-                        itemRender={(originNode, file, fileList) => (
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    width: '100%',
-                                    padding: '5px',
-                                    marginBottom: '10px',
-                                    backgroundColor: '#f9f9f9',
-                                    borderRadius: '4px'
-                                }}
-                                draggable
-                                onDragStart={(e) => handleDragStart(e, fileList.indexOf(file))}
-                                onDragOver={(e) => e.preventDefault()}
-                                onDrop={(e) => handleDrop(e, fileList.indexOf(file))}
-                            >
-                                <span
+                <Form.Item name="files">
+                    <div className='rounded' style={{ border: 'solid 1px #D9D9D9', padding: '10px' }}>
+                        <Upload
+                            listType="picture"
+                            fileList={fileList}
+                            onChange={onChange}
+                            onPreview={onPreview}
+                            itemRender={(originNode, file, fileList) => (
+                                <div
                                     style={{
-                                        width: '30px',
-                                        textAlign: 'center',
                                         display: 'flex',
                                         alignItems: 'center',
-                                        justifyContent: 'center',
-                                        height: '100%',
+                                        width: '100%',
                                         padding: '5px',
-                                        marginRight: '10px',
-                                        cursor: 'grab'
+                                        marginBottom: '10px',
+                                        backgroundColor: '#f9f9f9',
+                                        borderRadius: '4px'
                                     }}
+                                    draggable
+                                    onDragStart={(e) => handleDragStart(e, fileList.indexOf(file))}
+                                    onDragOver={(e) => e.preventDefault()}
+                                    onDrop={(e) => handleDrop(e, fileList.indexOf(file))}
                                 >
-                                    {fileList.indexOf(file) + 1}
-                                </span>
-                                <div style={{ flex: 1 }}>
-                                    {originNode}
+                                    <span
+                                        style={{
+                                            width: '30px',
+                                            textAlign: 'center',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            height: '100%',
+                                            padding: '5px',
+                                            marginRight: '10px',
+                                            cursor: 'grab'
+                                        }}
+                                    >
+                                        {fileList.indexOf(file) + 1}
+                                    </span>
+                                    <div style={{ flex: 1 }}>
+                                        {originNode}
+                                    </div>
                                 </div>
+                            )}
+                        >
+                            <div style={{ marginBottom: '20px', textAlign: 'center' }}>
+                                <Button icon={<UploadOutlined />}>Upload</Button>
                             </div>
-                        )}
-                    >
-                        <div style={{ marginBottom: '20px', textAlign: 'center' }}>
-                            <Button icon={<UploadOutlined />}>Upload</Button>
-                        </div>
-                    </Upload>
-                </div>
-            </Form.Item>
-        </Form>
+                        </Upload>
+                    </div>
+                </Form.Item>
+            </Form>
+        </div>
     );
 };
 

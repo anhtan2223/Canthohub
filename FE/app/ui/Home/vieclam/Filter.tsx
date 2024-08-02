@@ -1,217 +1,185 @@
 'use client'
-import { useRef, useState } from 'react'
-import { InputNumber , Select , Form  , SelectProps , Button} from "antd";
-import type { JobFilter , Career } from '@/app/lib/types/vieclam';
-import type { Address } from '@/app/lib/types/master'
-import { Level , Form as EForm } from '@/app/lib/types/vieclam';
-import { formatCurrency, formatNumber} from "@/app/lib/utils"
-import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+import { useState } from 'react'
+import { InputNumber, Select, SelectProps, Button } from "antd"
+import { Filter } from "@type/master"
+import { Level } from '@type/vieclam'
+import { Form } from "@/app/lib/types/vieclam/form.enum"
+import { formatCurrency, formatNumber } from "@/app/lib/utils"
+import { useSearchParams, usePathname, useRouter } from 'next/navigation'
+import { carrerList , districtList } from "@data"
 
-
-const careerList : Career[] = [
-    { id : 1 , name : "Software Developer" } ,
-    { id : 2 , name : "Web Application Developer" } ,
-    { id : 3 , name : "Mobile Developer" } ,
-    { id : 4 , name : "IOT Developer" } 
-]
-const levelList : string[] = Object.values(Level)
-const formList : string[] = Object.values(EForm)
-const addressList : Address[] = [
-    { id : 1 , address : "Ninh Kiều" } ,
-    { id : 2 , address : "An Hoà" } ,
-    { id : 3 , address : "An Phú" } ,
-    { id : 4 , address : "Hưng Phú" } 
-]
-
-const carrer: SelectProps['options'] = [];
-careerList.forEach((i:Career)=>{ carrer.push({
+const career: SelectProps['options'] = carrerList.map(i => ({
     label: i.name,
     value: i.id
-}) })
-const address: SelectProps['options'] = [];
-addressList.forEach((i:Address)=>{ address.push({
-    label: i.address,
+}))
+const address: SelectProps['options'] = districtList.map(i => ({
+    label: i.name,
     value: i.id
-}) })
-const level: SelectProps['options'] = [];
-levelList.forEach((i:string)=>{ level.push({
-    label: i,
-    value: i
-}) })
-const formOpt: SelectProps['options'] = [];
-formList.forEach((i:string)=>{ formOpt.push({
-    label: i,
-    value: i
-}) })
+}))
+const level: SelectProps['options'] = Object.keys(Level).map(key => ({
+    label: Level[key as keyof typeof Level],
+    value: key
+}))
+const formOpt: SelectProps['options'] = Object.keys(Form).map(key => ({
+    label: Form[key as keyof typeof Form],
+    value: key
+}))
 
-interface FilterType{
-    career_id? : string  | null
-    level? : string[]  | null
-    address? : string[]  | null
-    form? : string[]  | null
-    salary_from? : string | null
-    salary_to? : string  | null
-}
-
-export default function JobFilter() {
+export default function JobFilterPage() {
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const { replace } = useRouter();
     const params = new URLSearchParams(searchParams);
 
-    const [filter, setFilter] = useState<FilterType>({
-        career_id : searchParams.get('career_id') ,
-        level : searchParams.getAll('level') ,
-        address : searchParams.getAll('address') ,
-        form : searchParams.getAll('form') ,
-        salary_from : searchParams.get('salary_from') ,
-        salary_to : searchParams.get('salary_to') ,
+    const [filter, setFilter] = useState<Filter>({
+        career_ids: searchParams.get('career_id'),
+        levels: searchParams.getAll('level'),
+        district_ids: searchParams.getAll('address'),
+        forms: searchParams.getAll('form'),
+        salary_from: searchParams.get('salary_from'),
+        salary_to: searchParams.get('salary_to'),
     })
 
-    const onChange = (value : string | string[] , type : 'career_id' | 'level' | 'address' | 'form' | 'salary_from' | 'salary_to') => {
-        console.log(value)
+    const onChange = (value: string | string[], type: 'career_ids' | 'levels' | 'district_ids' | 'forms' | 'salary_from' | 'salary_to') => {
         setFilter({
-            ...filter ,
-            [type] : value
+            ...filter,
+            [type]: value
         })
     }
     const onApply = () => {
-        if(filter.career_id) 
-            params.set("career_id" , filter.career_id) 
-        if(filter.salary_from)
-            params.set("salary_from" , filter.salary_from) 
-        if(filter.salary_to) 
-            params.set("salary_to" , filter.salary_to) 
-        if(filter.address){
+        if (filter.career_ids)
+            params.set("career_id", filter.career_ids)
+        if (filter.salary_from)
+            params.set("salary_from", filter.salary_from)
+        if (filter.salary_to)
+            params.set("salary_to", filter.salary_to)
+        if (filter.district_ids) {
             params.delete("address")
-            for(const value of filter.address){
-                params.append("address" , value)
+            for (const value of filter.district_ids) {
+                params.append("address", value)
             }
         }
-        if(filter.form){
+        if (filter.forms) {
             params.delete("form")
-            for(const value of filter.form){
-                params.append("form",value)
+            for (const value of filter.forms) {
+                params.append("form", value)
             }
         }
-        if(filter.level){
+        if (filter.levels) {
             params.delete("level")
-            for(const value of filter.level){
-                params.append("level",value)
+            for (const value of filter.levels) {
+                params.append("level", value)
             }
         }
 
         replace(`${pathname}?${params.toString()}`);
     }
     const onReset = () => {
-        for(const i of ["career_id","level","address","form","salary_from","salary_to"])
+        for (const i of ["career_ids", "levels", "district_ids", "forms", "salary_from", "salary_to"])
             params.delete(i)
         setFilter({
-            career_id : null ,
-            level : null ,
-            address : null ,
-            form : null ,
-            salary_from : null ,
-            salary_to : null ,
+            career_ids: null,
+            levels: null,
+            district_ids: null,
+            forms: null,
+            salary_from: null,
+            salary_to: null,
         })
         replace(`${pathname}?${params.toString()}`)
     }
 
     return <div>
-                <div className='m-3'>
-                
-                {/* <div className='h-fit'>{params.toString()}</div> */}
-                {/* <div className='h-fit'>{JSON.stringify(filter)}</div> */}
-                    <p className='text-base font-bold'>Công Việc</p> 
-                    <div>
-                        <Select
-                        allowClear
-                        className='mt-1'
-                        style={{ width: '100%' }}
-                        placeholder="Chọn Công Việc"
-                        value={filter.career_id}
-                        onChange={ (value:string) => {onChange(value,'career_id')}}
-                        options={carrer}
-                        /> 
-                    </div>
-                </div>
-                
-                <div className='m-3'>
-                    <p className='text-base font-bold'>Cấp Bậc</p> 
-                    <Select<string[]>
-                    className='mt-1'
+        <div className='m-3'>
+            <p className='text-base font-bold'>Công Việc</p>
+            <div>
+                <Select
                     allowClear
-                    mode="multiple"
-                    style={{ width: '100%' }}
-                    placeholder="Chọn Cấp Bậc Công Việc"
-                    onChange={ (value:string[]) => {onChange(value,'level')}}
-                    value={filter.level }
-                    options={level}
-                    /> 
-                </div>
-
-                <div className='m-3'>
-                    <p className='text-base font-bold'>Khu Vực</p> 
-                    <Select<string[]>
-                        allowClear
-                        className='mt-1'
-                        mode="multiple"
-                        style={{ width: '100%' }}
-                        placeholder="Chọn Khu Vực Công Việc"
-                        onChange={ (value:string[]) => {onChange(value,'address')}}
-                        value={filter.address }
-                        options={address}
-                    /> 
-                </div>
-
-                <div className='m-3'>
-                    <p className='text-base font-bold'>Hình Thức</p> 
-                    <Select<string[]>
                     className='mt-1'
-                    mode="multiple"
                     style={{ width: '100%' }}
-                    placeholder="Chọn Hình Thức Công Việc"
-                    onChange={ (value:string[]) => {onChange(value,'form')}}
-                    value={filter.form || null}
-                    options={formOpt}
-                    /> 
-                </div>
-
-                <div className='m-3'>
-                    <p className='text-base font-bold'>Mức Lương</p> 
-                    <div className='my-2 flex items-center'>
-                        <InputNumber
-                            addonAfter = "VNĐ"
-                            addonBefore= {<p className='w-5'>Từ</p>}
-                            formatter={formatNumber}
-                            parser={formatCurrency}
-                            controls={false}
-                            className='w-full'
-                            onChange={ (value:string) => {onChange(value,'salary_from')}}
-                            value={filter.salary_from }
-                        />
-                    </div>
-                    <div className='my-2 flex items-center'>
-                        <InputNumber
-                            addonAfter = "VNĐ"
-                            addonBefore= {<p className='w-5'>Đến</p>}
-                            formatter={formatNumber}
-                            parser={formatCurrency}
-                            controls={false}
-                            className='w-full'
-                            onChange={ (value:string) => {onChange(value,'salary_to')}}
-                            value={filter.salary_to }
-                        />
-                    </div>
-                </div>
-
-                <div className='m-3 my-5 gap-3 w-full flex justify-center'>
-                    <Button  size='middle' type="primary" ghost onClick={onApply}>
-                        Áp Dụng
-                    </Button>
-                    <Button size='middle' type="primary" ghost onClick={onReset}>
-                        Làm Mới
-                    </Button>
-                </div>
+                    placeholder="Chọn Công Việc"
+                    value={filter.career_ids}
+                    onChange={(value: string) => { onChange(value, 'career_ids') }}
+                    options={career}
+                />
             </div>
+        </div>
+
+        <div className='m-3'>
+            <p className='text-base font-bold'>Cấp Bậc</p>
+            <Select<string[]>
+                className='mt-1'
+                allowClear
+                mode="multiple"
+                style={{ width: '100%' }}
+                placeholder="Chọn Cấp Bậc Công Việc"
+                onChange={(value: string[]) => { onChange(value, 'levels') }}
+                value={filter.levels}
+                options={level}
+            />
+        </div>
+
+        <div className='m-3'>
+            <p className='text-base font-bold'>Khu Vực</p>
+            <Select<string[]>
+                allowClear
+                className='mt-1'
+                mode="multiple"
+                style={{ width: '100%' }}
+                placeholder="Chọn Khu Vực Công Việc"
+                onChange={(value: string[]) => { onChange(value, 'district_ids') }}
+                value={filter.district_ids}
+                options={address}
+            />
+        </div>
+
+        <div className='m-3'>
+            <p className='text-base font-bold'>Hình Thức</p>
+            <Select<string[]>
+                className='mt-1'
+                mode="multiple"
+                style={{ width: '100%' }}
+                placeholder="Chọn Hình Thức Công Việc"
+                onChange={(value: string[]) => { onChange(value, 'forms') }}
+                value={filter.forms || null}
+                options={formOpt}
+            />
+        </div>
+
+        <div className='m-3'>
+            <p className='text-base font-bold'>Mức Lương</p>
+            <div className='my-2 flex items-center'>
+                <InputNumber
+                    addonAfter="VNĐ"
+                    addonBefore={<p className='w-5'>Từ</p>}
+                    formatter={formatNumber}
+                    parser={formatCurrency}
+                    controls={false}
+                    className='w-full'
+                    onChange={(value: string) => { onChange(value, 'salary_from') }}
+                    value={filter.salary_from}
+                />
+            </div>
+            <div className='my-2 flex items-center'>
+                <InputNumber
+                    addonAfter="VNĐ"
+                    addonBefore={<p className='w-5'>Đến</p>}
+                    formatter={formatNumber}
+                    parser={formatCurrency}
+                    controls={false}
+                    className='w-full'
+                    onChange={(value: string) => { onChange(value, 'salary_to') }}
+                    value={filter.salary_to}
+                />
+            </div>
+        </div>
+
+        <div className='m-3 my-5 gap-3 w-full flex justify-center'>
+            <Button size='middle' type="primary" ghost onClick={onApply}>
+                Áp Dụng
+            </Button>
+            <Button size='middle' type="primary" ghost onClick={onReset}>
+                Làm Mới
+            </Button>
+        </div>
+    </div>
 }

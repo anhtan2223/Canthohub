@@ -1,4 +1,4 @@
-import {Address} from '@/app/lib/types/master';
+import { Address } from '@type/master';
 
 export interface FoodType {
     image: string;
@@ -22,4 +22,11 @@ export interface FoodFormType {
     address: Address;
     address1: string;
     description: string;
+}
+
+export interface OptionType {
+    id: Number;
+    value: string;
+    label: string;
+    children?: OptionType[];
 }

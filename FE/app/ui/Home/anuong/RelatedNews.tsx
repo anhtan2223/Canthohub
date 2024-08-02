@@ -12,7 +12,7 @@ const RelatedNews = () => {
     return (
         <div className="bg-white px-6 pt-6 pb-10 rounded-lg space-y-6 flex-grow my-10 dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
             <p className='font-bold text-lg mb-6'>Liên quan</p>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
                 {foods.map((food, index) => (
                     <FoodCard food={food} key={index}></FoodCard>
                 ))}
