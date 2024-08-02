@@ -6,6 +6,7 @@ import Image from "next/image"
 import { Button } from 'antd';
 import { AiOutlineLike, AiOutlineComment } from "react-icons/ai";
 import ReportModal from '@ui/Master/report-modal'
+import CommentModal from '../../Master/CommentPopup';
 
 
 const Detail = () => {
@@ -35,13 +36,13 @@ const Detail = () => {
     const [selectedImage, setSelectedImage] = useState(post.images[0]);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentImageIndex(prevIndex => (prevIndex + 1) % post.images.length);
-        }, 3000);
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setCurrentImageIndex(prevIndex => (prevIndex + 1) % post.images.length);
+    //     }, 3000);
 
-        return () => clearInterval(interval);
-    }, []);
+    //     return () => clearInterval(interval);
+    // }, []);
 
     useEffect(() => {
         setSelectedImage(post.images[currentImageIndex]);
@@ -98,10 +99,11 @@ const Detail = () => {
                         <span>100k</span>
                         <AiOutlineLike className='w-[24px] h-[24px]' />
                     </div>
-                    <div className="flex items-center space-x-1">
+                    <CommentModal />
+                    {/* <div className="flex items-center space-x-1">
                         <span>100k</span>
                         <AiOutlineComment className='w-[24px] h-[24px]' />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div >
