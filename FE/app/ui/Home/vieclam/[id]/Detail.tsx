@@ -25,8 +25,8 @@ export default async function Detail({ info }: DetailProps) {
       <div className='title my-5 text-xl font-bold w-full flex justify-center'>
         {info.title}
       </div>
-      <div className='flex'>
-        <div className='w-9/12'>
+      <div className='flex flex-col-reverse md:flex-row'>
+        <div className='md:lg:w-9/12'>
           <p className='text-[16px] font-bold mb-3'>Thông Tin Công Ty</p>
           <div className='flex text-base mb-2 items-center'>
             <p className='font-bold w-2/12'>Công Ty</p>
@@ -37,46 +37,46 @@ export default async function Detail({ info }: DetailProps) {
             <p>{info?.job_post?.address && stringityAddress(info?.job_post?.address)}</p>
           </div>
         </div>
-        <div className='w-3/12 flex justify-end items-center'>
-          <Image src={info?.job_post?.company_cover_image.url ?? ""} width={200} height={100} className='w-full h-fit' alt='Logo' ></Image>
+        <div className='md:w-3/12 flex justify-end items-center'>
+          <Image src={info?.job_post?.company_cover_image.url ?? ""} width={400} height={400} className='w-full h-fit' alt='Logo' ></Image>
         </div>
       </div>
 
       <div className='mt-5'>
         <p className='text-[16px] font-bold mb-3'>Thông tin Tuyển Dụng</p>
         <div className='flex'>
-          <div className='flex text-base mb-2 items-center w-1/2'>
+          <div className='lg:flex text-base mb-2 items-center w-full md:w-1/2 lg:w-1/2'>
             <p className='font-bold w-6/12'>Ngành Nghề</p>
             <p>{info?.job_post?.career.name}</p>
           </div>
-          <div className='flex text-base mb-2 items-center w-1/2'>
+          <div className='lg:flex text-base mb-2 items-center w-full md:w-1/2 lg:w-1/2'>
             <p className='font-bold w-6/12'>Vị Trí</p>
             <p>{info?.job_post?.career.name}</p>
           </div>
         </div>
         <div className='flex'>
-          <div className='flex text-base mb-2 items-center w-1/2'>
+          <div className='lg:flex text-base mb-2 items-center w-full md:w-1/2 lg:w-1/2'>
             <p className='font-bold w-6/12'>Hình Thức</p>
             <p>{info?.job_post?.form}</p>
           </div>
-          <div className='flex text-base mb-2 items-center w-1/2'>
+          <div className='lg:flex text-base mb-2 items-center w-full md:w-1/2 lg:w-1/2'>
             <p className='font-bold w-6/12'>Số Lượng</p>
             <p>{info?.job_post?.quantity}</p>
           </div>
         </div>
         <div className='flex'>
-          <div className='flex text-base mb-2 items-center w-1/2'>
+          <div className='lg:flex text-base mb-2 items-center w-full md:w-1/2 lg:w-1/2'>
             <p className='font-bold w-6/12'>Kinh Nghiệm</p>
             <p>{info?.job_post?.experience.name}</p>
           </div>
-          <div className='flex text-base mb-2 items-center w-1/2'>
+          <div className='lg:flex text-base mb-2 items-center w-full md:w-1/2 lg:w-1/2'>
             <p className='font-bold w-6/12'>Mức Lương</p>
             <p>{(info?.job_post?.salary_from && info?.job_post?.salary_to) ? `${formatNumber(info?.job_post?.salary_from)} - ${formatNumber(info?.job_post?.salary_from)}` : "Thoả Thuận"}</p>
 
           </div>
         </div>
-        <div className='flex text-base w-full'>
-          <p className='font-bold w-3/12'>Thời gian tuyển dụng</p>
+        <div className='lg:flex text-base w-full'>
+          <p className='font-bold lg:w-3/12'>Thời gian tuyển dụng</p>
           <p>
             {/* { info?.job_post?.apply_date_from?.toLocaleString("vi") } */}
           {info?.job_post?.apply_date_from?.toLocaleDateString('en-GB')} - {info?.job_post?.apply_date_to?.toLocaleDateString('en-GB')}

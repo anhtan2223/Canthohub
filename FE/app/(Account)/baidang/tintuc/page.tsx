@@ -66,11 +66,11 @@ export default function CreateForm() {
             <Button danger className='w-20'>Huỷ</Button>
           </div>
         </div>
-        <div className='flex w-full items-center'>
-        <div className='flex font-bold w-1/3 text-[16px] leading-6 mb-4 mr-8'>
-          <p className='mx-2 text-red-600'>*</p>
-          Tiêu Đề Bài Viết
-        </div>
+        <div className='lg:flex w-full items-center'>
+            <div className='flex font-bold w-full lg:w-1/3 lg:text-[16px] leading-6 mb-4 mr-2'>
+            <p className='mx-2 text-red-600'>*</p>
+            Tiêu Đề Bài Viết
+            </div>
           <Form.Item
               colon={false}
               name="title"
@@ -98,18 +98,18 @@ export default function CreateForm() {
           >
             <Editor></Editor>
           </Form.Item>
-          <Form.Item
+                <Form.Item
                       name="images"
                       className="w-full"
                       valuePropName="info"
                       getValueFromEvent={(e: { info: any }) => e}
                   >
                       <UploadImage width={300} height={300}></UploadImage>
-                  </Form.Item>
+                </Form.Item>
         </div>
 
-        <div className='flex w-full items-center'>
-          <p className='font-bold w-1/3 text-[16px] leading-6 mb-4 mr-8'>Thẻ Cho Bài Viết</p>
+        <div className='lg:flex w-full items-center'>
+          <p className='font-bold lg:w-1/3 text-[16px] leading-6 mb-4 mr-2'>Thẻ Cho Bài Viết</p>
           <Form.Item
             wrapperCol={{span:24}}
             colon={false}
@@ -128,8 +128,8 @@ export default function CreateForm() {
           </Form.Item>
         </div>
 
-        <div className='flex w-full items-center'>
-          <p className='font-bold w-1/3 text-[16px] leading-6 mb-4 mr-8'>Đường Dẫn Facebook</p>
+        <div className='lg:flex w-full items-center'>
+          <p className='font-bold lg:w-1/3 text-[16px] leading-6 mb-4 mr-2'>Đường Dẫn Facebook</p>
           <Form.Item
             wrapperCol={{span:24}}
             colon={false}

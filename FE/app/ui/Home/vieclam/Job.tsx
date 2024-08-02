@@ -11,13 +11,18 @@ export default function Job({isAdd=false} : {
   return (
     <div className='flex'>
             <div className='w-full lg:w-8/12' >
-                {/* <Search isAdd={isAdd}></Search> */}
+                <div className="hidden lg:block">
+                    <Search isAdd={isAdd}></Search>
+                </div>
                 <div className='mt-5 p-5 h-fit bg-white border rounded-lg dark:text-dark-text dark:bg-dark-secondary dark:border-dark'>
                     <div className="flex justify-between">
                         <div className='text-lg font-bold'>
                             Tổng 20 Kết Quả
                         </div>
                         <MobileFilter>
+                            <div className="m-3">
+                            <Search isAdd={isAdd}></Search>
+                            </div>
                             <Filter></Filter>
                         </MobileFilter>
 

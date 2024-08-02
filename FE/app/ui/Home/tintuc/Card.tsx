@@ -22,8 +22,8 @@ export default function CardNews({ post, isSetting = false }: {
     return (
         <div>
             <div className='' >
-                <div key={post.id} className="p-4 flex gap-2 border my-4 rounded-lg h-full dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
-                    <div className="flex-1 w-3/4 h-fit">
+                <div key={post.id} className="p-4 flex flex-col-reverse lg:flex-row gap-2 justify-center items-center border my-4 rounded-lg h-full dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
+                    <div className="flex-1 lg:w-3/4 h-fit">
                         {isSetting &&
                             <Link href={`/baidang/tintuc/${post.id}`}
                                 className='flex cursor-alias items-start justify-center w-fit my-3'
@@ -35,7 +35,7 @@ export default function CardNews({ post, isSetting = false }: {
                             <div className="w-[50px] h-full flex items-center justify-center">
                                 <Image src={post.user.avatar_image.url ?? ""} width={50} height={50} alt="Avatar" className="rounded-full object-cover w-full" />
                             </div>
-                            <div className="flex flex-grow flex-col px-2 gap-1">
+                            <div className=" px-2 gap-1">
                                 <div>
                                     <div className="font-bold border-r inline-block mr-2 pr-2 text-sm">{post.user.full_name}</div>
                                     <div className="font-bold inline-block  text-sm">{post.title}</div>
@@ -63,7 +63,7 @@ export default function CardNews({ post, isSetting = false }: {
                             </div>
                         </div>
                     </div>
-                    <div className="flex items-center w-1/4 max-w-[200px]">
+                    <div className="w-3/4 lg:w-1/4 lg:max-w-[200px]">
                         <Image src={post.post_image?.[0].url ?? ""} alt="Food" width={200} height={200} className="w-full object-cover rounded-md" />
                     </div>
 
