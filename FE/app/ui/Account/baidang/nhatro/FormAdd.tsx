@@ -163,9 +163,10 @@ const FormAdd = ({ user }: { user: UserType }) => {
     const onFinish = (values: any) => {
         console.log(values);
         const formData = new FormData();
-        formData.append('resname', values.resname || '');
-        formData.append('pricefrom', (values.pricefrom ?? 0).toString());
-        formData.append('priceto', (values.priceto ?? 0).toString());
+        formData.append('title', values.title || '');
+        formData.append('price', (values.price ?? 0).toString());
+        formData.append('area', (values.area ?? 0).toString());
+        formData.append('people', (values.people ?? 0).toString());
         formData.append('fblink', values.fblink || '');
         formData.append('address', addressDetails);
         formData.append('description', editorData);
@@ -190,14 +191,15 @@ const FormAdd = ({ user }: { user: UserType }) => {
             layout="vertical"
             initialValues={{
                 remember: true,
-                pricefrom: 0,
-                priceto: 0,
+                price: 0,
+                area: 0,
+                people: 0,
                 city: selectedCity,
                 district: selectedDistrict,
                 ward: selectedWard,
             }}
             autoComplete="off"
-            className=" md:p-6 lg:p-8"
+            className="md:p-6 lg:p-8"
             onFinish={onFinish}
         >
             <div className="flex flex-col md:flex-row justify-between items-center mb-4">
@@ -213,17 +215,17 @@ const FormAdd = ({ user }: { user: UserType }) => {
                 <Col xs={24} md={12}>
                     <Form.Item
                         label="Tiêu đề"
-                        name="resname"
+                        name="title"
                         rules={[{ required: true, message: 'Tiêu đề không hợp lệ! Vui lòng nhập lại' }]}
                         className="w-full"
                     >
-                        <Input className="h-[32px] rounded p-0" />
+                        <Input placeholder="Nhập tiêu đề" className="h-[32px] rounded p-0" />
                     </Form.Item>
                     <Row gutter={16}>
                         <Col xs={24} sm={12} md={8} className="mb-4">
                             <Form.Item
                                 label="Giá(VND)"
-                                name='pricefrom'
+                                name='price'
                                 rules={[
                                     { required: true, message: 'Cần nhập giá từ!' },
                                     {
@@ -288,13 +290,13 @@ const FormAdd = ({ user }: { user: UserType }) => {
                         label="Địa chỉ cụ thể"
                         name="address"
                         rules={[{ required: true, message: 'Vui lòng nhập địa chỉ' }]}>
-                        <Input className="h-[32px] rounded" value={addressDetails} onChange={handleAddressChange} />
+                        <Input placeholder="Nhập địa chỉ cụ thể" className="h-[32px] rounded" value={addressDetails} onChange={handleAddressChange} />
                     </Form.Item>
                     <Form.Item
                         label="Đường dẫn Facebook"
                         name="fblink"
                     >
-                        <Input className="h-[32px] rounded" />
+                        <Input placeholder="Nhập đường dẫn Facebook" className="h-[32px] rounded" />
                     </Form.Item>
                 </Col>
                 <Col xs={24} md={12}>
@@ -306,7 +308,7 @@ const FormAdd = ({ user }: { user: UserType }) => {
                 name="description"
                 valuePropName="content"
                 getValueFromEvent={(e: { content: string }) => e}
-                rules={[{ required: true , message : "Vui Lòng Nhập Mô Tả"}]}
+                rules={[{ required: true, message: "Vui Lòng Nhập Mô Tả" }]}
             >
                 <Editor></Editor>
             </Form.Item>
@@ -362,6 +364,7 @@ const FormAdd = ({ user }: { user: UserType }) => {
                 </div>
             </Form.Item>
         </Form>
+
     );
 };
 

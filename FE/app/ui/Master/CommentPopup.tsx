@@ -91,7 +91,7 @@ const CommentModal = () => {
             avatar: 'N',
             comment: 'This is a comment from User 3.',
             time: '2024-07-30 15:15',
-            replies: [{ id: 1, user: 'Auth', avatar: 'A', reply: 'This is a reply to User 1\'s comment.', time: '2024-07-30 14:45' }]
+            replies: [{ id: 1, user: 'Auth', avatar: 'A', reply: 'This is a reply to User 3\'s comment.', time: '2024-07-30 14:45' }]
         },
         {
             id: 4,
