@@ -112,11 +112,17 @@ const FoodFormCreate = ({ user }: { user: UserType}) => {
                     </Col>
                 </Row>
                 <Form.Item
-                    label="Mô tả"
                     name="description"
+                    labelAlign='right'
+                    label="Mô tả"
                     className="w-full"
                     valuePropName="content"
                     getValueFromEvent={(e: { content: string }) => e}
+                    rules={[{
+                    required: true,
+                    message: 'Vui Lòng Nhập Mô Tả cho Bài Đăng'
+                    }
+                    ]}
                 >
                     <Editor></Editor>
                 </Form.Item>

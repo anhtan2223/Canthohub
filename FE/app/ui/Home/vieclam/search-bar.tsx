@@ -22,7 +22,7 @@ export default function SearchBar({ isAdd = false }: {
           <Button className="mx-3" type="primary">Tạo Mới</Button>
         </Link>
       }
-      <div className="flex justify-end items-center w-4/12">
+      <div className="flex ml-3 justify-end items-center w-4/12">
         <div className="flex items-center">
           <Sort options={sortOtp} />
         </div>

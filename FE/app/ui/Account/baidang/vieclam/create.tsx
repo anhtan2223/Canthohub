@@ -158,44 +158,46 @@ export default function CreateForm() {
       </Form.Item>
       <div className='w-full'>
         <p className='font-bold text-lg mb-4'>Thông tin công ty </p>
-        <div className='relative z-10 h-fit w-full'>
-          <Form.Item
-            label="Công Ty"
-            colon={false}
-            name="company"
-            rules={[{
-              required: true,
-              message: 'Vui Lòng Nhập Tên Của Công Ty Cho Bài Viết'
-            }
-            ]}
-          >
-            <Input placeholder='Tên Công Ty' className='text-base h-[28px] rounded-lg'></Input>
-          </Form.Item>
+        <div className='md:flex h-fit w-full'>
+          <div className="w-full md:w-3/4">
+            <Form.Item
+                label="Công Ty"
+                colon={false}
+                name="company"
+                rules={[{
+                required: true,
+                message: 'Vui Lòng Nhập Tên Của Công Ty Cho Bài Viết'
+                }
+                ]}
+            >
+                <Input placeholder='Tên Công Ty' className='text-base h-[28px] rounded-lg'></Input>
+            </Form.Item>
 
-          <Form.Item
-            name="residence"
-            label="Khu vực"
-            colon={false}
-            rules={[
-              { type: 'array', required: true, message: 'Vui Chọn Khu Vực' },
-            ]}
-          >
-            <Cascader placeholder='Chọn Khu Vực' className='h-[28px] rounded-lg' options={options} />
-          </Form.Item>
+            <Form.Item
+                name="residence"
+                label="Khu vực"
+                colon={false}
+                rules={[
+                { type: 'array', required: true, message: 'Vui Chọn Khu Vực' },
+                ]}
+            >
+                <Cascader placeholder='Chọn Khu Vực' className='h-[28px] rounded-lg' options={options} />
+            </Form.Item>
 
-          <Form.Item
-            label="Địa Chỉ"
-            colon={false}
-            name="address"
-            rules={[{
-              required: true,
-              message: 'Vui Lòng Nhập Địa Chỉ Của Công Ty'
-            }
-            ]}
-          >
-            <Input placeholder='Địa Chỉ Công Ty' className='h-[28px] text-base rounded-lg'></Input>
-          </Form.Item>
-          <div className='flex justify-end absolute w-5/12 h-fit top-0 right-0'>
+            <Form.Item
+                label="Địa Chỉ"
+                colon={false}
+                name="address"
+                rules={[{
+                required: true,
+                message: 'Vui Lòng Nhập Địa Chỉ Của Công Ty'
+                }
+                ]}
+            >
+                <Input placeholder='Địa Chỉ Công Ty' className='h-[28px] text-base rounded-lg'></Input>
+            </Form.Item>
+          </div>
+          <div className='flex items-center'>
             <Form.Item
               name="image"
               labelAlign='right'
@@ -214,8 +216,8 @@ export default function CreateForm() {
       </div>
       <div>
         <p className='font-bold text-lg mb-4'>Thông Tin Tuyển Dụng</p>
-        <div className='flex w-full'>
-          <div className='w-1/2'>
+        <div className='md:flex w-full'>
+          <div className='w-full md:w-1/2'>
             <Form.Item
               label="Ngành Nghề"
               labelCol={{ span: 6 }}
@@ -283,7 +285,7 @@ export default function CreateForm() {
             </Form.Item>
 
           </div>
-          <div className='w-1/2 '>
+          <div className='w-full md:w-1/2 '>
             <Form.Item
               label="Vị Trí"
               labelCol={{ span: 6 }}

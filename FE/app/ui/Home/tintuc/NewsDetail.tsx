@@ -28,9 +28,9 @@ const NewsDetail = ({post} : {
                         <div className="w-fit h-fit">
                             <Image width={40} height={40} src={post.user.avatar_image.url} alt="Avatar" className="rounded-full w-full h-full" />
                         </div>
-                        <div>
-                            <div className="font-bold border-r inline-block pr-2 text-sm">{post.user.full_name}</div>
-                            <div className="font-bold inline-block p-2 text-sm">{post.title}</div>
+                        <div className='flex flex-col'>
+                            <div className="font-bold lg:border-r inline-block lg:pr-2 text-sm">{post.user.full_name}</div>
+                            <div className="font-bold inline-block py-1 lg:p-2 text-sm">{post.title}</div>
                             <div className="italic text-xs">{post.created_at.toLocaleString("vi")}</div>
                         </div>
                         <div className='flex flex-grow justify-end'>

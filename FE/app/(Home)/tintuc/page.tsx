@@ -14,18 +14,18 @@ export default function Page() {
     return (
         <div className="flex flex-col items-center space-y-6">
             <div className="w-full">
-                <Image src="/welcome.png" width={500} height={500} alt="Master" className='w-full' />
+                <Image src="/welcome.png" width={500} height={500} alt="Master" className='w-full mt-4' />
                 <Breadcrumbs breadcrumbs={breadcrumbs} />
                 <WelcomeSection />
             </div>
             <div className="flex w-full ">
                 <Suspense fallback={<div>Loading...</div>}>
-                    <div className="w-8/12 h-fit bg-white border rounded-lg p-5 dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
+                    <div className="w-full lg:w-8/12 h-fit bg-white border rounded-lg p-5 dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
                         <p className='font-bold text-lg mb-3'>Điểm hóng hớt</p>
                         <News />
                     </div>
                 </Suspense>
-                <div className='w-4/12 ml-4'>
+                <div className='hidden lg:block w-4/12 ml-4'>
                     <div className='mb-3 rounded-lg '>
                         <Events></Events>
                     </div>
