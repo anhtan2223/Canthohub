@@ -110,7 +110,7 @@ const AddressSearch: React.FC<AddressSearchProps> = ({ city, district, ward, det
         <div>
             {lat && lon && (
                 <div>
-                    <MapContainer center={[lat, lon]} zoom={18} style={{ height: '400px', width: '100%' }}>
+                    <MapContainer center={[lat, lon]} zoom={18} style={{ height: '400px', width: '100%', zIndex: 0 }}>
                         <TileLayer
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

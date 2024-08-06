@@ -1,60 +1,74 @@
 'use client'
-import Breadcrumbs from "@/app/ui/Master/breadcrums";
 import Card from '@ui/Home/nhatro/card';
+import News from '@/app/ui/Home/nhatro/news'
 import { FilterArea, FilterLocation, FilterPrice } from '@ui/Home/nhatro/filters';
-import News from '@/app/ui/Home/nhatro/news';
-import { useRouter} from 'next/navigation'
-import Sort from '@ui/Master/sort'
-import MyPagination from '@ui/Master/Pagination';
-export default function Page() {
+import { useRouter } from 'next/navigation'
+import Breadcrumbs from "@/app/ui/Master/breadcrums";
+import SearchWithSort from "@/app/ui/Home/nhatro/Sort";
+import MyPagination from "@/app/ui/Master/Pagination";
+import MobileFilter from "../../ui/Master/MobileFilter";
+
+
+export default function Page({ isAdd }: { isAdd?: boolean }) {
     const breadcrumbs = [
         { label: 'Trang chủ', href: '/' },
         { label: 'Nhà trọ', href: '/nhatro', active: true },
     ];
-    const sortOtp = [
-        { label: 'Giá mặc định', value: 'default' },
-        { label: 'Cao - Thấp', value: 'high-to-low' },
-        { label: 'Thấp - Cao', value: 'low-to-high' }
-    ]
     const router = useRouter();
-    return <div className="">
-        <Breadcrumbs breadcrumbs={breadcrumbs}/>
-        <div className="content-center mx-auto grid grid-cols-12 gap-4">
-            <div className="site-left col-span-8">
-                <div className="border border-border-color rounded-lg p-4 bg-secondary dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
-                    <div className="flex justify-between">
-                        <h2 className="font-bold text-lg">
-                            Tổng 206 kết quả
-                        </h2>
-                        <p>
-                            Cập nhật: 13:17 04/03/2024
-                        </p>
+
+    return (
+        <>
+            <Breadcrumbs breadcrumbs={breadcrumbs} />
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+                <div className="site-left col-span-1 lg:col-span-8">
+                    <div className="bg-secondary border p-4 border-border-color dark:text-dark-text dark:bg-dark-secondary dark:border-dark rounded-lg">
+                        <div className="h-[60px] rounded w-100 mb-2 flex items-center justify-between">
+                            <div className="flex flex-col md:flex-row md:items-center md:space-x-4 mb-5">
+                                <h2 className="font-bold text-lg">
+                                    Tổng 206 kết quả
+                                </h2>
+                                <p className="mt-2 md:mt-0">
+                                    Cập nhật: 13:17 04/03/2024
+                                </p>
+                            </div>
+                            <div className="flex ">
+                                <div className="hidden lg:block">
+                                    <SearchWithSort isAdd={isAdd} />
+                                </div>
+                                <MobileFilter>
+                                    <SearchWithSort isAdd={isAdd} />
+                                    <FilterLocation />
+                                    <FilterPrice />
+                                    <FilterArea />
+                                </MobileFilter>
+                            </div>
+                        </div>
+                        <div className="mx-auto grid grid-cols-1 gap-[10px]">
+                            <div className='cursor-pointer' onClick={() => { router.push(`/nhatro/1`) }}>
+                                <Card></Card>
+                            </div>
+                            <div className='cursor-pointer' onClick={() => { router.push(`/nhatro/1`) }}>
+                                <Card></Card>
+                            </div>
+                            <div className='cursor-pointer' onClick={() => { router.push(`/nhatro/1`) }}>
+                                <Card></Card>
+                            </div>
+                            <div className='cursor-pointer' onClick={() => { router.push(`/nhatro/1`) }}>
+                                <Card></Card>
+                            </div>
+                        </div>
+                        <MyPagination total={100} className="flex justify-end mt-5 mr-2" />
                     </div>
-                    <div className="flex justify-start items-center mt-4">
-                        <span>Sắp xếp: </span>
-                        <div className="ml-3"><Sort options={sortOtp}/></div>
+                </div>
+                <div className="site-right hidden lg:block col-span-1 lg:col-span-4 rounded">
+                    <div className="sticky top-5 h-fit bg-white border dark:text-dark-text dark:bg-dark-secondary dark:border-dark rounded-lg">
+                        <FilterLocation />
+                        <FilterPrice />
+                        <FilterArea />
+                        <News />
                     </div>
-                    <div className='cursor-pointer' onClick={()=>{router.push(`/nhatro/1`)}}>
-                        <Card></Card>
-                    </div>
-                    <div className='cursor-pointer' onClick={()=>{router.push(`/nhatro/1`)}}>
-                        <Card></Card>
-                    </div>
-                    <div className='cursor-pointer' onClick={()=>{router.push(`/nhatro/1`)}}>
-                        <Card></Card>
-                    </div>
-                    <div className='cursor-pointer' onClick={()=>{router.push(`/nhatro/1`)}}>
-                        <Card></Card>
-                    </div>
-                    <MyPagination total={100} className="flex justify-end mt-5 mr-2" />
                 </div>
             </div>
-            <div className="site-right col-span-4 rounded">
-                <FilterLocation />
-                <FilterPrice />
-                <FilterArea />
-                <News />
-            </div>
-        </div>
-    </div>
+        </>
+    );
 }

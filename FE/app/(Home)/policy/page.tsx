@@ -1,8 +1,12 @@
 'use client'
+import { useState } from 'react';
 import Breadcrumbs from "@/app/ui/Master/breadcrums";
 import Link from 'next/link';
+import { AiOutlineMenu } from 'react-icons/ai';
 
 export default function Page() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const breadcrumbs = [
         { label: 'Trang chủ', href: '/' },
         { label: 'Chính sách bảo mật', href: '/policy', active: true },
@@ -19,7 +23,7 @@ export default function Page() {
                             <p className="text-xs text-gray-500">Last Updated May 23rd, 2022</p>
                         </div>
                         <div className="mt-8 flex">
-                            <div className="w-3/5 pr-4">
+                            <div className="md:w-3/5 pr-4">
                                 <p>Chính sách bảo mật này sẽ giúp bạn hiểu rõ hơn về cách chúng tôi thu thập, sử dụng và chia sẻ thông tin cá nhân của bạn.</p>
 
                                 <h2 id="intro" className="text-xl font-semibold mt-4">1. Giới thiệu</h2>
@@ -95,7 +99,7 @@ export default function Page() {
                                 <p>Chính sách bảo mật này có hiệu lực kể từ ngày 23 tháng 5 năm 2030.</p>
                             </div>
 
-                            <div className="w-2/5 pl-4">
+                            <div className="md:w-2/5 pl-4 hidden md:block">
                                 <nav className="p-4 sticky top-10">
                                     <h2 className="text-xl font-semibold mb-4">Nội dung chính sách</h2>
                                     <ul className="space-y-2">
@@ -132,9 +136,82 @@ export default function Page() {
                                     </ul>
                                 </nav>
                             </div>
+                            <button
+                                className="md:hidden fixed top-36 right-4 bg-gray-800 text-white p-2 rounded-full"
+                                onClick={() => setIsModalOpen(true)}
+                            >
+                                <AiOutlineMenu size={24} />
+                            </button>
                         </div>
                     </div>
                 </div>
+                {isModalOpen && (
+                    <div className="fixed inset-0 flex items-start justify-end bg-gray-800 bg-opacity-75 z-50">
+                        <div className="w-80 bg-white p-4 h-full overflow-y-auto">
+                            <button
+                                className="absolute top-2 right-2 text-gray-600"
+                                onClick={() => setIsModalOpen(false)}
+                            >
+                                &times;
+                            </button>
+                            <nav>
+                                <h2 className="text-xl font-semibold mb-4">Nội dung chính sách</h2>
+                                <ul className="space-y-2">
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <Link href="#intro"
+                                            onClick={() => setIsModalOpen(false)}>
+                                            1. Giới thiệu</Link>
+                                    </li>
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <Link href="#info-collection"
+                                            onClick={() => setIsModalOpen(false)}>
+                                            2. Thông Tin Được Thu Thập</Link>
+                                    </li>
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <Link href="#info-usage"
+                                            onClick={() => setIsModalOpen(false)}>
+                                            3. Cách Sử Dụng Thông Tin</Link>
+                                    </li>
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <Link href="#info-sharing"
+                                            onClick={() => setIsModalOpen(false)}>
+                                            4. Chia Sẻ Thông Tin</Link>
+                                    </li>
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <Link href="#info-security"
+                                            onClick={() => setIsModalOpen(false)}>
+                                            5. Bảo Mật Thông Tin</Link>
+                                    </li>
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <Link href="#user-rights"
+                                            onClick={() => setIsModalOpen(false)}>
+                                            6. Quyền Của Người Dùng</Link>
+                                    </li>
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <Link href="#cookies"
+                                            onClick={() => setIsModalOpen(false)}>
+                                            7. Cookies và Công Nghệ Tương Tự</Link>
+                                    </li>
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <Link href="#policy-changes"
+                                            onClick={() => setIsModalOpen(false)}>
+                                            8. Thay Đổi Chính Sách</Link>
+                                    </li>
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <Link href="#contact"
+                                            onClick={() => setIsModalOpen(false)}>
+                                            9. Liên Hệ</Link>
+                                    </li>
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <Link href="#effective-date"
+                                            onClick={() => setIsModalOpen(false)}>
+                                            10. Ngày Có Hiệu Lực</Link>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                )}
             </div>
         </div >
     );

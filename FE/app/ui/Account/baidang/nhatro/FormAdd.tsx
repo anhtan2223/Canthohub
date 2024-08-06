@@ -202,13 +202,13 @@ const FormAdd = ({ user }: { user: UserType }) => {
             className="md:p-6 lg:p-8"
             onFinish={onFinish}
         >
-            <div className="flex flex-col md:flex-row justify-between items-center mb-4">
-                <div className="mb-4 md:mb-0">
+            <div className="flex flex-row justify-between items-center mb-4">
+                <div className="mb-4 flex-shrink-0">
                     <UserAvatar user={user} />
                 </div>
-                <div className="flex flex-col md:flex-row">
-                    <Button type='primary' className='mb-2 md:mb-0 md:mr-3 w-full md:w-24' htmlType='submit'>Lưu</Button>
-                    <Button danger className='w-full md:w-24'>Hủy</Button>
+                <div className="flex flex-row">
+                    <Button type='primary' className='mb-2 mr-3 w-full sm:w-auto' htmlType='submit'>Lưu</Button>
+                    <Button danger className='w-full sm:w-auto'>Hủy</Button>
                 </div>
             </div>
             <Row gutter={24} className="flex flex-col md:flex-row">
@@ -221,8 +221,8 @@ const FormAdd = ({ user }: { user: UserType }) => {
                     >
                         <Input placeholder="Nhập tiêu đề" className="h-[32px] rounded p-0" />
                     </Form.Item>
-                    <Row gutter={16}>
-                        <Col xs={24} sm={12} md={8} className="mb-4">
+                    <Row gutter={24}>
+                        <Col xs={24} md={24} lg={8}>
                             <Form.Item
                                 label="Giá(VND)"
                                 name='price'
@@ -234,51 +234,57 @@ const FormAdd = ({ user }: { user: UserType }) => {
                                         message: 'Giá nhập phải là số dương!',
                                     },
                                 ]}
+                                className="mb-4 md:mb-0"
                             >
-                                <InputNumber placeholder="Giá từ..." className='h-[32px] w-full rounded' />
+                                <InputNumber placeholder="Giá từ..." className='h-[32px] w-full rounded' style={{ width: '100%' }} />
                             </Form.Item>
                         </Col>
-                        <Col xs={24} sm={12} md={8} className="mb-4">
+
+                        <Col xs={24} md={24} lg={8}>
                             <Form.Item
                                 label="Diện tích(m²)"
                                 name='area'
                                 rules={[{ required: true, message: 'Cần nhập diện tích!' }]}
+                                className="mb-4 md:mb-0"
                             >
-                                <InputNumber placeholder="Diện tích (m²)" className='h-[32px] w-full rounded' />
+                                <InputNumber placeholder="Diện tích (m²)" className='h-[32px] w-full rounded' style={{ width: '100%' }} />
                             </Form.Item>
                         </Col>
-                        <Col xs={24} sm={12} md={8} className="mb-4">
+
+                        <Col xs={24} md={24} lg={8}>
                             <Form.Item
                                 label="Số người"
                                 name='people'
                                 rules={[{ required: true, message: 'Cần nhập số người!' }]}
+                                className="mb-4 md:mb-0"
                             >
-                                <InputNumber placeholder="Số người" className='h-[32px] w-full rounded' />
+                                <InputNumber placeholder="Số người" className='h-[32px] w-full rounded' style={{ width: '100%' }} />
                             </Form.Item>
                         </Col>
                     </Row>
                     <Row gutter={24}>
-                        <Col span={8}>
-                            <Form.Item label="Tỉnh/Thành phố" name="city">
-                                <Select value={selectedCity} onChange={handleCityChange}>
+                        <Col xs={24} md={24} lg={8}>
+                            <Form.Item label="Tỉnh/Thành phố" name="city" className="mb-4 md:mb-0">
+                                <Select value={selectedCity} onChange={handleCityChange} className="w-full">
                                     {cities.map(city => (
                                         <Select.Option key={city.value} value={city.value}>{city.label}</Select.Option>
                                     ))}
                                 </Select>
                             </Form.Item>
                         </Col>
-                        <Col span={8}>
-                            <Form.Item label="Quận/Huyện" name="district">
-                                <Select value={selectedDistrict} onChange={handleDistrictChange}>
+                        <Col xs={24} md={24} lg={8}>
+                            <Form.Item label="Quận/Huyện" name="district" className="mb-4 md:mb-0">
+                                <Select value={selectedDistrict} onChange={handleDistrictChange} className="w-full">
                                     {selectedCity && districts[selectedCity]?.map(district => (
                                         <Select.Option key={district.value} value={district.value}>{district.label}</Select.Option>
                                     ))}
                                 </Select>
                             </Form.Item>
                         </Col>
-                        <Col span={8}>
-                            <Form.Item label="Phường/Xã" name="ward">
-                                <Select value={selectedWard} onChange={handleWardChange}>
+
+                        <Col xs={24} md={24} lg={8}>
+                            <Form.Item label="Phường/Xã" name="ward" className="mb-4 md:mb-0">
+                                <Select value={selectedWard} onChange={handleWardChange} className="w-full">
                                     {selectedDistrict && wards[selectedDistrict]?.map(ward => (
                                         <Select.Option key={ward.value} value={ward.value}>{ward.label}</Select.Option>
                                     ))}
