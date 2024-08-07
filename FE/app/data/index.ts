@@ -15,7 +15,6 @@ export const userInfo: AccountInfo = {
     ...user,
     email: "lanlan@vhec.com",
     phone: "0123456789",
-    password: "12345",
     birthdate: new Date(),
     status: "ACTIVE",
     role: "USER"

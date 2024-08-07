@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { ConfigProvider, theme as antdTheme } from "antd";
 const darkTheme = {
-    token: {
+    // token: {
       colorPrimary: 'rgba(15, 33, 103, 1)', // dark-blue
       colorSuccess: 'rgba(53, 89, 224, 1)', // medium-blue
       colorWarning: 'rgba(76, 185, 231, 1)', // light-blue
@@ -10,12 +10,12 @@ const darkTheme = {
       colorBgContainer: 'rgb(36, 48, 63)', // dark secondary background
       colorText: 'rgb(174, 183, 192)', // dark-text
       colorTextSecondary: 'rgb(174, 183, 192)', // dark-text-secondary
-      colorBorder: '#4A5568', // dark border color
-    }
+      // colorBorder: '#4A5568', // dark border color
+    // }
   };
   
   const lightTheme = {
-    token: {
+    // token: {
       colorPrimary: 'rgba(15, 33, 103, 1)', // dark-blue
       colorSuccess: 'rgba(53, 89, 224, 1)', // medium-blue
       colorWarning: 'rgba(76, 185, 231, 1)', // light-blue
@@ -24,7 +24,7 @@ const darkTheme = {
       colorText: 'rgba(137, 137, 137, 1)', // text
       colorTextSecondary: 'rgba(137, 137, 137, 1)', // text-secondary
       colorBorder: 'rgba(217, 217, 217, 1)', // border color
-    }
+    // }
   };
 
 interface ThemeContextType {
@@ -68,6 +68,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         <ConfigProvider
             theme={{
                 algorithm: isDarkMode ? [antdTheme.darkAlgorithm] : [antdTheme.defaultAlgorithm],
+                token : isDarkMode ? darkTheme : lightTheme
             }}
             >
             {children}

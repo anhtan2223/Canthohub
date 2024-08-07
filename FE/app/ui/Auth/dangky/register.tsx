@@ -3,11 +3,11 @@ import Link from 'next/link'
 
 const Register = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#F5F5F5] dark:text-dark-text dark:bg-dark-secondary dark:border-dark">
+    <div className="flex items-center justify-center min-h-screen dark:text-dark-text dark:border-dark">
       <div className="bg-white p-10 rounded-lg shadow-lg text-center w-96">
-        <h1 className="text-3xl mb-8 font-bold text-gray-700">Đăng Ký</h1>
+        <h1 className="text-3xl mb-8 font-bold text-black dark:text-dark-text">Đăng Ký</h1>
         <div className="text-left mb-6">
-          <label className="block mb-1 font-semibold text-black">Họ Và Tên</label>
+          <label className="block mb-1 font-semibold text-black dark:text-dark-text">Họ Và Tên</label>
           <div className="relative flex items-center">
             <input
               type="email"
@@ -18,7 +18,7 @@ const Register = () => {
           </div>
         </div>
         <div className="text-left mb-6">
-          <label className="block mb-1 font-semibold text-black">Email</label>
+          <label className="block mb-1 font-semibold text-black dark:text-dark-text">Email</label>
           <div className="relative flex items-center">
             <input
               type="email"
@@ -29,7 +29,7 @@ const Register = () => {
           </div>
         </div>
         <div className="text-left mb-6">
-          <label className="block mb-1 font-semibold text-black">Mật Khẩu</label>
+          <label className="block mb-1 font-semibold text-black dark:text-dark-text">Mật Khẩu</label>
           <div className="relative flex items-center">
             <input
               type="password"

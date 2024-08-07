@@ -1,4 +1,6 @@
 export * from "@type/taikhoan/user.interface"
+export * from "@type/taikhoan/auth.request"
+export * from "@type/taikhoan/auth.response"
 // export * from "@type/taikhoan"
 // export * from "@type/taikhoan"
 // export * from "@type/taikhoan"
