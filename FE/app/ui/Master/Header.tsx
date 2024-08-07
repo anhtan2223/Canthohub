@@ -39,16 +39,20 @@ export default function Header() {
         </div>
 
         <div className='flex items-center w-1/2 lg:w-2/3 justify-end '>
-        {/* <div className='flex'> */}
+          <div className='flex flex-grow items-center'>
           <Suspense fallback={<div>Loading...</div>}>
-            <Search className='h-[40px]' placeholder="Tìm Kiếm"></Search>
+            <Search className='h-full' placeholder="Tìm Kiếm"></Search>
           </Suspense>
-        {/* </div> */}
+          </div>
           {
             !token ?
               <div className='flex' >
-                <Button type="text" className='h-[40px] ml-5'>Đăng Ký Thành Viên</Button>
-                <Button className='bg-medium-blue h-[40px] ml-5 text-white'>Đăng Nhập</Button>
+                <Link href="/dangky">
+                  <Button type="text" className='h-[40px] ml-5'>Đăng Ký Thành Viên</Button>
+                </Link>
+                <Link href="/dangnhap">
+                  <Button className='bg-medium-blue h-[40px] ml-5 text-white'>Đăng Nhập</Button>
+                </Link>
               </div>
               :
               <div className="hidden w-fit lg:block">

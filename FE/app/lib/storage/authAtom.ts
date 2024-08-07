@@ -1,6 +1,6 @@
-import { atomWithStorage } from "jotai/utils"
+// import { atomWithStorage } from "jotai/utils"
 
-export const tokenAtom = atomWithStorage<string | null>("token" , null)
+// export const tokenAtom = atomWithStorage<string | null>("token" , null)
 
-// import {atom} from "jotai"
-// export const tokenAtom = atom<string | null>(null)
+import {atom} from "jotai"
+export const tokenAtom = atom<string | null>(null)
