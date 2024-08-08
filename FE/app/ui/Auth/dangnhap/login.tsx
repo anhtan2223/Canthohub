@@ -11,17 +11,23 @@ import { Token } from "@type/taikhoan"
 import { tokenAtom } from "@storage"
 import { useSetAtom } from 'jotai';
 import { useRouter } from 'next/navigation';
-
-
+import { useAtomValue } from "jotai"
+ 
 
 const Login = () => {
 
 
-  const onFinishFailed: FormProps<LoginRequest>['onFinishFailed'] = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-  };
+  
+  const token  = useAtomValue(tokenAtom)
   const setToken = useSetAtom(tokenAtom)
   const router = useRouter()
+
+  const onFinishFailed: FormProps<LoginRequest>['onFinishFailed'] = async (errorInfo) => {
+    if(token){
+      const data = await auth.Refresh(token)
+      notification.warning({message : JSON.stringify(data) , placement : "bottomRight"} )
+    }
+  };
 
   const onFinish = async (values: LoginRequest) => {
     try {
@@ -31,7 +37,9 @@ const Login = () => {
       notification.success({message : "Login Success" , placement : "bottomRight"})
       router.push("/tintuc")
     } catch (error) {
+      // console.log("Throw Error Login" , error)
       const err = error as ErrorResponse
+      // notification.error({message : JSON.stringify(err.message) , placement : "bottomRight"} )
       notification.error({message : err.message , placement : "bottomRight"} )
     }
   };

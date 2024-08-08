@@ -5,8 +5,8 @@ const apiClient = createApiClient(apiBaseURL);
 class AddressService {
   async getProvinces(): Promise<any> {
     try {
-      const response = await apiClient.get('/address/provinces');
-      return response.data
+      const data = await apiClient.get('/address/provinces');
+      return data
     } catch (error) {
       console.log(error);
     }
@@ -14,8 +14,8 @@ class AddressService {
 
   async getDistricts(provinceId: Number): Promise<any> {
     try {
-      const response = await apiClient.get(`/address/provinces/${provinceId}/districts`);
-      return response.data;
+      const data = await apiClient.get(`/address/provinces/${provinceId}/districts`);
+      return data;
     } catch (error) {
       console.error('Error fetching districts:', error);
       throw error;
@@ -24,8 +24,8 @@ class AddressService {
 
   async getWards(districtId: Number): Promise<any> {
     try {
-      const response = await apiClient.get(`/address/provinces/districts/${districtId}/wards`);
-      return response.data;
+      const data = await apiClient.get(`/address/provinces/districts/${districtId}/wards`);
+      return data;
     } catch (error) {
       console.error('Error fetching wards:', error);
       throw error;

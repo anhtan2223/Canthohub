@@ -2,33 +2,45 @@ const commonHeaders = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
 };
+const apiBaseURL = process.env.API_BASE_URL! || 'http://localhost:8000/api';
+
+const authHeader = (token?: string) => {
+  if (!token)
+    return null
+  return {
+    'Authorization': `Bearer ${token}`
+  }
+}
 
 interface RequestOptions extends RequestInit {
   headers?: Record<string, string>;
 }
 
-const createApiClient = (baseURL: string , token?:string ) => {
+const createApiClient = (baseURL: string = apiBaseURL) => {
   const fetchJson = async (url: string, options: RequestOptions = {}): Promise<any> => {
-    const response = await fetch(baseURL + url, {
-      ...options,
-      headers: {
-        ...commonHeaders,
-        ...options.headers,
-      },
-    });
+    try {
+      const response = await fetch(baseURL + url, {
+        ...options,
+        headers: {
+          ...commonHeaders,
+          ...options.headers
+        },
+      })
+      const data = await response.json()
+      if (!response.ok)
+        return Promise.reject(data.error)
 
-    // if (!response.success) {
-    //   throw news Error('Network response was not ok');
-    // }
-
-    return response.json();
+      return Promise.resolve(data.data)
+    } catch (error) {
+      throw Error(`Không Thể Kết Nối Đến Server`)
+    }
   };
 
   return {
-    get: (url: string, options?: RequestOptions) => fetchJson(url, { ...options, method: 'GET' }),
-    post: (url: string, data: any, options?: RequestOptions) => fetchJson(url, { ...options, method: 'POST', body: JSON.stringify(data) }),
-    put: (url: string, data: any, options?: RequestOptions) => fetchJson(url, { ...options, method: 'PUT', body: JSON.stringify(data) }),
-    delete: (url: string, options?: RequestOptions) => fetchJson(url, { ...options, method: 'DELETE' }),
+    get: (url: string, token?: string, options?: RequestOptions) => fetchJson(url, { ...{ ...options, headers : { ...authHeader(token)} } , method: 'GET' }),
+    post: (url: string, data: any, token?: string, options?: RequestOptions) => fetchJson(url, { ...{ ...options, headers :{ ...authHeader(token) }}, method: 'POST', body: JSON.stringify(data) }),
+    put: (url: string, data: any,token?: string, options?: RequestOptions) => fetchJson(url, { ...{ ...options,headers :{ ...authHeader(token)} }, method: 'PUT', body: JSON.stringify(data) }),
+    delete: (url: string, token?: string, options?: RequestOptions) => fetchJson(url, { ...{...options, headers :{ ...authHeader(token)} }, method: 'DELETE' }),
   };
 };
 
