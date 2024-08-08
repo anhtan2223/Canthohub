@@ -11,7 +11,7 @@ import Search from '@/app/ui/Master/MasterSearch'
 import { Suspense } from 'react';
 import { useTheme } from '@/app/themeProvider';
 import MobileMenu from '@ui/Master/MobileMenu'
-import { tokenAtom } from "@storage"
+import { userAtom } from "@storage"
 import { useAtomValue } from 'jotai'
 
 const info = [
@@ -24,7 +24,7 @@ const info = [
 export default function Header() {
   const path = usePathname();
   const { isDarkMode, toggleDarkMode } = useTheme();
-  const token = useAtomValue(tokenAtom)
+  const user = useAtomValue(userAtom)
 
   return (
     <>
@@ -45,7 +45,7 @@ export default function Header() {
           </Suspense>
           </div>
           {
-            !token ?
+            !user ?
               <div className='flex' >
                 <Link href="/dangky">
                   <Button type="text" className='h-[40px] ml-5'>Đăng Ký Thành Viên</Button>
@@ -56,7 +56,7 @@ export default function Header() {
               </div>
               :
               <div className="hidden w-fit lg:block">
-                <Menu />
+                <Menu info={user}/>
               </div>
           }
 

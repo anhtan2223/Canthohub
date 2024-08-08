@@ -11,11 +11,6 @@ class AuthService {
         try {
             const data = await apiClient.post(API.LOGIN , request)
             return Promise.resolve(data)
-            const response = await apiClient.post(API.LOGIN , request ) as LoginResponse 
-            // if(!response.success){
-            //     throw Error(response.error?.message)
-            // }
-            return response.data
         } catch (error) {
             return Promise.reject(error)
         }

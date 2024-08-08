@@ -3,19 +3,18 @@
 import { Avatar, Popover , notification } from 'antd';
 import { UserOutlined, FormOutlined, LogoutOutlined } from '@ant-design/icons';
 import Link from 'next/link';
-import { tokenAtom } from "@storage"
+import { tokenAtom , userAtom } from "@storage"
 import { useSetAtom } from 'jotai'
+import { AccountInfo } from "@type/taikhoan"
 
-const user = {
-    name: "User Name",
-    role: "Role"
-}
-
-export default function Menu() {
+export default function Menu({info }:{info? : AccountInfo}) {
     const setToken = useSetAtom(tokenAtom)
+    const setUser = useSetAtom(userAtom)
+    
 
     const logout = () => {
         setToken(null)
+        setUser(null)
         notification.success({ message : "Đăng Xuất Thành Công" , placement : "bottomRight"})
 
     }
@@ -45,8 +44,8 @@ export default function Menu() {
             <Popover content={<ChangePage />} trigger="hover" >
                 <div className='flex gap-2 items-center cursor-pointer ml-4'>
                     <div>
-                        <div className='flex justify-end text-base font-medium'>{user.name}</div>
-                        <div className='flex justify-end text-xs text-gray-400 dark:text-blue-500 font-light'>{user.role}</div>
+                        <div className='flex justify-end text-base font-medium'>{info?.full_name}</div>
+                        <div className='flex justify-end text-xs text-gray-400 dark:text-blue-500 font-light'>{info?.role}</div>
                     </div>
                     <Avatar icon={<UserOutlined />} />
                 </div>
