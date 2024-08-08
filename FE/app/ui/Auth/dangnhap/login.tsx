@@ -75,7 +75,7 @@ const Login = () => {
             Đăng nhập
           </Button>
           <div className='my-3'>
-            <Link href='/forgot' className="text-center text-sm text-gray-500 cursor-pointer my-6 hover:underline">
+            <Link href='/quenmatkhau' className="text-center text-sm text-gray-500 cursor-pointer my-6 hover:underline">
               Quên mật khẩu
             </Link>
           </div>

@@ -26,12 +26,16 @@ const createApiClient = (baseURL: string = apiBaseURL) => {
           ...options.headers
         },
       })
+      if(response.status === 204) {
+        return {}
+      }
       const data = await response.json()
       if (!response.ok)
         return Promise.reject(data.error)
 
       return Promise.resolve(data.data)
     } catch (error) {
+        console.log(error)
       throw Error(`Không Thể Kết Nối Đến Server`)
     }
   };

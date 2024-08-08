@@ -8,7 +8,7 @@ class AddressService {
       const data = await apiClient.get('/address/provinces');
       return data
     } catch (error) {
-      console.log(error);
+        return Promise.reject(error)
     }
   }
 
@@ -17,8 +17,7 @@ class AddressService {
       const data = await apiClient.get(`/address/provinces/${provinceId}/districts`);
       return data;
     } catch (error) {
-      console.error('Error fetching districts:', error);
-      throw error;
+        return Promise.reject(error)
     }
   }
 
@@ -27,44 +26,10 @@ class AddressService {
       const data = await apiClient.get(`/address/provinces/districts/${districtId}/wards`);
       return data;
     } catch (error) {
-      console.error('Error fetching wards:', error);
-      throw error;
+        return Promise.reject(error)
     }
   }
 
-  // async getAllAddresses(): Promise<OptionType[]> {
-  //   try {
-  //     const provinces = await this.getProvinces();
-  //     const provinceOptions: OptionType[] = await Promise.all(
-  //       provinces.map(async (province: any) => {
-  //         const districts = await this.getDistricts(province.id);
-  //         const districtOptions: OptionType[] = await Promise.all(
-  //           districts.map(async (district: any) => {
-  //             const wards = await this.getWards(district.id);
-  //             return {
-  //               value: district.id.toString(),
-  //               label: district.name,
-  //               children: wards.map((ward: any) => ({
-  //                 value: ward.id.toString(),
-  //                 label: ward.name,
-  //               })),
-  //             };
-  //           })
-  //         );
-  //         return {
-  //           value: province.id.toString(),
-  //           label: province.name,
-  //           children: districtOptions,
-  //         };
-  //       })
-  //     );
-
-  //     return provinceOptions;
-  //   } catch (error) {
-  //     console.error('Error fetching all addresses:', error);
-  //     throw error;
-  //   }
-  // }
 }
-
-export default new AddressService();
+const Address = new AddressService();
+export default Address;

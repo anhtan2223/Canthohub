@@ -12,3 +12,9 @@ export interface RegisterRequest {
 export interface FogetPasswordRequest {
     email: string 
 }
+export interface CheckTokenRequest extends FogetPasswordRequest {
+    token: string
+}
+export interface ResetPasswordRequest extends CheckTokenRequest{
+    password: string
+}

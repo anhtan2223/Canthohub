@@ -2,6 +2,8 @@ import createApiClient from '@service/ApiService';
 const apiClient = createApiClient();
 
 import { LoginRequest } from "@type/taikhoan/auth.request"
+import { LoginResponse } from "@type/taikhoan/auth.response"
+import { FogetPasswordRequest, CheckTokenRequest, ResetPasswordRequest} from '@type/taikhoan'
 import { API } from "@config/auth.config"
 
 class AuthService {
@@ -9,6 +11,11 @@ class AuthService {
         try {
             const data = await apiClient.post(API.LOGIN , request)
             return Promise.resolve(data)
+            const response = await apiClient.post(API.LOGIN , request ) as LoginResponse 
+            // if(!response.success){
+            //     throw Error(response.error?.message)
+            // }
+            return response.data
         } catch (error) {
             return Promise.reject(error)
         }
@@ -22,6 +29,36 @@ class AuthService {
             return Promise.reject(error)
         }
     }
+
+    async ForgotPassword(request: FogetPasswordRequest): Promise<any> {
+        try {
+            const response = await apiClient.post(API.FOGET_PASSWORD , request)
+            return response
+        } catch (error) {
+            return Promise.reject(error)
+        }
+    }
+
+    async CheckToken(request: CheckTokenRequest): Promise<any> {
+        try {
+            const response = await apiClient.post(API.CHECK_TOKEN, request)
+            return response
+        } catch (error) {
+            return Promise.reject(error)
+        }
+    }
+
+    async ResetPassword(request: ResetPasswordRequest): Promise<any> {
+        try {
+            const response = await apiClient.post(API.RESET_PASSWORD , request)
+            return response
+        } catch (error) {
+            return Promise.reject(error)
+        }
+    }
+        
+
+    
 }
 const instance = new AuthService();
 export default instance

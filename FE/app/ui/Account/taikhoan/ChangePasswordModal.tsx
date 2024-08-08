@@ -62,7 +62,7 @@ const App: React.FC = () => {
               <Input.Password />
             </Form.Item>
             <Form.Item
-              name="newpassword"
+              name="newPassword"
               label="Mật khẩu mới"
               rules={[
                 {
@@ -77,7 +77,7 @@ const App: React.FC = () => {
             <Form.Item
               name="confirm"
               label="Xác nhận"
-              dependencies={['newpassword']}
+              dependencies={['newPassword']}
               hasFeedback
               rules={[
                 {
@@ -86,7 +86,7 @@ const App: React.FC = () => {
                 },
                 ({ getFieldValue }) => ({
                   validator(rule, value) {
-                    if (!value || getFieldValue('newpassword') === value) {
+                    if (!value || getFieldValue('newPassword') === value) {
                       return Promise.resolve();
                     }
                     return Promise.reject('Mật khẩu không khớp!');
