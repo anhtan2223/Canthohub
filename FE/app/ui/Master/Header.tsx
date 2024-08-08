@@ -11,6 +11,8 @@ import Search from '@/app/ui/Master/MasterSearch'
 import { Suspense } from 'react';
 import { useTheme } from '@/app/themeProvider';
 import MobileMenu from '@ui/Master/MobileMenu'
+import { tokenAtom } from "@storage"
+import { useAtomValue } from 'jotai'
 
 const info = [
   { name: "TIN TỨC", href: "/tintuc" },
@@ -22,12 +24,13 @@ const info = [
 export default function Header() {
   const path = usePathname();
   const { isDarkMode, toggleDarkMode } = useTheme();
+  const token = useAtomValue(tokenAtom)
 
   return (
     <>
       <div className='h-fit w-11/12 lg:w-3/4 flex mx-auto'>
         <div className='w-1/2 lg:w-1/3 flex items-center'>
-          <div className="mr-3"><MobileMenu/></div>
+          <div className="mr-3"><MobileMenu /></div>
           <Link href={'/'}>
             <Image
               src="/Logo.png" width={180} height={100} className='w-full h-auto' alt='Logo' >
@@ -36,18 +39,27 @@ export default function Header() {
         </div>
 
         <div className='flex items-center w-1/2 lg:w-2/3 justify-end '>
-          <div className='flex hidden lg:block'>
-            <Suspense fallback={<div>Loading...</div>}>
-              <Search className='h-[40px]' placeholder="Tìm Kiếm"></Search>
-            </Suspense>
-            <div className='flex hidden' >
-              <Button type="text" className='h-[40px] ml-5'>Đăng Ký Thành Viên</Button>
-              <Button className='bg-medium-blue h-[40px] ml-5 text-white'>Đăng Nhập</Button>
-            </div>
+          <div className='flex flex-grow items-center'>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Search className='h-full' placeholder="Tìm Kiếm"></Search>
+          </Suspense>
           </div>
-          <div className="hidden lg:block">
-            <Menu/>
-          </div>
+          {
+            !token ?
+              <div className='flex' >
+                <Link href="/dangky">
+                  <Button type="text" className='h-[40px] ml-5'>Đăng Ký Thành Viên</Button>
+                </Link>
+                <Link href="/dangnhap">
+                  <Button className='bg-medium-blue h-[40px] ml-5 text-white'>Đăng Nhập</Button>
+                </Link>
+              </div>
+              :
+              <div className="hidden w-fit lg:block">
+                <Menu />
+              </div>
+          }
+
           <div className='w-[40px] h-[40px] flex items-center ml-5'>
             <Button
               shape="circle"

@@ -1,59 +1,94 @@
+'use client'
 import { LockOutlined, MailOutlined } from '@ant-design/icons';
-import Image from 'next/image'
 import Link from 'next/link'
+import { Button, Form, Input } from 'antd';
+import type { FormProps } from 'antd';
+import { LoginRequest } from "@type/taikhoan/auth.request"
+import auth from "@service/AuthService"
+import { notification } from "antd"
+import { ErrorResponse } from "@type/master"
+import { Token } from "@type/taikhoan"
+import { tokenAtom } from "@storage"
+import { useSetAtom } from 'jotai';
+import { useRouter } from 'next/navigation';
+import { useAtomValue } from "jotai"
+ 
 
 const Login = () => {
+
+
+  
+  const token  = useAtomValue(tokenAtom)
+  const setToken = useSetAtom(tokenAtom)
+  const router = useRouter()
+
+  const onFinishFailed: FormProps<LoginRequest>['onFinishFailed'] = async (errorInfo) => {
+    if(token){
+      const data = await auth.Refresh(token)
+      notification.warning({message : JSON.stringify(data) , placement : "bottomRight"} )
+    }
+  };
+
+  const onFinish = async (values: LoginRequest) => {
+    try {
+      const data = await auth.Login(values) as Token
+      setToken(data.access_token)
+      // notification.success({message : data.access_token , placement : "bottomRight"})
+      notification.success({message : "Login Success" , placement : "bottomRight"})
+      router.push("/tintuc")
+    } catch (error) {
+      // console.log("Throw Error Login" , error)
+      const err = error as ErrorResponse
+      // notification.error({message : JSON.stringify(err.message) , placement : "bottomRight"} )
+      notification.error({message : err.message , placement : "bottomRight"} )
+    }
+  };
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#F5F5F5] dark:text-dark-text dark:border-dark">
-      <div className="p-10 rounded-lg shadow-lg text-center w-96 dark:bg-dark-secondary">
-        <h1 className="text-3xl mb-8 font-bold">Đăng Nhập</h1>
-        <div className="text-left mb-6">
-          <label className="block mb-1 font-semibold">Email</label>
-          <div className="relative flex items-center">
-            <input
-              type="email"
-              placeholder=""
-              className="w-full pl-9 pr-4 py-1 border-0 border-b-2 border-black custom-input bg-transparent"
-            />
-            <MailOutlined width={17} height={12} className='absolute left-2' />
+    <Form
+      onFinish={onFinish}
+      onFinishFailed={onFinishFailed}>
+      <div className="flex items-center justify-center dark:text-dark-text dark:border-dark">
+        <div className="p-10 rounded-lg shadow-lg text-center w-1/2 bg-white dark:bg-dark-secondary">
+          <h1 className="text-3xl mb-8 font-bold">Đăng Nhập</h1>
+          <div className="text-left mb-6">
+
+            <label className="block mb-1 font-semibold">Email</label>
+            <Form.Item
+              name="email"
+              rules={[{ required: true, message: 'Vui Lòng Nhập Email' }]}
+            >
+              <Input
+                prefix={<MailOutlined width={17} height={12} className='left-2 w-full' />} />
+            </Form.Item>
+          </div>
+          <div className="text-left mb-6">
+            <label className="block mb-1 font-semibold">Mật Khẩu</label>
+            <Form.Item
+              name="password"
+              rules={[{ required: true, message: 'Vui Lòng Nhập Mật Khẩu' }]}
+            >
+              <Input.Password
+                prefix={<LockOutlined width={17} height={12} className='left-2' />} />
+            </Form.Item>
+          </div>
+          <Button type="primary" htmlType="submit">
+            Đăng nhập
+          </Button>
+          <div className='my-3'>
+            <Link href='/quenmatkhau' className="text-center text-sm text-gray-500 cursor-pointer my-6 hover:underline">
+              Quên mật khẩu
+            </Link>
+          </div>
+          <div className='flex justify-center w-full'>
+            <Link href="/dangky">
+              <Button type='primary' >
+                Tạo tài khoản
+              </Button>
+            </Link>
           </div>
         </div>
-        <div className="text-left mb-6">
-          <label className="block mb-1 font-semibold">Mật Khẩu</label>
-          <div className="relative flex items-center">
-            <input
-              type="password"
-              placeholder=""
-              className="w-full pl-9 pr-4 py-1 border-0 border-b-2 border-black custom-input bg-transparent"
-            />
-            <LockOutlined width={17} height={12} className='absolute left-2'/>
-          </div>
-        </div>
-        <div className="mb-6 text-center">
-          <label htmlFor="privacyPolicy" className="text-sm text-gray-500">
-            Tôi đã đọc và đồng ý với
-            <div>
-              <Link href="/privacy_policy" className="text-indigo-500 hover:underline ml-1">Chính sách quyền riêng tư</Link>
-            </div>
-          </label>
-        </div>
-        <button className="w-full py-3 mb-4 bg-[#3559E0] text-white rounded-full font-semibold hover:bg-[#2742b3] transition duration-300 ease-in-out">
-          Đăng nhập
-        </button>
-        <div className='mb-3'>
-          <Link href='/forgot_password' className="text-center text-sm text-gray-500 cursor-pointer mb-6 hover:underline">
-            Quên mật khẩu
-          </Link>
-        </div>
-        <div className='flex justify-center w-full'>
-          <Link href="/dangky">
-            <p className="w-fit py-2 px-6 bg-[#3559E0] text-white rounded-full font-semibold hover:bg-[#2742b3] transition duration-300 ease-in-out">
-              Tạo tài khoản
-            </p>
-          </Link>
-        </div>
-      </div>
-    </div>
+      </div >
+    </Form>
   );
 };
 

@@ -12,7 +12,6 @@ export type AccountStatus = "ACTIVE" | "INACTIVE" | "BANNED"
 export interface AccountInfo extends Account {
     email: string
     phone: string
-    password?: string
     birthdate?: Date
     status: AccountStatus
     role : Role 

@@ -9,7 +9,7 @@ import MyPagination from "@/app/ui/Master/Pagination";
 import MobileFilter from "../../ui/Master/MobileFilter";
 
 
-export default function Page({ isAdd }: { isAdd?: boolean }) {
+export default function Page() {
     const breadcrumbs = [
         { label: 'Trang chủ', href: '/' },
         { label: 'Nhà trọ', href: '/nhatro', active: true },
@@ -33,10 +33,10 @@ export default function Page({ isAdd }: { isAdd?: boolean }) {
                             </div>
                             <div className="flex ">
                                 <div className="hidden lg:block">
-                                    <SearchWithSort isAdd={isAdd} />
+                                    <SearchWithSort />
                                 </div>
                                 <MobileFilter>
-                                    <SearchWithSort isAdd={isAdd} />
+                                    <SearchWithSort />
                                     <FilterLocation />
                                     <FilterPrice />
                                     <FilterArea />
