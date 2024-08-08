@@ -1,4 +1,4 @@
 import { AccountInfo } from "@type/taikhoan"
-import { atom } from 'jotai'
+import { atomWithStorage } from 'jotai/utils'
 
-export const userAtom = atom<AccountInfo | null>(null)
+export const userAtom = atomWithStorage<AccountInfo | null>("info",null)

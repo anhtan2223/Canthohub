@@ -5,27 +5,29 @@ import { Button, Form, Input } from 'antd';
 import type { FormProps } from 'antd';
 import { LoginRequest } from "@type/taikhoan/auth.request"
 import auth from "@service/AuthService"
+import account from "@service/AccountService"
 import { notification } from "antd"
 import { ErrorResponse } from "@type/master"
 import { Token } from "@type/taikhoan"
-import { tokenAtom } from "@storage"
+import { tokenAtom, userAtom } from "@storage"
 import { useSetAtom } from 'jotai';
 import { useRouter } from 'next/navigation';
 import { useAtomValue } from "jotai"
- 
+
 
 const Login = () => {
 
 
-  
-  const token  = useAtomValue(tokenAtom)
+
+  const token = useAtomValue(tokenAtom)
+  const setUser = useSetAtom(userAtom)
   const setToken = useSetAtom(tokenAtom)
   const router = useRouter()
 
   const onFinishFailed: FormProps<LoginRequest>['onFinishFailed'] = async (errorInfo) => {
-    if(token){
+    if (token) {
       const data = await auth.Refresh(token)
-      notification.warning({message : JSON.stringify(data) , placement : "bottomRight"} )
+      notification.warning({ message: JSON.stringify(data), placement: "bottomRight" })
     }
   };
 
@@ -33,14 +35,17 @@ const Login = () => {
     try {
       const data = await auth.Login(values) as Token
       setToken(data.access_token)
-      // notification.success({message : data.access_token , placement : "bottomRight"})
-      notification.success({message : "Login Success" , placement : "bottomRight"})
+
+      const info = await account.GetMe(data.access_token)
+      setUser(info)
+
+      notification.success({ message: "Login Success", placement: "bottomRight" })
       router.push("/tintuc")
     } catch (error) {
       // console.log("Throw Error Login" , error)
       const err = error as ErrorResponse
       // notification.error({message : JSON.stringify(err.message) , placement : "bottomRight"} )
-      notification.error({message : err.message , placement : "bottomRight"} )
+      notification.error({ message: err.message, placement: "bottomRight" })
     }
   };
   return (
