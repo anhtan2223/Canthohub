@@ -17,9 +17,9 @@ export default function Page() {
             <Breadcrumbs breadcrumbs={breadcrumbs} />
             <div className="content-center">
                 <div>
-                    <div className="border border-border-color rounded-lg p-4 bg-secondary">
+                    <div className="border border-border-color dark:text-dark-text dark:bg-dark transition-colors rounded-lg p-4 bg-secondary ">
                         <div className="text-center">
-                            <h1 className="text-6xl font-bold mt-10">Chính sách bảo mật</h1>
+                            <h1 className="text-4xl font-bold mt-10">Chính sách bảo mật</h1>
                             <p className="text-xs text-gray-500">Last Updated May 23rd, 2022</p>
                         </div>
                         <div className="mt-8 flex">
@@ -103,34 +103,34 @@ export default function Page() {
                                 <nav className="p-4 sticky top-10">
                                     <h2 className="text-xl font-semibold mb-4">Nội dung chính sách</h2>
                                     <ul className="space-y-2">
-                                        <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <li className="border border-gray-300 rounded-lg p-2 bg-white dark:bg-dark transition-colors">
                                             <Link href="#intro">1. Giới thiệu</Link>
                                         </li>
-                                        <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <li className="border border-gray-300 rounded-lg p-2 bg-white dark:bg-dark transition-colors">
                                             <Link href="#info-collection">2. Thông Tin Được Thu Thập</Link>
                                         </li>
-                                        <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <li className="border border-gray-300 rounded-lg p-2 bg-white dark:bg-dark transition-colors">
                                             <Link href="#info-usage">3. Cách Sử Dụng Thông Tin</Link>
                                         </li>
-                                        <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <li className="border border-gray-300 rounded-lg p-2 bg-white dark:bg-dark transition-colors">
                                             <Link href="#info-sharing">4. Chia Sẻ Thông Tin</Link>
                                         </li>
-                                        <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <li className="border border-gray-300 rounded-lg p-2 bg-white dark:bg-dark transition-colors">
                                             <Link href="#info-security">5. Bảo Mật Thông Tin</Link>
                                         </li>
-                                        <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <li className="border border-gray-300 rounded-lg p-2 bg-white dark:bg-dark transition-colors">
                                             <Link href="#user-rights">6. Quyền Của Người Dùng</Link>
                                         </li>
-                                        <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <li className="border border-gray-300 rounded-lg p-2 bg-white dark:bg-dark transition-colors">
                                             <Link href="#cookies">7. Cookies và Công Nghệ Tương Tự</Link>
                                         </li>
-                                        <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <li className="border border-gray-300 rounded-lg p-2 bg-white dark:bg-dark transition-colors">
                                             <Link href="#policy-changes">8. Thay Đổi Chính Sách</Link>
                                         </li>
-                                        <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <li className="border border-gray-300 rounded-lg p-2 bg-white dark:bg-dark transition-colors">
                                             <Link href="#contact">9. Liên Hệ</Link>
                                         </li>
-                                        <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                        <li className="border border-gray-300 rounded-lg p-2 bg-white dark:bg-dark transition-colors">
                                             <Link href="#effective-date">10. Ngày Có Hiệu Lực</Link>
                                         </li>
                                     </ul>
@@ -146,8 +146,8 @@ export default function Page() {
                     </div>
                 </div>
                 {isModalOpen && (
-                    <div className="fixed inset-0 flex items-start justify-end bg-gray-800 bg-opacity-75 z-50">
-                        <div className="w-80 bg-white p-4 h-full overflow-y-auto">
+                    <div className="fixed inset-0 flex items-start justify-end bg-opacity-75 z-50">
+                        <div className="w-80 bg-white dark:bg-dark transition-colors p-4 h-full overflow-y-auto">
                             <button
                                 className="absolute top-2 right-2 text-gray-600"
                                 onClick={() => setIsModalOpen(false)}
@@ -157,52 +157,52 @@ export default function Page() {
                             <nav>
                                 <h2 className="text-xl font-semibold mb-4">Nội dung chính sách</h2>
                                 <ul className="space-y-2">
-                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white dark:text-dark-text dark:bg-dark transition-colors">
                                         <Link href="#intro"
                                             onClick={() => setIsModalOpen(false)}>
                                             1. Giới thiệu</Link>
                                     </li>
-                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white dark:text-dark-text dark:bg-dark transition-colors">
                                         <Link href="#info-collection"
                                             onClick={() => setIsModalOpen(false)}>
                                             2. Thông Tin Được Thu Thập</Link>
                                     </li>
-                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white dark:text-dark-text dark:bg-dark transition-colors">
                                         <Link href="#info-usage"
                                             onClick={() => setIsModalOpen(false)}>
                                             3. Cách Sử Dụng Thông Tin</Link>
                                     </li>
-                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white dark:text-dark-text dark:bg-dark transition-colors">
                                         <Link href="#info-sharing"
                                             onClick={() => setIsModalOpen(false)}>
                                             4. Chia Sẻ Thông Tin</Link>
                                     </li>
-                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white dark:text-dark-text dark:bg-dark transition-colors">
                                         <Link href="#info-security"
                                             onClick={() => setIsModalOpen(false)}>
                                             5. Bảo Mật Thông Tin</Link>
                                     </li>
-                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white dark:text-dark-text dark:bg-dark transition-colors">
                                         <Link href="#user-rights"
                                             onClick={() => setIsModalOpen(false)}>
                                             6. Quyền Của Người Dùng</Link>
                                     </li>
-                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white dark:text-dark-text dark:bg-dark transition-colors">
                                         <Link href="#cookies"
                                             onClick={() => setIsModalOpen(false)}>
                                             7. Cookies và Công Nghệ Tương Tự</Link>
                                     </li>
-                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white dark:text-dark-text dark:bg-dark transition-colors">
                                         <Link href="#policy-changes"
                                             onClick={() => setIsModalOpen(false)}>
                                             8. Thay Đổi Chính Sách</Link>
                                     </li>
-                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white dark:text-dark-text dark:bg-dark transition-colors">
                                         <Link href="#contact"
                                             onClick={() => setIsModalOpen(false)}>
                                             9. Liên Hệ</Link>
                                     </li>
-                                    <li className="border border-gray-300 rounded-lg p-2 bg-white">
+                                    <li className="border border-gray-300 rounded-lg p-2 bg-white dark:text-dark-text dark:bg-dark transition-colors">
                                         <Link href="#effective-date"
                                             onClick={() => setIsModalOpen(false)}>
                                             10. Ngày Có Hiệu Lực</Link>

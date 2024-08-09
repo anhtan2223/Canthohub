@@ -1,6 +1,5 @@
 import createApiClient from '@service/ApiService';
-const apiBaseURL = process.env.API_BASE_URL! || 'http://localhost:8000/api';
-const apiClient = createApiClient(apiBaseURL);
+const apiClient = createApiClient();
 
 class AddressService {
   async getProvinces(): Promise<any> {

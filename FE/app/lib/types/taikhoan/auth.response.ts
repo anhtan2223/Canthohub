@@ -6,10 +6,11 @@ export interface Token {
     token_type: string ,
     expires_in: number
 }
-
-export interface LoginResponse extends Response<Token> {}
-export interface RegisterResponse extends Response<{
+export interface RegisterData {
     user : AccountInfo ,
     token : Token
-}> {}
+}
+
+export interface LoginResponse extends Response<Token> {}
+export interface RegisterResponse extends Response<RegisterData> {}
 

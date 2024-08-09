@@ -11,6 +11,7 @@ import Search from '@/app/ui/Master/MasterSearch'
 import { Suspense } from 'react';
 import { useTheme } from '@/app/themeProvider';
 import MobileMenu from '@ui/Master/MobileMenu'
+import MobileAuth from "@ui/Master/MobileAuth"
 import { userAtom } from "@storage"
 import { useAtomValue } from 'jotai'
 
@@ -30,7 +31,13 @@ export default function Header() {
     <>
       <div className='h-fit w-11/12 lg:w-3/4 flex mx-auto'>
         <div className='w-1/2 lg:w-1/3 flex items-center'>
-          <div className="mr-3"><MobileMenu /></div>
+          <div className="mr-3">
+            {
+              !user ?
+              <MobileAuth/> :
+              <MobileMenu />
+            }
+          </div>
           <Link href={'/'}>
             <Image
               src="/Logo.png" width={180} height={100} className='w-full h-auto' alt='Logo' >
@@ -46,7 +53,7 @@ export default function Header() {
           </div>
           {
             !user ?
-              <div className='flex' >
+              <div className='hidden lg:flex' >
                 <Link href="/dangky">
                   <Button type="text" className='h-[40px] ml-5'>Đăng Ký Thành Viên</Button>
                 </Link>

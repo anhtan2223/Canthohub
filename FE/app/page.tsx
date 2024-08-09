@@ -7,6 +7,8 @@ export default function MainPage() {
         { name: "My Account", url: "/taikhoan" },
         { name: "My Post", url: "/baidang" },
         { name: "Master Search", url: "/timkiem" },
+        { name: "Fogot Password", url: "/quenmatkhau" },
+        { name: "Policy", url: "/policy" },
         { name: "___________________", url: "/" },
         { name: "News", url: "/tintuc" },
         { name: "Detail News", url: "/tintuc/1" },
