@@ -1,60 +1,142 @@
-import Image from 'next/image'
+'use client'
+import { Button, Form, Input, DatePicker } from 'antd';
+import type { FormProps } from 'antd';
+import { RegisterRequest } from "@type/taikhoan/auth.request"
+import { notification } from "antd"
+import auth from "@service/AuthService"
+import account from "@service/AccountService"
 import Link from 'next/link'
+import { UserOutlined, MailOutlined, LockOutlined, PhoneOutlined } from "@ant-design/icons"
+import { ErrorResponse } from '@/app/lib/types/master';
+import { RegisterData } from '@/app/lib/types/taikhoan';
+import { tokenAtom, userAtom } from "@storage"
+import { useSetAtom } from 'jotai';
+import { useRouter } from 'next/navigation';
+import { PhoneValidation, RePasswordValidation, PasswordValidation, EmailValidation } from "@util"
+import { getErrorMessage } from "@util"
 
 const Register = () => {
+
+  const setUser = useSetAtom(userAtom)
+  const setToken = useSetAtom(tokenAtom)
+  const router = useRouter()
+
+  const onFinishFailed: FormProps<RegisterRequest>['onFinishFailed'] = (errorInfo) => {
+    console.log(errorInfo.values)
+  };
+
+  const onFinish = async (values: RegisterRequest) => {
+    try {
+      if (values.birthdate)
+        values.birthdate = values.birthdate?.format('YYYY-MM-DD')
+      const data = await auth.Register(values) as RegisterData
+      setToken(data.token.access_token)
+
+      const info = await account.GetMe(data.token.access_token)
+      setUser(info)
+      notification.success({ message: "Register Sucess", placement: "bottomRight" })
+      router.push("/tintuc")
+    } catch (error) {
+      const err = error as ErrorResponse
+      notification.error({ message: err.message, placement: "bottomRight" })
+      if (err.validation_errors) {
+        getErrorMessage(err.validation_errors).forEach(message => {
+          notification.error({ message: message, placement: "bottomRight" })
+        })
+      }
+    }
+  };
   return (
-    <div className="flex items-center justify-center min-h-screen dark:text-dark-text dark:border-dark">
-      <div className="bg-white p-10 rounded-lg shadow-lg text-center w-96">
-        <h1 className="text-3xl mb-8 font-bold text-black dark:text-dark-text">Đăng Ký</h1>
-        <div className="text-left mb-6">
-          <label className="block mb-1 font-semibold text-black dark:text-dark-text">Họ Và Tên</label>
-          <div className="relative flex items-center">
-            <input
-              type="email"
-              placeholder=""
-              className="w-full pl-9 pr-4 py-1 border-0 border-b-2 border-black custom-input bg-transparent"
-            />
-            <Image src="/Icon/name.png" width={15} height={15} className='absolute left-2' alt="Email Icon" />
-          </div>
-        </div>
-        <div className="text-left mb-6">
-          <label className="block mb-1 font-semibold text-black dark:text-dark-text">Email</label>
-          <div className="relative flex items-center">
-            <input
-              type="email"
-              placeholder=""
-              className="w-full pl-9 pr-4 py-1 border-0 border-b-2 border-black custom-input bg-transparent"
-            />
-            <Image src="/Icon/email.png" className='absolute left-2' width={17} height={12} alt="Email Icon" />
-          </div>
-        </div>
-        <div className="text-left mb-6">
-          <label className="block mb-1 font-semibold text-black dark:text-dark-text">Mật Khẩu</label>
-          <div className="relative flex items-center">
-            <input
-              type="password"
-              placeholder=""
-              className="w-full pl-9 pr-4 py-1 border-0 border-b-2 border-black custom-input bg-transparent"
-            />
-            <Image src="/Icon/password.png" className='absolute left-2' width={15} height={15} alt="Password Icon" />
-          </div>
-        </div>
-        <div className="mb-6 text-center">
-          <label htmlFor="privacyPolicy" className="text-sm text-gray-500">
-            Tôi đã đọc và đồng ý với
-            <div>
-              <Link href="/privacy_policy" className="text-indigo-500 hover:underline ml-1">Chính sách quyền riêng tư</Link>
+    <>
+      <Form<RegisterRequest>
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        layout="vertical"
+      >
+        <div className="flex items-center justify-center dark:text-dark-text dark:border-dark">
+          <div className="p-10 rounded-lg shadow-lg text-center w-3/4 bg-white dark:bg-dark-secondary">
+            <h1 className="text-3xl mb-8 font-bold">Đăng Ký</h1>
+            <div className="text-left mb-6">
+              <Form.Item
+                label="Họ Và Tên"
+                name="full_name"
+                rules={[{ required: true, message: 'Vui Lòng Nhập Họ Tên' }]}
+              >
+                <Input
+                  prefix={<UserOutlined width={17} height={12} className='left-2 w-full' />} />
+              </Form.Item>
             </div>
-          </label>
-        </div>
-        <button className="w-[50%] py-2 mb-4 bg-[#3559E0] text-white rounded-full font-semibold hover:bg-[#2742b3] transition duration-300 ease-in-out">
-          Đăng Ký
-        </button>
-        <p className="text-center text-sm text-gray-500 cursor-pointer mb-6">
-        Bạn đã có tài khoản? <Link href="/dangnhap" className='hover:underline font-medium text-[#22C0CF]'>Đăng Nhập</Link>
-        </p>
-      </div>
-    </div>
+            <div className="text-left mb-6">
+              <Form.Item
+                label="Ngày Sinh"
+                name="birthdate"
+                colon={false}
+              >
+                <DatePicker className='w-full' placeholder="Ngày Sinh" />
+              </Form.Item>
+            </div>
+            <div className="text-left mb-6">
+              <Form.Item
+                label="Số Điện Thoại"
+                name="phone"
+                rules={[PhoneValidation]}
+              >
+                <Input
+                  prefix={<PhoneOutlined width={17} height={12} className='left-2 w-full' />} />
+              </Form.Item>
+            </div>
+            <div className="text-left mb-6">
+              <Form.Item
+                label="Email"
+                name="email"
+                rules={[{ required: true, message: 'Vui Lòng Nhập Email' }, EmailValidation]}
+              >
+                <Input
+                  prefix={<MailOutlined width={17} height={12} className='left-2 w-full' />} />
+              </Form.Item>
+            </div>
+            <div className="text-left mb-6">
+              <Form.Item
+                label="Mật Khẩu"
+                name="password"
+                rules={[{ required: true, message: 'Vui Lòng Nhập Mật Khẩu' }, PasswordValidation]}
+              >
+                <Input.Password
+                  prefix={<LockOutlined width={17} height={12} className='left-2' />} />
+              </Form.Item>
+            </div>
+            <div className="text-left mb-6">
+              <Form.Item
+                label="Nhập Lại Mật Khẩu"
+                name="re-password"
+                dependencies={['password']}
+                rules={[RePasswordValidation]}
+              >
+                <Input.Password
+                  prefix={<LockOutlined width={17} height={12} className='left-2' />} />
+              </Form.Item>
+            </div>
+            <div className="mb-4 text-center">
+              <label htmlFor="privacyPolicy" className="text-sm text-gray-500">
+                Tôi đã đọc và đồng ý với
+                <div>
+                  <Link href="/policy" className="text-indigo-500 hover:underline ml-1">Chính sách quyền riêng tư</Link>
+                </div>
+              </label>
+            </div>
+            <Button type="primary" htmlType="submit">
+              Đăng Ký
+            </Button>
+
+            <div className='flex justify-center w-full mt-5'>
+              <p className="text-center text-sm text-gray-500 cursor-pointer mb-6">
+                Bạn đã có tài khoản? <Link href="/dangnhap" className='hover:underline font-medium text-[#22C0CF]'>Đăng Nhập Ngay</Link>
+              </p>
+            </div>
+          </div>
+        </div >
+      </Form>
+    </>
   );
 };
 

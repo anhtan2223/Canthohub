@@ -2,8 +2,7 @@ import createApiClient from '@service/ApiService';
 const apiClient = createApiClient();
 
 import { LoginRequest } from "@type/taikhoan/auth.request"
-import { LoginResponse } from "@type/taikhoan/auth.response"
-import { FogetPasswordRequest, CheckTokenRequest, ResetPasswordRequest} from '@type/taikhoan'
+import { FogetPasswordRequest, CheckTokenRequest, ResetPasswordRequest , RegisterRequest} from '@type/taikhoan'
 import { API } from "@config/auth.config"
 
 class AuthService {
@@ -17,8 +16,15 @@ class AuthService {
     }
     async Refresh(token : string): Promise<any> {
         try {
-            const data = await apiClient.post(API.REFRESH , {} , token ) 
-            // const data = await apiClient.get("/account/me" , token ) 
+            const data = await apiClient.post(API.REFRESH , {} , token )
+            return Promise.resolve(data)
+        } catch (error) {
+            return Promise.reject(error)
+        }
+    }
+    async Register(request: RegisterRequest ): Promise<any> {
+        try {
+            const data = await apiClient.post(API.REGISTER , request)
             return Promise.resolve(data)
         } catch (error) {
             return Promise.reject(error)

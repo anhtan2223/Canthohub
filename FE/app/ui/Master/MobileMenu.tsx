@@ -1,11 +1,11 @@
 'use client'
 import { FormOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Col, Divider, Drawer, Row} from "antd";
+import { Button, Drawer} from "antd";
 import Link from "next/link";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import { IoMdMenu } from "react-icons/io";
 
-export default function MobileMenu({ children }: { children?: ReactNode  }) {
+export default function MobileMenu() {
     const [open, setOpen] = useState(false);
 
     const showDrawer = () => {

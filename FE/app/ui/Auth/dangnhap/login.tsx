@@ -12,23 +12,18 @@ import { Token } from "@type/taikhoan"
 import { tokenAtom, userAtom } from "@storage"
 import { useSetAtom } from 'jotai';
 import { useRouter } from 'next/navigation';
-import { useAtomValue } from "jotai"
+import { PasswordValidation , EmailValidation } from "@util"
+
 
 
 const Login = () => {
 
-
-
-  const token = useAtomValue(tokenAtom)
   const setUser = useSetAtom(userAtom)
   const setToken = useSetAtom(tokenAtom)
   const router = useRouter()
 
-  const onFinishFailed: FormProps<LoginRequest>['onFinishFailed'] = async (errorInfo) => {
-    if (token) {
-      const data = await auth.Refresh(token)
-      notification.warning({ message: JSON.stringify(data), placement: "bottomRight" })
-    }
+  const onFinishFailed: FormProps<LoginRequest>['onFinishFailed'] = (errorInfo) => {
+    console.log(errorInfo)
   };
 
   const onFinish = async (values: LoginRequest) => {
@@ -39,12 +34,10 @@ const Login = () => {
       const info = await account.GetMe(data.access_token)
       setUser(info)
 
-      notification.success({ message: "Login Success", placement: "bottomRight" })
       router.push("/tintuc")
+      notification.success({ message: "Login Success", placement: "bottomRight" })
     } catch (error) {
-      // console.log("Throw Error Login" , error)
       const err = error as ErrorResponse
-      // notification.error({message : JSON.stringify(err.message) , placement : "bottomRight"} )
       notification.error({ message: err.message, placement: "bottomRight" })
     }
   };
@@ -53,14 +46,14 @@ const Login = () => {
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}>
       <div className="flex items-center justify-center dark:text-dark-text dark:border-dark">
-        <div className="p-10 rounded-lg shadow-lg text-center w-1/2 bg-white dark:bg-dark-secondary">
+        <div className="p-10 rounded-lg shadow-lg text-center w-3/4 bg-white dark:bg-dark-secondary">
           <h1 className="text-3xl mb-8 font-bold">Đăng Nhập</h1>
           <div className="text-left mb-6">
 
             <label className="block mb-1 font-semibold">Email</label>
             <Form.Item
               name="email"
-              rules={[{ required: true, message: 'Vui Lòng Nhập Email' }]}
+              rules={[{ required: true, message: 'Vui Lòng Nhập Email' } , EmailValidation]}
             >
               <Input
                 prefix={<MailOutlined width={17} height={12} className='left-2 w-full' />} />
@@ -70,13 +63,13 @@ const Login = () => {
             <label className="block mb-1 font-semibold">Mật Khẩu</label>
             <Form.Item
               name="password"
-              rules={[{ required: true, message: 'Vui Lòng Nhập Mật Khẩu' }]}
+              rules={[{ required: true, message: 'Vui Lòng Nhập Mật Khẩu' } , PasswordValidation]}
             >
               <Input.Password
                 prefix={<LockOutlined width={17} height={12} className='left-2' />} />
             </Form.Item>
           </div>
-          <Button type="primary" htmlType="submit">
+          <Button className='mt-3' type="primary" htmlType="submit">
             Đăng nhập
           </Button>
           <div className='my-3'>
